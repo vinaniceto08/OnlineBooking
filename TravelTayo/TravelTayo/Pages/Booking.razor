@@ -1,0 +1,98 @@
+﻿@page "/booking"
+@layout MainLayout
+@using System.ComponentModel.DataAnnotations
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Book Your Family Getaway</h2>
+
+    <div class="row g-5">
+        <!-- Left side: Booking form -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Direct Booking Form</h5>
+                    <EditForm Model="@bookingModel" OnValidSubmit="HandleBooking">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <InputText id="name" class="form-control" @bind-Value="bookingModel.Name" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <InputText id="email" class="form-control" @bind-Value="bookingModel.Email" type="email" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="checkin" class="form-label">Check-in Date</label>
+                            <InputDate id="checkin" class="form-control" @bind-Value="bookingModel.CheckIn" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="checkout" class="form-label">Check-out Date</label>
+                            <InputDate id="checkout" class="form-control" @bind-Value="bookingModel.CheckOut" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="guests" class="form-label">Number of Guests</label>
+                            <InputNumber id="guests" class="form-control" @bind-Value="bookingModel.Guests" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Book Now</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side: Affiliate link -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">Prefer Agoda or Klook?</h5>
+                    <p class="card-text">
+                        Explore thousands of family-friendly destinations on our affiliate platforms.
+                        Book safely through trusted partners.
+                    </p>
+                    <div class="d-grid gap-2">
+                        <a href="https://www.agoda.com/partners/partnersearch.aspx?cid=YOUR-CID" target="_blank" class="btn btn-outline-info">
+                            Book via Agoda
+                        </a>
+                        <a href="https://affiliate.klook.com/YOUR-LINK" target="_blank" class="btn btn-outline-warning">
+                            Book via Klook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private BookingModel bookingModel = new();
+
+    private void HandleBooking()
+    {
+        // TODO: Save to database, send email, etc.
+        Console.WriteLine($"Booking received: {bookingModel.Name}, {bookingModel.CheckIn} to {bookingModel.CheckOut}");
+    }
+
+    public class BookingModel
+    {
+        [Required]
+        public string Name { get; set; } = "";
+
+        [Required, EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        public DateTime CheckIn { get; set; } = DateTime.Today;
+
+        [Required]
+        public DateTime CheckOut { get; set; } = DateTime.Today.AddDays(1);
+
+        [Range(1, 10)]
+        public int Guests { get; set; } = 1;
+    }
+}

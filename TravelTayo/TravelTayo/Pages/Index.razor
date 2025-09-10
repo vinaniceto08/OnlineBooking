@@ -1,0 +1,153 @@
+﻿@page "/"
+
+<style>
+    .hero-section {
+        background-image: url('/images/home-bg-2.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        color: white;
+        position: relative;
+    }
+
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.5); 
+        height: 100%;
+    }
+
+    .curve-divider {
+        position: relative;
+        margin-top: -5rem;
+        z-index: 1;
+    }
+
+        .curve-divider svg {
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+</style>
+
+@code {
+    private List<Testimonial> testimonials = new()
+    {
+        new Testimonial { Name = "Ella Santos", Location = "Manila, PH", Message = "Booking our Japan family trip was so easy! We loved every second of it." },
+        new Testimonial { Name = "Carlos Reyes", Location = "Cebu, PH", Message = "TravelTayo made it possible to plan our trip stress-free. Highly recommended!" },
+        new Testimonial { Name = "Liza Marquez", Location = "Davao, PH", Message = "Our kids still talk about Disneyland! We'll use this again for sure." }
+    };
+
+    private class Testimonial
+    {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Message { get; set; }
+    }
+}
+
+<!-- 🌍 HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-overlay d-flex flex-column justify-content-center align-items-center text-center p-4">
+        <h1 class="display-3 fw-bold">Family Adventures Await</h1>
+        <p class="lead">Book unforgettable trips with your loved ones—easy, fun, and worry-free.</p>
+        <a href="/browse" class="btn btn-lg btn-warning px-5 mt-3">Start Browsing</a>
+    </div>
+</section>
+
+<!-- Testimonials Section - ADD THIS HERE -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">What Our Happy Travelers Say</h2>
+
+        <div id="testimonialCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+            <div class="carousel-inner">
+
+                @for (int i = 0; i < testimonials.Count; i++)
+                {
+                    var testimonial = testimonials[i];
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="card border-0 shadow-lg text-center">
+                                    <div class="card-body">
+                                        <i class="bi bi-chat-quote-fill fs-1 text-primary mb-3"></i>
+                                        <p class="card-text fst-italic">“@testimonial.Message”</p>
+                                        <h5 class="card-title mt-3">@testimonial.Name</h5>
+                                        <small class="text-muted">@testimonial.Location</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 🌀 CURVE TRANSITION -->
+@* <div class="curve-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1" d="M0,192L1440,320L1440,0L0,0Z"></path>
+    </svg>
+</div> *@
+
+<!-- 🧳 POPULAR DESTINATIONS -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Popular Family Destinations</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/images/bali.jpg" class="card-img-top" alt="Bali">
+                    <div class="card-body">
+                        <h5 class="card-title">Bali, Indonesia</h5>
+                        <p class="card-text">Beach fun and cultural tours—great for kids and parents alike!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/images/tokyo.jpg" class="card-img-top" alt="Tokyo">
+                    <div class="card-body">
+                        <h5 class="card-title">Tokyo, Japan</h5>
+                        <p class="card-text">Explore anime, Disneyland, and temples in one fun-packed trip.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/images/cebu.jpg" class="card-img-top" alt="Cebu">
+                    <div class="card-body">
+                        <h5 class="card-title">Cebu, Philippines</h5>
+                        <p class="card-text">Island hopping, food trips, and snorkeling with the kids.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 💡 CTA BANNER -->
+<section class="bg-light py-5 mt-4">
+    <div class="container text-center">
+        <h3 class="fw-bold">Looking for more options?</h3>
+        <p>Find hotels, resorts, and attractions through our Agoda-powered search.</p>
+        <a href="/browse" class="btn btn-outline-primary btn-lg mt-2">Explore Now</a>
+    </div>
+</section>
+
+
+

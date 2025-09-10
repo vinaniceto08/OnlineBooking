@@ -1,0 +1,51 @@
+﻿@page "/blog"
+@layout MainLayout
+
+<h2 class="mb-4">Family Travel Tips</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var post in blogPosts)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="@post.ImageUrl" class="card-img-top" alt="@post.Title" style="height: 200px; object-fit: cover;" />
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <p class="card-text text-muted">@post.Summary</p>
+                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<BlogPost> blogPosts = new()
+    {
+        new BlogPost
+        {
+            Title = "Top 5 Tips for Stress-Free Family Travel",
+            Summary = "Plan ahead, pack light, and keep the kids engaged. Here's how to make every trip memorable.",
+            ImageUrl = "https://source.unsplash.com/400x200/?family,travel"
+        },
+        new BlogPost
+        {
+            Title = "How to Pack for Kids Like a Pro",
+            Summary = "Packing for children doesn’t have to be a nightmare. Check out these parent-approved hacks.",
+            ImageUrl = "https://source.unsplash.com/400x200/?packing,kids"
+        },
+        new BlogPost
+        {
+            Title = "Budget Travel with a Family of 5",
+            Summary = "Yes, it’s possible to travel on a budget with kids! Here’s how we did it and saved thousands.",
+            ImageUrl = "https://source.unsplash.com/400x200/?budget,travel"
+        }
+    };
+
+    public class BlogPost
+    {
+        public string Title { get; set; }
+        public string Summary { get; set; }
+        public string ImageUrl { get; set; }
+    }
+}

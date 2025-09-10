@@ -1,0 +1,11 @@
+﻿
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Link { get; set; }
+}
+
+<div class="border p-4 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-xl font-semibold mb-2">@Title</h3>
+    <a href="@Link" target="_blank" class="text-blue-600 underline">View on Agoda</a>
+</div>
