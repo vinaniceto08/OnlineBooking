@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.web" Version="3.14.1" />
+    <PackageReference Include="Microsoft.Identity.web.ui" Version="3.14.1" />
+  </ItemGroup>
+
 </Project>
