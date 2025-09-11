@@ -7,15 +7,22 @@ using TravelTayo.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add authentication with B2C
+builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(options =>
     {
+        // Bind non-sensitive config from appsettings.json
         builder.Configuration.Bind("AzureEntraB2C", options);
 
+        // Override sensitive info from environment variables
+         options.ClientId = Environment.GetEnvironmentVariable("B2C_CLIENT_ID");
+        //options.ClientSecret = Environment.GetEnvironmentVariable("B2C_CLIENT_SECRET"); // if needed
+
+        // Authority and Metadata
         options.Authority = $"{options.Instance}/{options.Domain}/v2.0/";
         options.MetadataAddress = $"{options.Instance}/{options.Domain}/v2.0/.well-known/openid-configuration?p={options.SignUpSignInPolicyId}";
-
     });
+
 
 builder.Services.AddControllersWithViews()
     .AddMicrosoftIdentityUI(); // Provides ready-to-use login/logout endpoints
@@ -25,6 +32,7 @@ builder.Services.AddRazorPages()
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddSingleton<WeatherForecastService>();
+
 
 var app = builder.Build();
 

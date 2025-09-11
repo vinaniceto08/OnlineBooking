@@ -88,5 +88,3 @@ wwwroot/lib/
 Thumbs.db
 desktop.ini
 
-# Ignore local development settings
-appsettings.Development.json
