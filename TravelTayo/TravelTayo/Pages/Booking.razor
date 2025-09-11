@@ -1,6 +1,10 @@
 ﻿@page "/booking"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 @layout MainLayout
 @using System.ComponentModel.DataAnnotations
+
+
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Book Your Family Getaway</h2>

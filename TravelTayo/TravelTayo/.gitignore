@@ -87,3 +87,6 @@ wwwroot/lib/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Ignore local development settings
+appsettings.Development.json

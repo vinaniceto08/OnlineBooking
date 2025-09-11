@@ -1,33 +1,34 @@
 ﻿using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+// Add authentication with B2C
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(options =>
     {
         builder.Configuration.Bind("AzureEntraB2C", options);
 
-        // Set authority
-        options.Authority = $"{options.Instance}/{options.Domain}/{options.SignUpSignInPolicyId}/v2.0";
-
-        // Explicit metadata address with ?p= query
+        options.Authority = $"{options.Instance}/{options.Domain}/v2.0/";
         options.MetadataAddress = $"{options.Instance}/{options.Domain}/v2.0/.well-known/openid-configuration?p={options.SignUpSignInPolicyId}";
+
     });
 
 builder.Services.AddControllersWithViews()
-    .AddMicrosoftIdentityUI();
+    .AddMicrosoftIdentityUI(); // Provides ready-to-use login/logout endpoints
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddMicrosoftIdentityUI(); // Adds identity support in Blazor pages
 builder.Services.AddServerSideBlazor();
+
 builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
 
-// Middleware pipeline
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -39,11 +40,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// 🔑 Enable authentication & authorization
+// Enable auth middlewares
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllers(); // Needed for Identity UI
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
