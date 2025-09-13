@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add authentication with B2C
 builder.Configuration.AddEnvironmentVariables();
+
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(options =>
     {
@@ -15,8 +16,12 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         builder.Configuration.Bind("AzureEntraB2C", options);
 
         // Override sensitive info from environment variables
-         options.ClientId = Environment.GetEnvironmentVariable("B2C_CLIENT_ID");
-        //options.ClientSecret = Environment.GetEnvironmentVariable("B2C_CLIENT_SECRET"); // if needed
+        options.ClientId = Environment.GetEnvironmentVariable("B2C_CLIENT_ID")
+                   ?? builder.Configuration["AzureEntraB2C:ClientId"];
+
+        //options.ClientSecret = Environment.GetEnvironmentVariable("B2C_CLIENT_SECRET") // if needed
+        //                        ?? builder.Configuration["AzureEntraB2C:ClientSecret"];
+
 
         // Authority and Metadata
         options.Authority = $"{options.Instance}/{options.Domain}/v2.0/";

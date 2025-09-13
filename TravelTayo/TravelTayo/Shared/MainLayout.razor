@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="d-flex flex-column min-vh-100">
     <!-- Navbar -->
@@ -10,13 +12,42 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
-                    <li class="nav-item"><NavLink class="nav-link" href="/browse">Browse</NavLink></li>
-                    <li class="nav-item"><NavLink class="nav-link" href="/booking">Booking</NavLink></li>
-                    <li class="nav-item"><NavLink class="nav-link" href="/blog">Blog</NavLink></li>
-                    <li class="nav-item"><NavLink class="nav-link" href="/contact">Contact</NavLink></li>
-                    <li class="nav-item"><NavLink class="nav-link" href="/account">My Account</NavLink></li>
+                    @if (isAuthenticated)
+                    {
+                        <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/browse">Browse</NavLink></li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/booking" Match="NavLinkMatch.All">
+                                Booking
+                            </NavLink>
+                        </li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/blog">Blog</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/contact">Contact</NavLink></li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="/account">
+                                My Account
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/MicrosoftIdentity/Account/SignOut">
+                                Logout
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/browse">Browse</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/blog">Blog</NavLink></li>
+                        <li class="nav-item"><NavLink class="nav-link" href="/contact">Contact</NavLink></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/MicrosoftIdentity/Account/SignIn">
+                                Login
+                            </a>
+                        </li>
+                    }
                 </ul>
+
             </div>
         </div>
     </nav>
@@ -31,3 +62,21 @@
         <small>© @DateTime.Now.Year TravelTayo. All rights reserved.</small>
     </footer>
 </div>
+
+@code {
+    private bool isAuthenticated;
+    private string? userName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        isAuthenticated = user.Identity?.IsAuthenticated ?? false;
+        if (isAuthenticated)
+        {
+            // You can use "name" or "preferred_username" depending on your B2C claims
+            userName = user.Identity?.Name ?? user.Claims.FirstOrDefault(c => c.Type == "emails")?.Value;
+        }
+    }
+}
