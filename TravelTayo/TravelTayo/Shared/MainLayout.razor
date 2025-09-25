@@ -10,47 +10,160 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    @if (isAuthenticated)
-                    {
-                        <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/browse">Browse</NavLink></li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="/booking" Match="NavLinkMatch.All">
-                                Booking
-                            </NavLink>
-                        </li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/blog">Blog</NavLink></li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/contact">Contact</NavLink></li>
-                        <li class="nav-item">
-                            <NavLink class="nav-link" href="/account">
-                                My Account
-                            </NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/MicrosoftIdentity/Account/SignOut">
-                                Logout
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item"><NavLink class="nav-link" href="/">Home</NavLink></li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/browse">Browse</NavLink></li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/blog">Blog</NavLink></li>
-                        <li class="nav-item"><NavLink class="nav-link" href="/contact">Contact</NavLink></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/MicrosoftIdentity/Account/SignIn">
-                                Login
-                            </a>
-                        </li>
-                    }
-                </ul>
 
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    @if (isAuthenticated)
+                    {  
+                         <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/">
+                                <i class="bi bi-house-door me-1"></i> Home
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/browse">
+                                <i class="bi bi-building me-1"></i> Find Hotels
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/booking" Match="NavLinkMatch.All">
+                                <i class="bi bi-calendar-check me-1"></i> My Booking
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/blog">
+                                <i class="bi bi-journal-text me-1"></i> Testimonials
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/contact">
+                                <i class="bi bi-envelope me-1"></i> Contact
+                            </NavLink>
+                        </li>
+
+                        <!-- Cart with badge -->
+                        <li class="nav-item position-relative me-3">
+                            <a class="nav-link menu-hover" href="/cart">
+                                <i class="bi bi-cart3 fs-5"></i>
+                                <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                                    @cartCount
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- Username + dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle menu-hover" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hi, @userName
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><NavLink class="dropdown-item" href="/account">My Account</NavLink></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="/MicrosoftIdentity/Account/SignOut">Logout</a></li>
+                            </ul>
+                        </li>
+                    }
+                     else
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/">
+                                <i class="bi bi-house-door me-1"></i> Home
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/browse">
+                                <i class="bi bi-building me-1"></i> Find Hotels
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/blog">
+                                <i class="bi bi-journal-text me-1"></i> Testimonials
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link menu-hover d-flex align-items-center" href="/contact">
+                                <i class="bi bi-envelope me-1"></i> Contact
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-hover d-flex align-items-center" href="/MicrosoftIdentity/Account/SignIn">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                            </a>
+                        </li>
+
+                    }  
+                </ul>
             </div>
         </div>
     </nav>
+  @*   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold text-primary" href="/">TravelTayo</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center menu -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <NavLink class="nav-link menu-hover d-flex align-items-center" href="/">
+                            <i class="bi bi-house-door me-1"></i> Home
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link menu-hover d-flex align-items-center" href="/browse">
+                            <i class="bi bi-building me-1"></i> Find Hotels
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link menu-hover d-flex align-items-center" href="/booking" Match="NavLinkMatch.All">
+                            <i class="bi bi-calendar-check me-1"></i> My Booking
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link menu-hover d-flex align-items-center" href="/blog">
+                            <i class="bi bi-journal-text me-1"></i> Blog
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link menu-hover d-flex align-items-center" href="/contact">
+                            <i class="bi bi-envelope me-1"></i> Contact
+                        </NavLink>
+                    </li>
+                </ul>
+
+                <!-- Right side (cart + account) -->
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <!-- Cart with badge -->
+                    <li class="nav-item position-relative me-3">
+                        <a class="nav-link menu-hover" href="/cart">
+                            <i class="bi bi-cart3 fs-5"></i>
+                            <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                                @cartCount
+                            </span>
+                        </a>
+                    </li>
+
+                    <!-- User dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle menu-hover" href="#" id="userMenu" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, @userName
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                            <li><NavLink class="dropdown-item" href="/account">My Account</NavLink></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="/MicrosoftIdentity/Account/SignOut">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> *@
+
 
     <!-- Main content -->
     <main class="flex-fill">
@@ -63,9 +176,21 @@
     </footer>
 </div>
 
+<style>
+    /* Highlight navbar links on hover */
+    .menu-hover {
+        transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+    }
+    .menu-hover:hover {
+        color: #0d6efd !important; /* Bootstrap primary */
+        border-bottom: 2px solid #0d6efd;
+    }
+</style>
+
 @code {
     private bool isAuthenticated;
     private string? userName;
+    private int cartCount = 0; // Replace with real cart logic later
 
     protected override async Task OnInitializedAsync()
     {
@@ -75,8 +200,13 @@
         isAuthenticated = user.Identity?.IsAuthenticated ?? false;
         if (isAuthenticated)
         {
-            // You can use "name" or "preferred_username" depending on your B2C claims
-            userName = user.Identity?.Name ?? user.Claims.FirstOrDefault(c => c.Type == "emails")?.Value;
+            // Use B2C claim or Name/Email depending on setup
+            userName = user.Identity?.Name
+            ?? user.Claims.FirstOrDefault(c => c.Type == "emails")?.Value
+            ?? "Marvin";
         }
+
+        // TODO: Hook up cart count from state service
+        cartCount = 3; // Example hard-coded
     }
 }

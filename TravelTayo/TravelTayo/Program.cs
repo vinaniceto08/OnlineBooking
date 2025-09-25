@@ -26,6 +26,10 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         // Authority and Metadata
         options.Authority = $"{options.Instance}/{options.Domain}/v2.0/";
         options.MetadataAddress = $"{options.Instance}/{options.Domain}/v2.0/.well-known/openid-configuration?p={options.SignUpSignInPolicyId}";
+
+        options.TokenValidationParameters.NameClaimType = "name";
+        options.TokenValidationParameters.NameClaimType = "emails";
+
     });
 
 
