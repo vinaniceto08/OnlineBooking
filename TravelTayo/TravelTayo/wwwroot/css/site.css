@@ -82,3 +82,30 @@ a, .btn-link {
     padding: 10px;
     color:black
 }
+
+/* Hover effect for menu */
+.menu-link {
+    color: #ddd;
+    transition: all 0.3s ease;
+}
+
+    .menu-link:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        padding-left: 10px;
+    }
+
+/* Cart badge */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+}
+
