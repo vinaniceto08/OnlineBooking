@@ -33,9 +33,9 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         options.TokenValidationParameters.NameClaimType = "emails";
 
     });
-string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING")
-                          ?? builder.Configuration.GetConnectionString("TravelTayoDb");
+string connectionString = builder.Configuration.GetConnectionString("TravelTayoDb");
 
+// Register DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
