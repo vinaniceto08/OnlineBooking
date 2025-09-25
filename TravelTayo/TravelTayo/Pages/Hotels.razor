@@ -1,0 +1,31 @@
+﻿@using TravelTayo.Services
+@using TravelTayo.Models
+@inject AgodaService AgodaService
+
+<button @onclick="SearchCityHotels">Search Hotels</button>
+
+@code {
+    private async Task SearchCityHotels()
+    {
+        var criteria = new CitySearchCriteria
+        {
+            CheckInDate = DateTime.Today.ToString("yyyy-MM-dd"),
+            CheckOutDate = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"),
+            CityId = 9395,
+            Additional = new Additional
+            {
+                Currency = "USD",
+                DiscountOnly = false,
+                Language = "en-us",
+                MaxResult = 10,
+                Occupancy = new Occupancy { NumberOfAdult = 2, NumberOfChildren = 1 },
+                MinimumStarRating = 0,
+                MinimumReviewScore = 0,
+                SortBy = SortByEnum.PriceAsc
+            }
+        };
+
+        var result = await AgodaService.CitySearchAsync(criteria);
+        Console.WriteLine(result);
+    }
+}

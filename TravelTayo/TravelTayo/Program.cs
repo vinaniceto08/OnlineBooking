@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
+using TravelTayo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,16 +33,31 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         options.TokenValidationParameters.NameClaimType = "emails";
 
     });
+string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING")
+                          ?? builder.Configuration.GetConnectionString("TravelTayoDb");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+//agoda api
+builder.Services.AddHttpClient<AgodaService>();
+builder.Services.AddScoped<AgodaService>(sp =>
+{
+    var httpClient = sp.GetRequiredService<HttpClient>();
+    var db = sp.GetRequiredService<AppDbContext>();
+    var apiKey = builder.Configuration["Agoda:ApiKey"];
+    return new AgodaService(httpClient, db, apiKey);
+});
 
 
 builder.Services.AddControllersWithViews()
     .AddMicrosoftIdentityUI(); // Provides ready-to-use login/logout endpoints
 
+builder.Services.AddControllers();
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI(); // Adds identity support in Blazor pages
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddSingleton<WeatherForecastService>();
 
 
 var app = builder.Build();
