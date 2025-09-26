@@ -3,49 +3,130 @@
 
 <h2 class="mb-4">Family Travel Tips</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach (var post in blogPosts)
-    {
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="@post.ImageUrl" class="card-img-top" alt="@post.Title" style="height: 200px; object-fit: cover;" />
-                <div class="card-body">
-                    <h5 class="card-title">@post.Title</h5>
-                    <p class="card-text text-muted">@post.Summary</p>
-                    <a href="#" class="btn btn-outline-primary">Read More</a>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<section class="blog-post container py-5">
+    <h1 class="fw-bold text-primary mb-4">
+        Top 5 Family-Friendly Hotels in Boracay (Perfect for Kids & Parents)
+    </h1>
 
-@code {
-    private List<BlogPost> blogPosts = new()
-    {
-        new BlogPost
-        {
-            Title = "Top 5 Tips for Stress-Free Family Travel",
-            Summary = "Plan ahead, pack light, and keep the kids engaged. Here's how to make every trip memorable.",
-            ImageUrl = "https://source.unsplash.com/400x200/?family,travel"
-        },
-        new BlogPost
-        {
-            Title = "How to Pack for Kids Like a Pro",
-            Summary = "Packing for children doesn’t have to be a nightmare. Check out these parent-approved hacks.",
-            ImageUrl = "https://source.unsplash.com/400x200/?packing,kids"
-        },
-        new BlogPost
-        {
-            Title = "Budget Travel with a Family of 5",
-            Summary = "Yes, it’s possible to travel on a budget with kids! Here’s how we did it and saved thousands.",
-            ImageUrl = "https://source.unsplash.com/400x200/?budget,travel"
-        }
-    };
+    <p class="lead">
+        Boracay isn’t just for couples and party-goers — it’s a <strong>fantastic family destination</strong> too!
+        From White Beach sunsets to island-hopping adventures, your kids will love every moment.
+        Here are the best <strong>family-friendly hotels in Boracay</strong> to make your vacation hassle-free.
+    </p>
 
-    public class BlogPost
-    {
-        public string Title { get; set; }
-        public string Summary { get; set; }
-        public string ImageUrl { get; set; }
-    }
-}
+    <!-- Hotel #1 -->
+    <div class="mb-5">
+        <h2 class="fw-bold">1. Henann Lagoon Resort</h2>
+        <img src="/images/henanhotelblog.jpg" class="img-fluid rounded shadow mb-3"
+             alt="Henann Lagoon Resort Boracay Family Hotel" />
+        <p>
+            Known for its huge lagoon-style pool, Henann Lagoon Resort is a
+            <strong>family favorite</strong>. Spacious rooms, kid-friendly dining, and
+            easy access to White Beach make it a top choice.
+        </p>
+        <ul>
+            <li>Massive swimming pool with shallow areas for kids</li>
+            <li>Family rooms available</li>
+            <li>Walking distance to the beach</li>
+        </ul>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-warning">
+            Check Prices on Agoda
+        </a>
+    </div>
+
+    <!-- Hotel #2 -->
+    <div class="mb-5">
+        <h2 class="fw-bold">2. Astoria Boracay</h2>
+        <img src="/images/astoriahotelblog.jpeg" class="img-fluid rounded shadow mb-3"
+             alt="Astoria Boracay Family Resort" />
+        <p>
+            Located in Station 1, Astoria offers <strong>quiet beachfront stays</strong> with
+            plenty of room for families. Their pool and in-house restaurant make traveling with
+            kids a breeze.
+        </p>
+        <ul>
+            <li>Beachfront access</li>
+            <li>Kids’ pool</li>
+            <li>Spacious suites for families</li>
+        </ul>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-warning">
+            Book Now on Agoda
+        </a>
+    </div>
+
+    <!-- Hotel #3 -->
+    <div class="mb-5">
+        <h2 class="fw-bold">3. Crimson Resort & Spa Boracay</h2>
+        <img src="/images/crimsonhotelblog.jpg" class="img-fluid rounded shadow mb-3"
+             alt="Crimson Resort Boracay Family Stay" />
+        <p>
+            For families seeking luxury, Crimson Resort offers villas and suites with
+            <strong>private pools</strong>. Their kids’ club ensures children are entertained
+            while parents relax.
+        </p>
+        <ul>
+            <li>Kids’ club with activities</li>
+            <li>Private beach</li>
+            <li>Luxury family villas</li>
+        </ul>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-warning">
+            View Deals on Agoda
+        </a>
+    </div>
+
+    <!-- Hotel #4 -->
+    <div class="mb-5">
+        <h2 class="fw-bold">4. Discovery Shores Boracay</h2>
+        <img src="/images/discoveryhotelblog.jpg" class="img-fluid rounded shadow mb-3"
+             alt="Discovery Shores Boracay Family Resort" />
+        <p>
+            A multi-awarded luxury resort with a <strong>reputation for excellent service</strong>.
+            Families love the kids’ pool, beachfront suites, and dedicated staff for children.
+        </p>
+        <ul>
+            <li>Beachfront family suites</li>
+            <li>Kids’ pool and play area</li>
+            <li>Award-winning service</li>
+        </ul>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-warning">
+            Book Discovery Shores
+        </a>
+    </div>
+
+    <!-- Hotel #5 -->
+    <div class="mb-5">
+        <h2 class="fw-bold">5. Fairways & Bluewater Boracay</h2>
+        <img src="/images/fairwaybluewaterhotelblog.jpg" class="img-fluid rounded shadow mb-3"
+             alt="Fairways and Bluewater Boracay Family Hotel" />
+        <p>
+            A massive resort with <strong>multiple pools, golf course, and a private beach</strong>.
+            Families love its wide-open spaces and kids’ activities.
+        </p>
+        <ul>
+            <li>Huge resort with multiple pools</li>
+            <li>Kids’ club and play areas</li>
+            <li>Private beach for families</li>
+        </ul>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-warning">
+            See Prices on Agoda
+        </a>
+    </div>
+
+    <h2 class="fw-bold mt-5">🌴 Family Travel Tips for Boracay</h2>
+    <ul>
+        <li>Stay in <strong>Station 1</strong> for quiet family-friendly vibes.</li>
+        <li>Join an <strong>island-hopping tour</strong> (many include snorkeling and kid-safe activities).</li>
+        <li>Travel during <strong>January–March</strong> for cooler weather and fewer crowds.</li>
+    </ul>
+
+    <div class="text-center mt-5">
+        <h3 class="fw-bold">Make Family Memories in Boracay 🌞</h3>
+        <p>
+            Boracay has something for everyone — from toddlers to grandparents.
+            Book your family stay now and enjoy paradise.
+        </p>
+        <a href="https://www.agoda.com/search?guid=61591e1d-3fbb-49a6-a32e-b1569d028494&asq=Ss5PXyh1QUNdFOc4lzIDoPF%2BRvl%2F2EATmGvZScKd0zW3IquUAexOTl%2FhzaLZmWnRKoXSnY9rtJ64LSZhPhze83pCVpejpexar7%2Bs3k68m8FeuMtqaTiwHJN1OYmqGvcAffuorKcIqWxsH6JUEoHVuqpjs%2FknOFEqFkuiazOe45KJsbPLApTiEB5DVsMLzgmOXeiGnjAfFj718KJ7a7pyaQ%3D%3D&city=15903&tick=638945021623&isdym=true&searchterm=boracay&txtuuid=61591e1d-3fbb-49a6-a32e-b1569d028494&locale=en-us&ckuid=85e939ed-5616-4e2f-a197-f33e869d2336&prid=0&currency=PHP&correlationId=4cb93934-df28-47cd-b8e7-831ebfd54ee9&analyticsSessionId=6949289295145960612&pageTypeId=641&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=-999&userId=85e939ed-5616-4e2f-a197-f33e869d2336&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-webnapp-essentials-user-8d68f8799-q76hq&trafficGroupId=4&sessionId=s1iniv2ukeirywqdcbsm24d1&trafficSubGroupId=6&aid=178961&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Edge+%28Chromium%29+for+Windows&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=boracay&productType=-1&travellerType=1&familyMode=off&ds=lZllS8tm6oMLXDci" target="_blank" class="btn btn-lg btn-primary">
+            Browse Boracay Family Hotels on Agoda
+        </a>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+﻿@using System.Net.Http.Json
+@inject HttpClient Http
+
+@code {
+    [Parameter]
+    public string Destination { get; set; }
+
+    private List<Hotel> hotels = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Placeholder data for now
+        hotels = new List<Hotel>
+        {
+            new Hotel { Name = "Ocean View Resort", Location = Destination, Price = 12000, ImageUrl = "/images/hotel1.jpg", BookingUrl = "#" },
+            new Hotel { Name = "Family Inn", Location = Destination, Price = 8000, ImageUrl = "/images/hotel2.jpg", BookingUrl = "#" },
+            new Hotel { Name = "Luxury Suites", Location = Destination, Price = 18000, ImageUrl = "/images/hotel3.jpg", BookingUrl = "#" }
+        };
+
+        // TODO: Replace with Agoda API call
+        // Example:
+        // hotels = await Http.GetFromJsonAsync<List<Hotel>>($"api/agoda?destination={Destination}");
+    }
+
+    private class Hotel
+    {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; }
+        public string BookingUrl { get; set; }
+    }
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var hotel in hotels)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="@hotel.ImageUrl" class="card-img-top" alt="@hotel.Name">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@hotel.Name</h5>
+                    <p class="card-text">@hotel.Location</p>
+                    <p class="fw-bold">₱@hotel.Price</p>
+                    <a href="@hotel.BookingUrl" target="_blank" class="btn btn-warning">Book Now</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

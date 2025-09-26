@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
+using TravelTayo.Models;
 using TravelTayo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +49,17 @@ builder.Services.AddScoped<AgodaService>(sp =>
     var apiKey = builder.Configuration["Agoda:ApiKey"];
     return new AgodaService(httpClient, db, apiKey);
 });
+
+builder.Services.AddTransient<EmailService>();
+
+builder.Services.Configure<EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
+
+// Override password with env variable if present
+var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
+emailSettings.Email_Password = Environment.GetEnvironmentVariable("Email_Password") ?? emailSettings.Email_Password;
+
+
 
 
 builder.Services.AddControllersWithViews()
