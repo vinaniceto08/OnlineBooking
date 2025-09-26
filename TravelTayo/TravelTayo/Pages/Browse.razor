@@ -2,29 +2,77 @@
 @layout MainLayout
 
 <div class="container py-5">
-    <h2 class="fw-bold mb-4 text-primary text-center">Browse Family Travel Deals</h2>
+    <h2 class="text-center fw-bold text-primary">Family Travel Deals</h2>
+    <p class="text-center text-muted mb-4">
+        Discover hotels, resorts, and family-friendly destinations with TravelTayo. Explore curated listings for unforgettable family trips.
+    </p>
 
-    <!-- Filter/Search Bar -->
-    <div class="row mb-4">
-        <div class="col-md-10">
-            <input type="text" class="form-control" placeholder="Search destinations, hotels, or activities..." />
+    <!-- Search / Filters -->
+    <div class="row mb-4 justify-content-center g-2">
+        <!-- Search -->
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Search hotels..." @bind="searchQuery" @bind:event="oninput" />
         </div>
+
+        <!-- Destination Filter -->
+        <div class="col-md-3">
+            <select class="form-select" @bind="selectedDestination">
+                <option value="">All Destinations</option>
+                @foreach (var dest in destinations)
+                {
+                    <option value="@dest">@dest</option>
+                }
+            </select>
+        </div>
+
+        <!-- Minimum Rating Filter -->
         <div class="col-md-2">
-            <button class="btn btn-primary w-100">Search</button>
+            <select class="form-select" @bind="selectedMinRating">
+                <option value="">Any Rating</option>
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <option value="@i">@i ⭐ & Up</option>
+                }
+            </select>
         </div>
     </div>
 
-    <!-- Listings Grid -->
+    <!-- Hotel Listings -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var item in listings)
+        @foreach (var hotel in filteredHotels)
         {
             <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;" />
+                <div class="card h-100 shadow-sm position-relative">
+                    <img src="@hotel.ImageUrl" class="card-img-top" alt="@hotel.Name - Family Travel Destination" style="height: 200px; object-fit: cover;" />
+
+                    <!-- Badges -->
+                    @if (hotel.Rating >= 4.5)
+                    {
+                        <span class="badge bg-success position-absolute top-0 start-0 m-2">Highly Rated</span>
+                    }
+                    @if (hotel.ReviewCount >= 100)
+                    {
+                        <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">Popular</span>
+                    }
+
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@item.Title</h5>
-                        <p class="card-text text-muted">@item.Description</p>
-                        <a href="@item.Link" class="mt-auto btn btn-outline-primary" target="_blank">View on Agoda</a>
+                        <h5 class="card-title">@hotel.Name</h5>
+                        <p class="text-muted mb-2">@hotel.Description</p>
+
+                        @if (hotel.Rating.HasValue)
+                        {
+                            <p class="mb-2">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <i class="bi @(i <= Math.Round(hotel.Rating.Value) ? "bi-star-fill text-warning" : "bi-star")"></i>
+                                }
+                                (@hotel.ReviewCount reviews)
+                            </p>
+                        }
+
+                        <p class="mb-2"><strong>Destination:</strong> @hotel.Destination</p>
+
+                        <a href="@hotel.AffiliateLink" target="_blank" class="mt-auto btn btn-outline-primary">View on Agoda</a>
                     </div>
                 </div>
             </div>
@@ -33,37 +81,38 @@
 </div>
 
 @code {
-    // Later you can pull this from Agoda or your API
-    private List<Listing> listings = new()
+    private string searchQuery = "";
+    private string selectedDestination = "";
+    private int? selectedMinRating = null;
+
+    private List<string> destinations => sampleHotels.Select(h => h.Destination).Distinct().ToList();
+
+    private List<Hotel> filteredHotels => sampleHotels
+        .Where(h => (string.IsNullOrWhiteSpace(searchQuery)
+                        || h.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
+                        || h.Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+                    && (string.IsNullOrWhiteSpace(selectedDestination)
+                        || h.Destination == selectedDestination)
+                    && (!selectedMinRating.HasValue
+                        || (h.Rating.HasValue && h.Rating.Value >= selectedMinRating.Value))
+        ).ToList();
+
+    private List<Hotel> sampleHotels = new()
     {
-        new Listing
-        {
-            Title = "Family Getaway in Boracay",
-            Description = "3 nights at a beachfront hotel + breakfast for 4",
-            ImageUrl = "https://source.unsplash.com/600x400/?beach,boracay",
-            Link = "https://www.agoda.com/partners/partnersearch.aspx?cid=xxxx&city=boracay"
-        },
-        new Listing
-        {
-            Title = "Disneyland Hong Kong Package",
-            Description = "2-day park tickets + hotel + breakfast",
-            ImageUrl = "https://source.unsplash.com/600x400/?disneyland,hongkong",
-            Link = "https://www.agoda.com/partners/partnersearch.aspx?cid=xxxx&city=hongkong"
-        },
-        new Listing
-        {
-            Title = "Cool Weather Staycation in Baguio",
-            Description = "2 nights in a hilltop hotel for the whole family",
-            ImageUrl = "https://source.unsplash.com/600x400/?baguio,mountains",
-            Link = "https://www.agoda.com/partners/partnersearch.aspx?cid=xxxx&city=baguio"
-        }
+        new Hotel { Name="Boracay Resorts", Description="Beachfront rooms, kids’ pool, guided island tours.", ImageUrl="/images/hotelboracay.jpg", Destination="Boracay, Philippines", AffiliateLink="#", Rating=4.5, ReviewCount=120 },
+        new Hotel { Name="Tokyo Disneyland Hotels", Description="3 nights stay, park tickets included, family-friendly amenities.", ImageUrl="/images/hoteltokyodisneyland.jpg", Destination="Tokyo, Japan", AffiliateLink="#", Rating=4.7, ReviewCount=95 },
+        new Hotel { Name="Baguio Hotels Family Stay", Description="Cozy hilltop hotel, perfect for cool-weather family getaway.", ImageUrl="/images/hotelbaguio.jpg", Destination="Baguio, Philippines", AffiliateLink="#", Rating=4.3, ReviewCount=78 },
+        new Hotel { Name="Cebu Hotel", Description="Family-friendly beachfront hotel offering snorkeling trips and island hopping.", ImageUrl="/images/cebuhotels.jpg", Destination="Cebu, Philippines", AffiliateLink="#", Rating=4.6, ReviewCount=110 },
     };
 
-    public class Listing
+    private class Hotel
     {
-        public string Title { get; set; } = "";
+        public string Name { get; set; } = "";
         public string Description { get; set; } = "";
         public string ImageUrl { get; set; } = "";
-        public string Link { get; set; } = "";
+        public string AffiliateLink { get; set; } = "#";
+        public string Destination { get; set; } = "";
+        public double? Rating { get; set; } = null;
+        public int? ReviewCount { get; set; } = null;
     }
 }

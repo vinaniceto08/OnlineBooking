@@ -1,88 +1,80 @@
 ﻿@page "/"
 
-<style>
-    .hero-section {
-        background-image: url('/images/home-bg-2.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        color: white;
-        position: relative;
-    }
-
-    .hero-overlay {
-        background: rgba(0, 0, 0, 0.5); 
-        height: 100%;
-    }
-
-    .curve-divider {
-        position: relative;
-        margin-top: -5rem;
-        z-index: 1;
-    }
-
-        .curve-divider svg {
-            display: block;
-            width: 100%;
-            height: 100px;
-        }
-</style>
-
-@code {
-    private List<Testimonial> testimonials = new()
-    {
-        new Testimonial { Name = "Ella Santos", Location = "Manila, PH", Message = "Booking our Japan family trip was so easy! We loved every second of it." },
-        new Testimonial { Name = "Carlos Reyes", Location = "Cebu, PH", Message = "TravelTayo made it possible to plan our trip stress-free. Highly recommended!" },
-        new Testimonial { Name = "Liza Marquez", Location = "Davao, PH", Message = "Our kids still talk about Disneyland! We'll use this again for sure." }
-    };
-
-    private class Testimonial
-    {
-        public string Name { get; set; }
-        public string Location { get; set; }
-        public string Message { get; set; }
-    }
-}
-
 <!-- 🌍 HERO SECTION -->
-<section class="hero-section">
-    <div class="hero-overlay d-flex flex-column justify-content-center align-items-center text-center p-4">
-        <h1 class="display-3 fw-bold">Family Adventures Await</h1>
-        <p class="lead">Book unforgettable trips with your loved ones—easy, fun, and worry-free.</p>
-        <a href="/browse" class="btn btn-lg btn-warning px-5 mt-3">Start Browsing</a>
+<section class="hero-section position-relative">
+    <!-- Hero Image -->
+    <img src="/images/home-bg-2.jpg" alt="Family vacation" class="img-fluid w-100" style="height: 100vh; object-fit: cover;">
+
+    <!-- Overlay -->
+    <div class="hero-overlay d-flex flex-column justify-content-center align-items-center text-center p-4 position-absolute top-0 start-0 w-100 h-100">
+        <h1 class="display-3 fw-bold text-white text-shadow">Plan Memorable Family Adventures</h1>
+        <p class="lead text-white text-shadow">
+            Explore the world with your loved ones. Find hotels, resorts, and attractions easily with TravelTayo, powered by Agoda.
+        </p>
+        <a href="/browse" class="btn btn-lg btn-warning px-5 mt-3">Start Booking Hotels</a>
+        <small class="text-white mt-2">Trusted and powered by Agoda Affiliate</small>
     </div>
 </section>
 
-<!-- Testimonials Section - ADD THIS HERE -->
+
+<!-- 🏨 AGODA HOTELS LISTING (Placeholder) -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4 fw-bold">Available Hotels</h2>
+        <p class="text-center fst-italic">Hotel listings powered by Agoda API will appear here.</p>
+        @* Example integration:
+           <TravelTayo.Components.AgodaHotelList Destination="Bali" /> 
+        *@
+    </div>
+</section>
+
+<!-- 🧳 POPULAR DESTINATIONS -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Popular Family Destinations</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var dest in popularDestinations)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                         <img src="@dest.ImageUrl" class="card-img-top" alt="@dest.Name - Family Travel Destination">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@dest.Name</h5>
+                            <p class="card-text">@dest.Description</p>
+                            <a href=$"/browse?destination={Uri.EscapeDataString(dest.Name)}" class="btn btn-primary mt-2">View Hotels</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- 🌟 TESTIMONIALS -->
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="text-center mb-4">What Our Happy Travelers Say</h2>
-
         <div id="testimonialCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
             <div class="carousel-inner">
-
                 @for (int i = 0; i < testimonials.Count; i++)
                 {
-                    var testimonial = testimonials[i];
+                    var t = testimonials[i];
                     <div class="carousel-item @(i == 0 ? "active" : "")">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="card border-0 shadow-lg text-center">
                                     <div class="card-body">
                                         <i class="bi bi-chat-quote-fill fs-1 text-primary mb-3"></i>
-                                        <p class="card-text fst-italic">“@testimonial.Message”</p>
-                                        <h5 class="card-title mt-3">@testimonial.Name</h5>
-                                        <small class="text-muted">@testimonial.Location</small>
+                                        <p class="card-text fst-italic">“@t.Message”</p>
+                                        <h5 class="card-title mt-3">@t.Name</h5>
+                                        <small class="text-muted">@t.Location</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
-
             </div>
-
-            <!-- Carousel Controls -->
             <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -95,59 +87,42 @@
     </div>
 </section>
 
-
-
-<!-- 🌀 CURVE TRANSITION -->
-@* <div class="curve-divider">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#ffffff" fill-opacity="1" d="M0,192L1440,320L1440,0L0,0Z"></path>
-    </svg>
-</div> *@
-
-<!-- 🧳 POPULAR DESTINATIONS -->
-<section class="py-5 bg-white">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Popular Family Destinations</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="/images/bali.jpg" class="card-img-top" alt="Bali">
-                    <div class="card-body">
-                        <h5 class="card-title">Bali, Indonesia</h5>
-                        <p class="card-text">Beach fun and cultural tours—great for kids and parents alike!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="/images/tokyo.jpg" class="card-img-top" alt="Tokyo">
-                    <div class="card-body">
-                        <h5 class="card-title">Tokyo, Japan</h5>
-                        <p class="card-text">Explore anime, Disneyland, and temples in one fun-packed trip.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="/images/cebu.jpg" class="card-img-top" alt="Cebu">
-                    <div class="card-body">
-                        <h5 class="card-title">Cebu, Philippines</h5>
-                        <p class="card-text">Island hopping, food trips, and snorkeling with the kids.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- 💡 CTA BANNER -->
-<section class="bg-light py-5 mt-4">
-    <div class="container text-center">
-        <h3 class="fw-bold">Looking for more options?</h3>
-        <p>Find hotels, resorts, and attractions through our Agoda-powered search.</p>
-        <a href="/browse" class="btn btn-outline-primary btn-lg mt-2">Explore Now</a>
-    </div>
+<section class="bg-white py-5 mt-4 text-center">
+    <h3 class="fw-bold">Discover Your Next Family Destination</h3>
+    <p>
+        Browse hotels, resorts, and activities through TravelTayo’s Agoda-powered search. 
+        Plan your trip with ease and enjoy stress-free family adventures.
+    </p>
+    <a href="/browse" class="btn btn-outline-primary btn-lg mt-2">Explore Now</a>
 </section>
 
+@code {
+    private List<Testimonial> testimonials = new()
+    {
+        new Testimonial { Name = "Ella Santos", Location = "Manila, PH", Message = "Our family had an amazing time exploring Tokyo! TravelTayo made planning simple and stress-free." },
+        new Testimonial { Name = "Carlos Reyes", Location = "Cebu, PH", Message = "From island hopping to trying local food, TravelTayo guided us every step of the way. Highly recommended!" },
+        new Testimonial { Name = "Liza Marquez", Location = "Bali, Indonesia", Message = "The kids loved every activity in Bali—from beach games to cultural experiences. We’ll definitely book again!" }
+    };
 
+    private List<Destination> popularDestinations = new()
+    {
+        new Destination { Name = "Bali, Indonesia", ImageUrl = "/images/baliindonesia.jpg", Description = "Discover Bali’s hidden beaches, rice terraces, and family-friendly cultural tours. Perfect for parents and kids alike!" },
+        new Destination { Name = "Tokyo, Japan", ImageUrl = "/images/tokyojapan.jpg", Description = "Experience Tokyo’s vibrant city life, from anime adventures to Disneyland, and explore traditional temples together." },
+        new Destination { Name = "Cebu, Philippines", ImageUrl = "/images/cebuphilippines.jpg", Description = "Enjoy Cebu’s pristine islands, snorkeling adventures, and delicious local cuisine for an unforgettable family trip." }
+    };
 
+    private class Testimonial
+    {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Message { get; set; }
+    }
+
+    private class Destination
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+        public string Description { get; set; }
+    }
+}

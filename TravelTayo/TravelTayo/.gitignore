@@ -88,3 +88,6 @@ wwwroot/lib/
 Thumbs.db
 desktop.ini
 
+# Production
+appsettings.Production.json
+
