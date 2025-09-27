@@ -69,7 +69,7 @@ builder.Services.AddControllers();
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI(); // Adds identity support in Blazor pages
 builder.Services.AddServerSideBlazor();
-
+builder.Services.AddAuthorizationCore();
 
 
 var app = builder.Build();

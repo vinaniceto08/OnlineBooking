@@ -1,0 +1,131 @@
+﻿@page "/referral"
+@attribute [Authorize]
+@inject IJSRuntime JS
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+
+@if (isLoading)
+{
+    <div class="text-center my-5">
+        <p>Redirecting to login...</p>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else
+{
+    <AuthorizeView>
+        <Authorized>
+            <!-- Your Referral Dashboard content here -->
+            <div class="container my-5">
+                <h1 class="display-4 fw-bold text-center mb-4">Invite Friends & Earn Rewards!</h1>
+                <p class="lead text-center mb-5">
+                    Share your unique referral link on social media and earn ₱200 GCash for every confirmed booking.
+                </p>
+
+                <!-- Referral Link Card -->
+                <div class="card shadow-sm p-4 mb-4 text-center">
+                    <h3 class="mb-3">Your Referral Link</h3>
+                    <div class="d-flex justify-content-center align-items-center flex-wrap">
+                        <input class="form-control form-control-lg me-2 text-center pulse-input"
+                               value="@ReferralLink" readonly style="max-width: 500px;" />
+                        <button class="btn btn-primary pulse-btn mt-2 mt-md-0" @onclick="CopyLink">
+                            <i class="bi bi-clipboard me-1"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <!-- Social Share Buttons -->
+                    <div class="mt-3 d-flex justify-content-center flex-wrap">
+                        <button class="btn btn-success me-2 pulse-btn mt-2" @onclick="ShareWhatsApp">
+                            <i class="bi bi-whatsapp me-1"></i> Share WhatsApp
+                        </button>
+                        <button class="btn btn-info pulse-btn mt-2" @onclick="ShareFacebook">
+                            <i class="bi bi-facebook me-1"></i> Share Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- How It Works Section -->
+                <div class="card shadow-sm p-4 text-center mb-4">
+                    <h3 class="mb-3">How It Works</h3>
+                    <ol class="list-group list-group-numbered list-group-flush text-start mx-auto" style="max-width: 600px;">
+                        <li class="list-group-item">Copy your referral link or share it directly on social media.</li>
+                        <li class="list-group-item">Your friends click the link and book a trip with TravelTayo.</li>
+                        <li class="list-group-item">You earn ₱200 GCash for every confirmed booking!</li>
+                    </ol>
+                </div>
+
+                <!-- Referral Stats -->
+                <div class="card shadow-sm p-4 text-center">
+                    <h3>Your Referral Stats</h3>
+                    <div class="d-flex justify-content-center mt-3 flex-wrap">
+                        <div class="mx-3">
+                            <h4>@TotalReferrals</h4>
+                            <p>Referrals Sent</p>
+                        </div>
+                        <div class="mx-3">
+                            <h4>@CompletedBookings</h4>
+                            <p>Completed Bookings</p>
+                        </div>
+                        <div class="mx-3">
+                            <h4>₱@RewardsEarned</h4>
+                            <p>Rewards Earned</p>
+                        </div>
+                    </div>
+                </div>
+</div>
+
+        </Authorized>
+        <NotAuthorized>
+            <p class="text-center text-danger">You are not authorized to view this page.</p>
+        </NotAuthorized>
+    </AuthorizeView>
+}
+
+
+@code {
+    private string ReferralCode = "TAYO123ABC"; // Replace with real code from DB
+    private string ReferralLink => $"https://travelTayo.com/referral?code={ReferralCode}";
+
+    private int TotalReferrals = 5;
+    private int CompletedBookings = 2;
+    private int RewardsEarned = 400;
+
+    private bool isLoading = true;
+
+     protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (!user.Identity?.IsAuthenticated ?? true)
+        {
+            // Redirect to Azure B2C login immediately
+            Navigation.NavigateTo("/MicrosoftIdentity/Account/SignIn?redirectUri=/referral", true);
+        }
+        else
+        {
+            // User is authenticated
+            isLoading = false;
+        }
+    }
+
+    private async Task CopyLink()
+    {
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", ReferralLink);
+        // Optional: show toast "Link copied!"
+    }
+
+    private void ShareWhatsApp()
+    {
+        var url = $"https://api.whatsapp.com/send?text=Book your trip with TravelTayo! {ReferralLink}";
+        JS.InvokeVoidAsync("window.open", url, "_blank");
+    }
+
+    private void ShareFacebook()
+    {
+        var url = $"https://www.facebook.com/sharer/sharer.php?u={ReferralLink}";
+        JS.InvokeVoidAsync("window.open", url, "_blank");
+    }
+}
