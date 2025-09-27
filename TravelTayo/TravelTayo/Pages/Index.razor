@@ -1,27 +1,30 @@
 ﻿@page "/"
 
-<!-- 🌍 HERO SECTION -->
-<section class="hero-section position-relative">
-    <!-- Hero Image -->
-    <img src="/images/home-bg-2.jpg" alt="Family vacation" class="img-fluid w-100" style="height: 100vh; object-fit: cover;" loading="lazy">
 
+
+<!-- 🌍 HERO SECTION -->
+<section class="hero-section position-relative" 
+         style="height: 100vh; background: url('/images/home-bg-2.jpg') center/cover no-repeat;">
+    
     <!-- Overlay -->
     <div class="hero-overlay d-flex flex-column justify-content-center align-items-center text-center p-4 position-absolute top-0 start-0 w-100 h-100">
-        <h1 class="display-3 fw-bold text-white text-shadow">Plan Memorable Family Adventures</h1>
-        <p class="lead text-white text-shadow">
-            Explore the world with your loved ones. Find hotels, resorts, and attractions easily with TravelTayo, powered by Agoda.
+        <h1 class="display-3 fw-bold text-white text-shadow animate__animated animate__fadeIn">Plan Memorable Family Adventures</h1>
+        <p class="lead text-white text-shadow animate__animated animate__fadeIn" style="animation-delay: 0.3s;">
+            Explore the world with your loved ones. Find hotels, resorts, and attractions easily with TravelTayo.
         </p>
-        <a href="https://www.agoda.com/?cid=1922891&tag=170bc45e-3744-4466-ae77-37eaa90a604a&gclid=CjwKCAjw89jGBhB0EiwA2o1OnxNZTp06yzF4cmXG-_17OVVKfaUejmEzsLdeFIE2CmZeA3ps6Mwp4hoCAIUQAvD_BwE&ds=DqUEogLKLotGp27t" target="_blank" class="btn btn-lg btn-warning px-5 mt-3">Start Booking Hotels</a>
-        <small class="text-white mt-2">Trusted and powered by Agoda Affiliate</small>
+       <a href="/browse" class="btn btn-lg btn-warning px-5 mt-3 animate__animated animate__pulse animate__infinite animate__delay-1s">Start Booking Hotels</a>
     </div>
 </section>
 
 
-<!-- 🏨 AGODA HOTELS LISTING (Placeholder) -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4 fw-bold">Available Hotels</h2>
-        <p class="text-center fst-italic">Hotel listings powered by Agoda API will appear here.</p>
+
+
+
+<!-- 🏨 HOTELS LISTING (Placeholder) -->
+<section class="py-5 bg-light animate__animated animate__fadeIn" style="animation-delay: 0.5s;">
+    <div class="container text-center">
+        <h2 class="mb-4 fw-bold">Available Hotels</h2>
+        <p class="fst-italic">Hotel listings will appear here.</p>
         @* Example integration:
            <TravelTayo.Components.AgodaHotelList Destination="Bali" /> 
         *@
@@ -31,13 +34,13 @@
 <!-- 🧳 POPULAR DESTINATIONS -->
 <section class="py-5 bg-white">
     <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Popular Family Destinations</h2>
+        <h2 class="text-center mb-5 fw-bold animate__animated animate__fadeIn">Popular Family Destinations</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach (var dest in popularDestinations)
             {
-                <div class="col">
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
                     <div class="card h-100 shadow-sm">
-                         <img src="@dest.ImageUrl" class="card-img-top" alt="@dest.Name - Family Travel Destination" loading="lazy">
+                        <img src="@dest.ImageUrl" class="card-img-top" alt="@dest.Name - Family Travel Destination" loading="lazy">
                         <div class="card-body text-center">
                             <h5 class="card-title">@dest.Name</h5>
                             <p class="card-text">@dest.Description</p>
@@ -53,7 +56,7 @@
 <!-- 🌟 TESTIMONIALS -->
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-4">What Our Happy Travelers Say</h2>
+        <h2 class="text-center mb-4 animate__animated animate__fadeIn">What Our Happy Travelers Say</h2>
         <div id="testimonialCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
             <div class="carousel-inner">
                 @for (int i = 0; i < testimonials.Count; i++)
@@ -62,7 +65,7 @@
                     <div class="carousel-item @(i == 0 ? "active" : "")">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
-                                <div class="card border-0 shadow-lg text-center">
+                                <div class="card border-0 shadow-lg text-center animate__animated animate__fadeInUp">
                                     <div class="card-body">
                                         <i class="bi bi-chat-quote-fill fs-1 text-primary mb-3"></i>
                                         <p class="card-text fst-italic">“@t.Message”</p>
@@ -88,13 +91,12 @@
 </section>
 
 <!-- 💡 CTA BANNER -->
-<section class="bg-white py-5 mt-4 text-center">
+<section class="bg-white py-5 mt-4 text-center animate__animated animate__fadeInUp">
     <h3 class="fw-bold">Discover Your Next Family Destination</h3>
     <p>
-        Browse hotels, resorts, and activities through TravelTayo’s Agoda-powered search. 
-        Plan your trip with ease and enjoy stress-free family adventures.
+        Browse hotels, resorts, and activities through TravelTayo’s search. Plan your trip with ease and enjoy stress-free family adventures.
     </p>
-    <a href="https://www.agoda.com/?cid=1922891&tag=170bc45e-3744-4466-ae77-37eaa90a604a&gclid=CjwKCAjw89jGBhB0EiwA2o1OnxNZTp06yzF4cmXG-_17OVVKfaUejmEzsLdeFIE2CmZeA3ps6Mwp4hoCAIUQAvD_BwE&ds=DqUEogLKLotGp27t" target="_blank" class="btn btn-outline-primary btn-lg mt-2">Explore Now</a>
+    <a href="/browse" class="btn btn-outline-primary btn-lg mt-2 animate__animated animate__pulse animate__infinite">Explore Now</a>
 </section>
 
 @code {
@@ -107,9 +109,9 @@
 
     private List<Destination> popularDestinations = new()
     {
-        new Destination { Name = "Bali, Indonesia", ImageUrl = "/images/baliindonesia.jpg", Description = "Discover Bali’s hidden beaches, rice terraces, and family-friendly cultural tours. Perfect for parents and kids alike!", AgodaAffiliateLink= "https://www.agoda.com/search?guid=2dba8922-cb85-4ee5-a1eb-c154109d9be0&asq=ik7v4teEc8oh%2FuXDUzeMv5ufa9Vwpz6XltTHq4n%2B9gNwHK200ipPjHjijL17%2FSu2dYyNUYml1sylYahk8CBCcI5G9YGAPld73Pr7JhE%2FSBlHF2zGu01fY4uKzFOqK%2FR7Bb%2BZ58XrzTZovriM0y21pk27RO0Ag1B%2F1Nu%2FTc4q82aamP2nLmh6t2KBvIKH318BifxUXnPHGcx2NEGs0tAtdA%3D%3D&city=17193&tick=638945106631&locale=en-us&ckuid=c5c13c0c-ead5-4288-becb-4dca0458c352&prid=0&currency=PHP&correlationId=4684c2b1-ceb5-4893-b904-e5a12df7e91a&analyticsSessionId=-883245238951808813&pageTypeId=103&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=1922891&userId=c5c13c0c-ead5-4288-becb-4dca0458c352&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2f-acm-web-user-6c965c746-zxkjb&trafficGroupId=5&trafficSubGroupId=122&aid=82361&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Chrome&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=1&children=0&priceCur=PHP&los=1&textToSearch=Bali&productType=-1&travellerType=0&familyMode=off&ds=RMfarw6jvQiXEeMX" },
-        new Destination { Name = "Tokyo, Japan", ImageUrl = "/images/tokyojapan.jpg", Description = "Experience Tokyo’s vibrant city life, from anime adventures to Disneyland, and explore traditional temples together.", AgodaAffiliateLink= "https://www.agoda.com/search?guid=cd0bb28d-5419-4046-bb98-571144035117&asq=ik7v4teEc8oh%2FuXDUzeMv5ufa9Vwpz6XltTHq4n%2B9gNwHK200ipPjHjijL17%2FSu2f2UbWfRAukQNb3dGyRKmtgZ21Z%2BQ0flvzVGSJ5CAztjBrr%2BBZr4%2FUCF11FETpPbX41eQys3gvwZJCwt8zgLoQ31CgyHhNV29NWUEu3I%2FAo2REo4auv6WpMGCg%2BhNzT43oRp%2B%2Bnl1iMK2R3bh%2FxZuhg%3D%3D&city=5085&tick=638945107135&locale=en-us&ckuid=c5c13c0c-ead5-4288-becb-4dca0458c352&prid=0&currency=PHP&correlationId=4fc5b608-b6fc-4414-9a8d-deb66d832d92&analyticsSessionId=-883245238951808813&pageTypeId=103&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=1922891&userId=c5c13c0c-ead5-4288-becb-4dca0458c352&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2f-acm-web-user-6c965c746-zxkjb&trafficGroupId=5&trafficSubGroupId=122&aid=82361&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Chrome&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=1&children=0&priceCur=PHP&los=1&textToSearch=Tokyo&productType=-1&travellerType=0&familyMode=off&ds=RMfarw6jvQiXEeMX" },
-        new Destination { Name = "Cebu, Philippines", ImageUrl = "/images/cebuphilippines.jpg", Description = "Enjoy Cebu’s pristine islands, snorkeling adventures, and delicious local cuisine for an unforgettable family trip.", AgodaAffiliateLink = "https://www.agoda.com/search?guid=790f430d-2d1a-4cb9-91ea-52ef7a3ea7ad&asq=ik7v4teEc8oh%2FuXDUzeMv5ufa9Vwpz6XltTHq4n%2B9gNwHK200ipPjHjijL17%2FSu2AStvl45kWtgDPiW0nVagoI5G9YGAPld73Pr7JhE%2FSBlHF2zGu01fY4uKzFOqK%2FR7Bb%2BZ58XrzTZovriM0y21ppHmzxvaDqZeF7Dkxa68X06WhRSbJRAOtNQacOJDY%2BKdoRp%2B%2Bnl1iMK2R3bh%2FxZuhg%3D%3D&city=4001&tick=638945107704&locale=en-us&ckuid=15e2ff9e-4bd9-4510-92be-8bac1982d093&prid=0&gclid=CjwKCAjw89jGBhB0EiwA2o1OnyFPDd7wZrdVfcv_gGZDRJ1H3Qg_HioRpm1WA1QO3zJB_6Qy49S4PhoCbtIQAvD_BwE&currency=PHP&correlationId=75566dc9-d06b-45ac-8797-42509d03b513&analyticsSessionId=7725650713460461920&pageTypeId=1&realLanguageId=1&languageId=1&origin=PH&stateCode=00&cid=1922891&tag=b82b1c30-a8c0-43b7-9364-1ca7871ed702&userId=15e2ff9e-4bd9-4510-92be-8bac1982d093&whitelabelid=1&loginLvl=0&storefrontId=3&currencyId=18&currencyCode=PHP&htmlLanguage=en-us&cultureInfoName=en-us&machineName=hk-pc-2i-acm-web-user-87f77c54d-6ppxn&trafficGroupId=5&trafficSubGroupId=122&aid=82361&useFullPageLogin=true&cttp=4&isRealUser=true&mode=production&browserFamily=Chrome&cdnDomain=agoda.net&checkIn=2025-10-05&checkOut=2025-10-06&rooms=1&adults=2&children=0&priceCur=PHP&los=1&textToSearch=Cebu&productType=-1&travellerType=1&familyMode=off&ds=CNybzVIsUb3ebRqL" }
+        new Destination { Name = "Bali, Indonesia", ImageUrl = "/images/baliindonesia.jpg", Description = "Discover Bali’s hidden beaches, rice terraces, and family-friendly cultural tours. Perfect for parents and kids alike!", AgodaAffiliateLink= "#" },
+        new Destination { Name = "Tokyo, Japan", ImageUrl = "/images/tokyojapan.jpg", Description = "Experience Tokyo’s vibrant city life, from anime adventures to Disneyland, and explore traditional temples together.", AgodaAffiliateLink= "#" },
+        new Destination { Name = "Cebu, Philippines", ImageUrl = "/images/cebuphilippines.jpg", Description = "Enjoy Cebu’s pristine islands, snorkeling adventures, and delicious local cuisine for an unforgettable family trip.", AgodaAffiliateLink = "#" }
     };
 
     private class Testimonial

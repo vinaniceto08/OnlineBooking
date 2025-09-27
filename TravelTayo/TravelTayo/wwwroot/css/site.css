@@ -154,3 +154,7 @@ footer p, footer ul li {
 }
 
 
+.animate__once {
+    animation-iteration-count: 1 !important;
+}
+
