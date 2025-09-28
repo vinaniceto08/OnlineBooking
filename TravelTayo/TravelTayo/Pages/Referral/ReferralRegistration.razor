@@ -1,0 +1,74 @@
+﻿@page "/referral/referralregistration"
+@attribute [Authorize]
+@inject NavigationManager Navigation
+
+<div class="container my-5">
+    <h1 class="display-4 fw-bold text-center mb-4">Referral Registration</h1>
+    <p class="text-center mb-5">Fill in your details to join the TravelTayo Referral Program.</p>
+
+    <EditForm Model="@registrationModel" OnValidSubmit="SubmitRegistration">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <InputText class="form-control" @bind-Value="registrationModel.FullName" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <InputText type="email" class="form-control" @bind-Value="registrationModel.Email" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">GCash Number</label>
+            <InputText class="form-control" @bind-Value="registrationModel.GCashNumber" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload GCash QR Code</label>
+            <InputFile OnChange="UploadQRCode" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit Registration</button>
+    </EditForm>
+
+  @*   <hr class="my-5" />
+
+    <div class="card shadow-sm p-4 text-center">
+        <h3>Your Potential Earnings</h3>
+        <p>Total Referrals: @TotalReferrals</p>
+        <p>Completed Bookings: @CompletedBookings</p>
+        <p>Estimated Rewards: ₱@RewardsEarned</p>
+    </div> *@
+</div>
+
+@code {
+    private RegistrationModel registrationModel = new();
+    private int TotalReferrals = 5;
+    private int CompletedBookings = 2;
+    private int RewardsEarned = 400;
+
+    private async Task SubmitRegistration()
+    {
+        // Save registration info to database here
+        Console.WriteLine("Referral Registered:");
+        Console.WriteLine($"Name: {registrationModel.FullName}, Email: {registrationModel.Email}");
+
+        // Navigate back to referral dashboard
+        Navigation.NavigateTo("/referral/referraldashboard");
+    }
+
+    private async Task UploadQRCode(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        Console.WriteLine($"Uploaded QR Code: {file.Name}");
+    }
+
+    public class RegistrationModel
+    {
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string GCashNumber { get; set; } = string.Empty;
+    }
+}

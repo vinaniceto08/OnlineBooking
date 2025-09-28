@@ -1,0 +1,166 @@
+﻿@page "/referralpromo"
+@attribute [Authorize]
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject IReferralService ReferralService
+
+@if (isLoading)
+{
+    <div class="text-center my-5">
+        <p>Checking your account...</p>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading</span>
+        </div>
+    </div>
+}
+else if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div class="alert alert-danger text-center my-5">
+        @ErrorMessage
+    </div>
+}
+else
+{
+    <div class="container my-5">
+        <!-- Referral Program Introduction -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Invite Friends & Earn Rewards!</h1>
+            <p class="lead">
+                Share your unique referral link with friends and earn ₱200 GCash for every confirmed booking.
+                It's simple, fun, and rewarding!
+            </p>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="card shadow-sm p-4 text-center mb-4">
+            <h3 class="mb-3">How It Works</h3>
+            <ol class="list-group list-group-numbered list-group-flush text-start mx-auto" style="max-width: 600px;">
+                <li class="list-group-item">Copy your referral link or share it directly on social media.</li>
+                <li class="list-group-item">Your friends click the link and book a trip with Travel-Tayo.</li>
+                <li class="list-group-item">You earn ₱200 GCash for every confirmed booking!</li>
+                <li class="list-group-item">Payout will be released 7 days after the booking is confirmed and payment is received.</li>
+            </ol>
+        </div>
+
+        <!-- User Agreement -->
+        <div class="card shadow-sm p-4 mb-4">
+            <h3 class="mb-3">User Agreement</h3>
+            <p>Please read and accept the terms below to join the referral program:</p>
+            <div class="text-start" style="max-height: 300px; overflow-y: auto;">
+                <p>1. Share your referral link responsibly on social media.</p>
+                <p>2. Only confirmed bookings will be rewarded.</p>
+                <p>3. Each successful referral earns ₱200 GCash.</p>
+                <p>4. Payout will be released 7 days after the booking is confirmed and payment is received.</p>
+                <p>5. Travel-Tayo reserves the right to modify or cancel the referral program at any time.</p>
+            </div>
+
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" id="acceptAgreement" @bind="IsAgreementAccepted" />
+                <label class="form-check-label" for="acceptAgreement">
+                    I have read and accept the User Agreement.
+                </label>
+            </div>
+
+            <button class="btn btn-primary btn-lg w-100 mt-3" @onclick="GoToRegistration" disabled="@( !IsAgreementAccepted )">
+                Register as Referral
+            </button>
+        </div>
+
+        <!-- Referral Link Card (Visible After Registration) -->
+        @if (IsRegistered)
+        {
+            <div class="card shadow-sm p-4 mb-4 text-center">
+                <h3 class="mb-3">Your Referral Link</h3>
+                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                    <input class="form-control form-control-lg me-2 text-center pulse-input"
+                           value="@ReferralLink" readonly style="max-width: 500px;" />
+                    <button class="btn btn-primary pulse-btn mt-2 mt-md-0" @onclick="CopyLink">
+                        <i class="bi bi-clipboard me-1"></i> Copy Link
+                    </button>
+                </div>
+
+                <div class="mt-3 d-flex justify-content-center flex-wrap">
+                    <button class="btn btn-success me-2 pulse-btn mt-2" @onclick="ShareWhatsApp">
+                        <i class="bi bi-whatsapp me-1"></i> Share WhatsApp
+                    </button>
+                    <button class="btn btn-info pulse-btn mt-2" @onclick="ShareFacebook">
+                        <i class="bi bi-facebook me-1"></i> Share Facebook
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private bool IsAgreementAccepted { get; set; } = false;
+    private bool IsRegistered { get; set; } = false;
+    private string ReferralLink { get; set; } = "";
+    private bool isLoading = true;
+    private string ErrorMessage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Get authenticated user
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (!user.Identity?.IsAuthenticated ?? true)
+            {
+                Navigation.NavigateTo("/authentication/login");
+                return;
+            }
+
+            // Use server-side service to get referral info
+            var response = await ReferralService.CheckUserAsync(user);
+
+            if (!response.Exists)
+            {
+                Navigation.NavigateTo(response.RedirectUrl);
+                return;
+            }
+
+            ReferralLink = $"https://www.travel-tayo.com/referral/{response.referralId}";
+            IsRegistered = true;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = "An unexpected error occurred while loading referral info.";
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void GoToRegistration() => Navigation.NavigateTo("/referral/referralregistration");
+
+    private async Task CopyLink()
+    {
+        if (!string.IsNullOrEmpty(ReferralLink))
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", ReferralLink);
+    }
+
+    private async Task ShareWhatsApp()
+    {
+        if (!string.IsNullOrEmpty(ReferralLink))
+        {
+            var url = $"https://api.whatsapp.com/send?text=Book your trip with TravelTayo! {ReferralLink}";
+            await JS.InvokeVoidAsync("window.open", url, "_blank");
+        }
+    }
+
+    private async Task ShareFacebook()
+    {
+        if (!string.IsNullOrEmpty(ReferralLink))
+        {
+            var url = $"https://www.facebook.com/sharer/sharer.php?u={ReferralLink}";
+            await JS.InvokeVoidAsync("window.open", url, "_blank");
+        }
+    }
+}

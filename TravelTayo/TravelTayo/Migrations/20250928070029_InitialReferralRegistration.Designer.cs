@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelTayo.Data;
 
@@ -11,9 +12,10 @@ using TravelTayo.Data;
 namespace TravelTayo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250928070029_InitialReferralRegistration")]
+    partial class InitialReferralRegistration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,13 +32,12 @@ namespace TravelTayo.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("GCashNumber")
                         .IsRequired()
@@ -45,8 +46,7 @@ namespace TravelTayo.Migrations
 
                     b.Property<string>("GCashQRCode")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime2");
@@ -57,9 +57,6 @@ namespace TravelTayo.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ReferralRegistrationId");
-
-                    b.HasIndex("EmailAddress")
-                        .IsUnique();
 
                     b.ToTable("ReferralRegistrations");
                 });
