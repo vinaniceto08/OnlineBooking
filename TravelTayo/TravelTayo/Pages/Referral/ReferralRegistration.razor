@@ -1,6 +1,11 @@
-﻿@page "/referral/referralregistration"
+﻿@* @page "/referral/referralregistration"
 @attribute [Authorize]
 @inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@using TravelTayo.Models
+@using System.Security.Claims
+@using Azure.Storage.Blobs
+@using Microsoft.AspNetCore.Components.Forms
 
 <div class="container my-5">
     <h1 class="display-4 fw-bold text-center mb-4">Referral Registration</h1>
@@ -12,12 +17,12 @@
 
         <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <InputText class="form-control" @bind-Value="registrationModel.FullName" />
+            <InputText class="form-control" @bind-Value="registrationModel.FullName" Disabled />
         </div>
 
         <div class="mb-3">
             <label class="form-label">Email Address</label>
-            <InputText type="email" class="form-control" @bind-Value="registrationModel.Email" />
+            <InputText type="email" class="form-control" @bind-Value="registrationModel.EmailAddress" Disabled />
         </div>
 
         <div class="mb-3">
@@ -32,43 +37,104 @@
 
         <button type="submit" class="btn btn-primary w-100">Submit Registration</button>
     </EditForm>
-
-  @*   <hr class="my-5" />
-
-    <div class="card shadow-sm p-4 text-center">
-        <h3>Your Potential Earnings</h3>
-        <p>Total Referrals: @TotalReferrals</p>
-        <p>Completed Bookings: @CompletedBookings</p>
-        <p>Estimated Rewards: ₱@RewardsEarned</p>
-    </div> *@
 </div>
 
 @code {
     private RegistrationModel registrationModel = new();
-    private int TotalReferrals = 5;
-    private int CompletedBookings = 2;
-    private int RewardsEarned = 400;
+    private string? UploadedQRPath;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (!(user.Identity?.IsAuthenticated ?? false))
+        {
+            Navigation.NavigateTo("/authentication/login");
+            return;
+        }
+
+        // Pre-fill FullName and EmailAddress from B2C claims
+        registrationModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name")?.Value ?? string.Empty;
+        registrationModel.EmailAddress = user.Claims.FirstOrDefault(c =>
+            c.Type == ClaimTypes.Email || c.Type == "emails" || c.Type == "email")?.Value ?? string.Empty;
+
+        // Optionally: check if already registered and redirect to dashboard
+        // var response = await ReferralService.CheckUserAsync(user);
+        // if (response.Exists)
+        // {
+        //     Navigation.NavigateTo("/referral/referraldashboard");
+        //     return;
+        // }
+    }
 
     private async Task SubmitRegistration()
     {
-        // Save registration info to database here
-        Console.WriteLine("Referral Registered:");
-        Console.WriteLine($"Name: {registrationModel.FullName}, Email: {registrationModel.Email}");
+        if (string.IsNullOrEmpty(UploadedQRPath))
+        {
+            Console.WriteLine("QR Code is required before submitting.");
+            return;
+        }
 
-        // Navigate back to referral dashboard
-        Navigation.NavigateTo("/referral/referraldashboard");
+        var registrationId = Guid.NewGuid();
+        var referralLink = $"{Navigation.BaseUri.TrimEnd('/')}/referral/{registrationId}";
+
+        var entity = new ReferralRegistration
+        {
+            ReferralRegistrationId = registrationId,
+            FullName = registrationModel.FullName,
+            EmailAddress = registrationModel.EmailAddress,
+            GCashNumber = registrationModel.GCashNumber,
+            GCashQRCode = UploadedQRPath!,
+            Status = "Active",
+            RegistrationDate = DateTime.UtcNow,
+            ReferralLink = referralLink
+        };
+
+        // Save to database
+        // await ReferralService.AddReferralAsync(entity);
+
+        Console.WriteLine("Referral Registered:");
+        Console.WriteLine($"Name: {registrationModel.FullName}, Email: {registrationModel.EmailAddress}");
+
+        Navigation.NavigateTo($"/referral/referraldashboard?referralLink={Uri.EscapeDataString(referralLink)}");
     }
 
     private async Task UploadQRCode(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        Console.WriteLine($"Uploaded QR Code: {file.Name}");
+
+        // Example: Upload to Azure Blob Storage
+        var sanitizedEmail = registrationModel.EmailAddress.Replace("@", "_").Replace(".", "_");
+        var fileName = $"{sanitizedEmail}_gcashqr{Path.GetExtension(file.Name)}";
+
+        var connectionString = BlobConfig.ConnectionString;
+        var containerName = BlobConfig.ContainerName;
+
+        var blobServiceClient = new BlobServiceClient(connectionString);
+        var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+        await containerClient.CreateIfNotExistsAsync();
+        var blobClient = containerClient.GetBlobClient(fileName);
+
+        using var stream = file.OpenReadStream();
+        await blobClient.UploadAsync(stream, overwrite: true);
+
+        UploadedQRPath = blobClient.Uri.ToString();
+        Console.WriteLine($"Uploaded QR Code: {UploadedQRPath}");
     }
 
     public class RegistrationModel
     {
+        [MaxLength(200)]
         public string FullName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
+
+        [EmailAddress]
+        public string EmailAddress { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(20)]
         public string GCashNumber { get; set; } = string.Empty;
     }
 }
+ *@

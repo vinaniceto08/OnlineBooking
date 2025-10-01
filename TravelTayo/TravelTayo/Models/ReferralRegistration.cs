@@ -1,29 +1,38 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-public class ReferralRegistration
+namespace TravelTayo.Models
 {
-    [Key]
-    public Guid ReferralRegistrationId { get; set; } = Guid.NewGuid(); // Auto-generated GUID
 
-    [EmailAddress]
-    public string EmailAddress { get; set; } // Unique reference for B2C user
+    public class ReferralRegistration
+    {
+        [Key]
+        public Guid ReferralRegistrationId { get; set; } = Guid.NewGuid(); // Auto-generated GUID
 
-    [Required(ErrorMessage = "Full Name is required")]
-    [MaxLength(200)]
-    public string FullName { get; set; }
+        [EmailAddress]
+        public string EmailAddress { get; set; } // Unique reference for B2C user
 
-    [Required]
-    [MaxLength(20)]
-    public string GCashNumber { get; set; }
+       
+        [MaxLength(200)]
+        public string FullName { get; set; }
 
-    public string GCashQRCode { get; set; } // URL or path to uploaded QR code image
+        [Required]
+        [MaxLength(20)]
+        public string GCashNumber { get; set; }
 
-    public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
+        public string GCashQRCode { get; set; } // URL or path to uploaded QR code image
 
-    [MaxLength(50)]
-    public string Status { get; set; } = "Pending"; // Pending, Approved, Rejected
+        public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
+
+        [MaxLength(50)]
+        public string Status { get; set; } = "Pending"; // Pending, Approved, Rejected
+
+
+        [MaxLength(200)]
+        public string ReferralLink { get; set; }     }
+
+
+
 }
-
-
 
