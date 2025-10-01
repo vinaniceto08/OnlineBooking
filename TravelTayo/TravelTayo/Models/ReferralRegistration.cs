@@ -6,11 +6,10 @@ public class ReferralRegistration
     [Key]
     public Guid ReferralRegistrationId { get; set; } = Guid.NewGuid(); // Auto-generated GUID
 
-    [Required]
     [EmailAddress]
     public string EmailAddress { get; set; } // Unique reference for B2C user
 
-    [Required]
+    [Required(ErrorMessage = "Full Name is required")]
     [MaxLength(200)]
     public string FullName { get; set; }
 

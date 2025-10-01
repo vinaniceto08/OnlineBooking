@@ -99,6 +99,7 @@ else
     private string ReferralLink { get; set; } = "";
     private bool isLoading = true;
     private string ErrorMessage { get; set; }
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -113,7 +114,7 @@ else
                 Navigation.NavigateTo("/authentication/login");
                 return;
             }
-
+        
             // Use server-side service to get referral info
             var response = await ReferralService.CheckUserAsync(user);
 
@@ -123,7 +124,8 @@ else
                 return;
             }
 
-            ReferralLink = $"https://www.travel-tayo.com/referral/{response.referralId}";
+            var baseUrl = Navigation.BaseUri.TrimEnd('/'); // removes trailing slash
+            ReferralLink = $"{baseUrl}/referral/{response.referralId}";
             IsRegistered = true;
         }
         catch (Exception ex)

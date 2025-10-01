@@ -10,9 +10,9 @@ public class FakeAuthenticationStateProvider : AuthenticationStateProvider
         // Default to a fake authenticated user
         var identity = new ClaimsIdentity(new[]
         {
-            new Claim(ClaimTypes.Name, "Dev User"),
+            new Claim(ClaimTypes.Name, "marvin aniceto"),
             new Claim(ClaimTypes.NameIdentifier, "dev-user-id"),
-            new Claim("email", "dev@travel-tayo.com"),
+            new Claim("email", "vinaniceto08@gmail.com"),
         }, "FakeAuth");
 
         _user = new ClaimsPrincipal(identity);
