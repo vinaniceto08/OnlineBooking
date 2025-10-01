@@ -1,11 +1,13 @@
-﻿@* @page "/referral/referralregistration"
+﻿@page "/referral/referralregistration"
 @attribute [Authorize]
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthStateProvider
+@using System.ComponentModel.DataAnnotations
 @using TravelTayo.Models
 @using System.Security.Claims
 @using Azure.Storage.Blobs
 @using Microsoft.AspNetCore.Components.Forms
+@using TravelTayo.Settings
 
 <div class="container my-5">
     <h1 class="display-4 fw-bold text-center mb-4">Referral Registration</h1>
@@ -79,7 +81,7 @@
         var registrationId = Guid.NewGuid();
         var referralLink = $"{Navigation.BaseUri.TrimEnd('/')}/referral/{registrationId}";
 
-        var entity = new ReferralRegistration
+        var entity = new TravelTayo.Models.ReferralRegistration
         {
             ReferralRegistrationId = registrationId,
             FullName = registrationModel.FullName,
@@ -92,7 +94,7 @@
         };
 
         // Save to database
-        // await ReferralService.AddReferralAsync(entity);
+        await ReferralService.AddReferralAsync(entity);
 
         Console.WriteLine("Referral Registered:");
         Console.WriteLine($"Name: {registrationModel.FullName}, Email: {registrationModel.EmailAddress}");
@@ -137,4 +139,3 @@
         public string GCashNumber { get; set; } = string.Empty;
     }
 }
- *@
