@@ -2,7 +2,15 @@
 {
     public static class BlobConfig
     {
-        public static string ConnectionString { get; set; } = "Your_Azure_Blob_Connection_String";
-        public static string ContainerName { get; set; } = "referralqrcodes";
+        public static string ConnectionString { get; set; } 
+        public static string ContainerName { get; set; }
+
+        public static void Load(IConfiguration configuration)
+        {
+            ConnectionString = configuration["AzureBlobStorage:ConnectionString"];
+            ContainerName = configuration["AzureBlobStorage:ContainerName"];
+        }
     }
+
+
 }

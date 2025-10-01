@@ -35,7 +35,7 @@ public class ReferralService : IReferralService
             return new CheckUserResponse
             {
                 Exists = false,
-                RedirectUrl = "/referral/referralregistration"
+                RedirectUrl = "/authentication/login"
             };
         }
 
@@ -48,8 +48,7 @@ public class ReferralService : IReferralService
         {
             return new CheckUserResponse
             {
-                Exists = false,
-                RedirectUrl = "/referral/referralregistration"
+                Exists = false
             };
         }
 

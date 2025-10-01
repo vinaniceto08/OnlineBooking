@@ -59,7 +59,7 @@
         }
 
         // Pre-fill FullName and EmailAddress from B2C claims
-        registrationModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name")?.Value ?? string.Empty;
+        registrationModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? string.Empty;
         registrationModel.EmailAddress = user.Claims.FirstOrDefault(c =>
             c.Type == ClaimTypes.Email || c.Type == "emails" || c.Type == "email")?.Value ?? string.Empty;
 

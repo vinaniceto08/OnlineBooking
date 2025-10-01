@@ -118,15 +118,17 @@ else
             // Use server-side service to get referral info
             var response = await ReferralService.CheckUserAsync(user);
 
-            if (!response.Exists)
+            if (response.Exists)
             {
-                Navigation.NavigateTo(response.RedirectUrl);
+                var baseUrl = Navigation.BaseUri.TrimEnd('/'); // removes trailing slash
+                ReferralLink = $"{baseUrl}/referral/{response.referralId}";
+                IsRegistered = true;
+
+                Navigation.NavigateTo("/referral/referraldashboard");
                 return;
             }
 
-            var baseUrl = Navigation.BaseUri.TrimEnd('/'); // removes trailing slash
-            ReferralLink = $"{baseUrl}/referral/{response.referralId}";
-            IsRegistered = true;
+    
         }
         catch (Exception ex)
         {

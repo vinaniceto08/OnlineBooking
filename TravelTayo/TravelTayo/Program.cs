@@ -7,6 +7,7 @@ using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
 using TravelTayo.Models;
 using TravelTayo.Services;
+using TravelTayo.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +53,8 @@ builder.Services.Configure<EmailSettings>(
 var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
 emailSettings.Email_Password = Environment.GetEnvironmentVariable("Email_Password") ?? emailSettings.Email_Password;
 
-
+// Load static blob config
+BlobConfig.Load(builder.Configuration);
 
 
 builder.Services.AddControllersWithViews()
