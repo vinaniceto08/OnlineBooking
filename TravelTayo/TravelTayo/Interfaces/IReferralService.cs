@@ -1,10 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using TravelTayo.Data;
+using TravelTayo.Models;
 
 public interface IReferralService
 {
     Task<CheckUserResponse> CheckUserAsync(ClaimsPrincipal user);
+
+    Task AddReferralAsync(ReferralRegistration referral);
+
+
 }
 
 public class ReferralService : IReferralService
@@ -12,6 +17,13 @@ public class ReferralService : IReferralService
     private readonly AppDbContext _context;
 
     public ReferralService(AppDbContext context) => _context = context;
+
+    public async Task AddReferralAsync(ReferralRegistration referral)
+    {
+        _context.ReferralRegistrations.Add(referral);
+        await _context.SaveChangesAsync();
+    }
+
 
     public async Task<CheckUserResponse> CheckUserAsync(ClaimsPrincipal user)
     {
