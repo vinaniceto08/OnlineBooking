@@ -1,19 +1,12 @@
 ﻿@page "/referral/referralregistration"
 @attribute [Authorize]
-@inject NavigationManager Navigation
-@inject AuthenticationStateProvider AuthStateProvider
-@inject IReferralService ReferralService
-
-@using System.ComponentModel.DataAnnotations
-@using TravelTayo.Models
-@using System.Security.Claims
-@using Azure.Storage.Blobs
-@using Microsoft.AspNetCore.Components.Forms
-@using TravelTayo.Settings
 
 <div class="container my-5">
-    <h1 class="display-4 fw-bold text-center mb-4">Referral Registration</h1>
-    <p class="text-center mb-5">Fill in your details to join the TravelTayo Referral Program.</p>
+    <section class="py-5 bg-light text-center mb-4">
+        <h1 class="fw-bold text-primary">Referral Registration</h1>
+         <p class="text-center mb-5">Fill in your details to join the TravelTayo Referral Program.</p>
+    </section>
+   
 
     <EditForm Model="@registrationModel" OnValidSubmit="SubmitRegistration">
         <DataAnnotationsValidator />
@@ -30,13 +23,9 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">GCash Number</label>
-            <InputText class="form-control" @bind-Value="registrationModel.GCashNumber" />
-        </div>
-
-        <div class="mb-3">
             <label class="form-label">Upload GCash QR Code</label>
             <InputFile OnChange="UploadQRCode" />
+            <p>For ease of transaction pleae upload your Gcash QR code</p>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Submit Registration</button>
@@ -58,10 +47,11 @@
             return;
         }
 
+
         // Pre-fill FullName and EmailAddress from B2C claims
         registrationModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? string.Empty;
         registrationModel.EmailAddress = user.Claims.FirstOrDefault(c =>
-            c.Type == ClaimTypes.Email || c.Type == "emails" || c.Type == "email")?.Value ?? string.Empty;
+            c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
 
         // Optionally: check if already registered and redirect to dashboard
         // var response = await ReferralService.CheckUserAsync(user);
@@ -88,7 +78,6 @@
             ReferralRegistrationId = registrationId,
             FullName = registrationModel.FullName,
             EmailAddress = registrationModel.EmailAddress,
-            GCashNumber = registrationModel.GCashNumber,
             GCashQRCode = UploadedQRPath!,
             Status = "Active",
             RegistrationDate = DateTime.UtcNow,
@@ -135,9 +124,5 @@
 
         [EmailAddress]
         public string EmailAddress { get; set; } = string.Empty;
-
-        [Required]
-        [MaxLength(20)]
-        public string GCashNumber { get; set; } = string.Empty;
     }
 }

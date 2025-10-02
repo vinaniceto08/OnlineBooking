@@ -1,0 +1,59 @@
+﻿@page "/ref"
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IAccountService AccountService
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string code { get; set; }  // e.g., ?code=EKS2M-XXXX
+
+    private bool hasRun = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || hasRun || string.IsNullOrEmpty(code))
+            return;
+
+        hasRun = true;
+
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        bool isAuthenticated = user.Identity?.IsAuthenticated ?? false;
+
+        if (isAuthenticated)
+        {
+            // Get the logged-in user's account
+            var b2cUserId = user.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" ||
+        c.Type == "b2cUserID")?.Value;
+            var account = await AccountService.GetByB2CUserIdAsync(b2cUserId);
+
+            if (account != null)
+            {
+                // Prevent self-referral
+                if (account.ReferralCode == code)
+                {
+                    Console.WriteLine("Cannot use your own referral code.");
+                    Navigation.NavigateTo("/"); // Redirect to home
+                    return;
+                }
+            }
+        }
+
+        // Optional: Check if referral code exists in your system
+        var referralAccount = await AccountService.GetByReferralCodeAsync(code);
+        if (referralAccount == null)
+        {
+            Console.WriteLine("Invalid referral code.");
+            Navigation.NavigateTo("/"); // Redirect home
+            return;
+        }
+
+        // Save referral code in session storage for later (signup/first booking)
+        await JS.InvokeVoidAsync("sessionStorage.setItem", "referralCode", code);
+
+        // Redirect user
+        Navigation.NavigateTo(isAuthenticated ? "/" : "/Account");
+    }
+}

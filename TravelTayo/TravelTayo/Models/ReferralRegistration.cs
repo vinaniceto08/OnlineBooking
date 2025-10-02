@@ -17,9 +17,6 @@ namespace TravelTayo.Models
         [MaxLength(200)]
         public string FullName { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        public string GCashNumber { get; set; }
 
         public string GCashQRCode { get; set; } // URL or path to uploaded QR code image
 

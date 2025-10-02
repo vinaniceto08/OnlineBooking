@@ -1,0 +1,150 @@
+﻿@page "/account"
+@attribute [Authorize]
+
+
+
+<section class="py-5 bg-light text-center mb-4">
+    <h1 class="fw-bold text-primary">Account Information</h1>
+</section>
+
+
+<div class="container my-5">
+    <EditForm Model="@accountModel" OnValidSubmit="SaveAccount">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Full Name</label>
+        <InputText @bind-Value="accountModel.FullName" class="form-control" Disabled />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <InputText @bind-Value="accountModel.Email" class="form-control" Disabled />
+    </div>
+
+    <div class="mb-3">
+        <label>Contact Number</label>
+        <InputText @bind-Value="accountModel.ContactNumber" class="form-control" />
+        <h9>(Ex. 09912345678)</h9>
+    </div>
+    <div class="p-1">
+
+            <button type="submit" class="btn btn-primary">Update your contact number</button>
+      </div>
+
+
+        <div class="card shadow-sm mt-4">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">✨ Join Our Referral Program!</h5>
+                <p class="card-text">
+                    Share your <strong>personal referral link</strong> on your social media accounts and start earning every time someone completes a booking.
+                </p>
+                <ul>
+                    <li><strong>Earn Commission:</strong> Receive a reward for every successful booking made through your referral link.</li>
+                    <li><strong>Flexible Payout:</strong> Use your commission as credit for your next TravelTayo booking <strong>or</strong> receive it directly via <strong>GCash</strong>.</li>
+                    <li><strong>Unlimited Earnings:</strong> The more you share, the more you earn!</li>
+                </ul>
+                <p class="card-text fw-semibold mt-2">Start sharing today and turn your referrals into rewards! 🎁</p>
+
+                <!-- Referral Link -->
+                <h5>
+                    <a class="pulse-nav" href="/referralpromo">
+                        Go to Referral page
+                    </a>
+                </h5>
+
+          
+            </div>
+        </div>
+     
+
+      
+</EditForm>
+</div>
+
+@code {
+    private Account accountModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (!(user.Identity?.IsAuthenticated ?? false))
+        {
+            // Only redirect if account is required
+            Navigation.NavigateTo("/authentication/login");
+            return;
+        }
+
+
+
+        var b2cUserId = user.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" || 
+        c.Type == "b2cUserID")?.Value;
+        var existingAccount = await AccountService.GetByB2CUserIdAsync(b2cUserId);
+
+        if (existingAccount != null)
+        {
+            accountModel = existingAccount;
+
+            accountModel.FullName = existingAccount.FullName.ToString();
+            accountModel.Email = existingAccount.Email.ToString();
+            accountModel.ContactNumber = existingAccount.ContactNumber.ToString();
+        }
+        else
+        {
+            // New account
+            accountModel.B2CUserId = b2cUserId;
+            accountModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? "";
+            accountModel.Email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? "";
+            accountModel.Status = "Active";
+            accountModel.ReferralCode = GenerateReferralCode();
+        }
+    }
+    public static string GenerateReferralCode(int randomLength = 6)
+    {
+        // Step 1: Random secure string
+        string randomPart = GenerateRandomString(randomLength);
+
+        // Step 2: Timestamp (yyyyMMddHHmmss)
+        string timestampPart = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+
+        // Combine: EKS2M-RANDOM-TIMESTAMP
+        return $"EKS2M-{randomPart}-{timestampPart}";
+    }
+
+      private static string GenerateRandomString(int length)
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        char[] stringChars = new char[length];
+
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            byte[] randomBytes = new byte[length];
+            rng.GetBytes(randomBytes);
+
+            for (int i = 0; i < length; i++)
+            {
+                stringChars[i] = chars[randomBytes[i] % chars.Length];
+            }
+        }
+
+        return new string(stringChars);
+    }
+
+
+
+    private async Task SaveAccount()
+    {
+        if (string.IsNullOrEmpty(accountModel.ContactNumber))
+        {
+            return; // Optionally show a message
+        }
+
+        await AccountService.AddOrUpdateAsync(accountModel);
+        Navigation.NavigateTo("/");
+    }
+}

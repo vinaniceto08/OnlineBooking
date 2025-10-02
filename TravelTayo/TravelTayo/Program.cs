@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
+using TravelTayo.Interfaces;
 using TravelTayo.Models;
 using TravelTayo.Services;
 using TravelTayo.Settings;
@@ -45,6 +46,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddScoped<IReferralService, ReferralService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ReferralCodeService>();
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
@@ -80,7 +83,23 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+// security protection
+app.Use(async (context, next) =>
+{
+    // Security headers
+    context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.TryAdd("Referrer-Policy", "no-referrer");
+    context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
 
+
+    // Remove technology disclosure headers (server fingerprinting)
+    context.Response.Headers.Remove("Server");
+    context.Response.Headers.Remove("X-Powered-By");
+    context.Response.Headers.Remove("X-AspNet-Version");
+    context.Response.Headers.Remove("X-AspNetMvc-Version");
+
+    await next();
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
