@@ -169,7 +169,7 @@ footer p, footer ul li {
 
     50% {
         transform: scale(1.2);
-        color: #ffd700;
+        color: red/*#ffd700*/;
     }
     /* text expands & changes color */
     100% {
@@ -181,7 +181,7 @@ footer p, footer ul li {
 /* Apply the animation to the nav link */
 .pulse-nav {
     animation: pulseNavText 1s infinite;
-    font-weight: 600;
+    font-weight: 100;
     border-radius: 0.375rem; /* keep button shape */
     transition: none; /* prevent hover changes */
 }
@@ -189,9 +189,35 @@ footer p, footer ul li {
     /* Keep it consistent on hover */
     .pulse-nav:hover {
         background-color: transparent !important;
-        color: white !important;
+        color: red !important;
         transform: scale(1) !important;
     }
 
+.referral-code-large {
+    font-size: 1rem; /* Adjust to 3rem or 4rem if needed */
+    font-weight: bold;
+    color: #0d6efd; /* Bootstrap primary color */
+}
 
+/*Pulse for Refferal*/
+.referral-link {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+}
 
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

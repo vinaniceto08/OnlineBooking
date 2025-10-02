@@ -11,6 +11,8 @@ namespace TravelTayo.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<ReferralRegistration> ReferralRegistrations {get; set;}
 
+        public DbSet<Account> Accounts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ReferralRegistration>(entity =>
@@ -31,6 +33,10 @@ namespace TravelTayo.Data
                 entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.GCashNumber).HasMaxLength(20);
                 entity.Property(e => e.GCashQRCode).HasMaxLength(500);
+
+                modelBuilder.Entity<Account>()
+               .HasIndex(a => a.B2CUserId)
+               .IsUnique();
             });
         }
 

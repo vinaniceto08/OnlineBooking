@@ -12,7 +12,8 @@ public class FakeAuthenticationStateProvider : AuthenticationStateProvider
         {
             new Claim(ClaimTypes.Name, "marvin aniceto"),
             new Claim(ClaimTypes.NameIdentifier, "dev-user-id"),
-            new Claim("email", "vinaniceto08@gmail.com"),
+            new Claim(ClaimTypes.Email, "vinaniceto08@gmail.com"),
+            new Claim("b2cUserID", "47ce495e-1308-45d4-bebe-0d9a3175ab2c"),
         }, "FakeAuth");
 
         _user = new ClaimsPrincipal(identity);

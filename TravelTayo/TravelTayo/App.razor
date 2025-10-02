@@ -3,9 +3,11 @@
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
-                    @* Redirect to login page if user is not authenticated *@
                     <TravelTayo.Pages.LogIn />
                 </NotAuthorized>
+                <Authorizing>
+                    <p>Checking authentication...</p>
+                </Authorizing>
             </AuthorizeRouteView>
         </Found>
         <NotFound>

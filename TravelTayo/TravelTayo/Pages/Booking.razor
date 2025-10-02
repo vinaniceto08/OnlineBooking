@@ -3,11 +3,16 @@
 @attribute [Authorize]
 @layout MainLayout
 @using System.ComponentModel.DataAnnotations
+@inherits TravelTayo.Shared.BasePages.AccountPageBase
 
 
+<section class="py-5 bg-light text-center mb-4">
+    <h1 class="fw-bold text-primary">Book your family get away</h1>
+
+</section>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Book Your Family Getaway</h2>
+
 
     <div class="row g-5">
         <!-- Left side: Booking form -->
@@ -67,6 +72,12 @@
 
 @code {
     private BookingModel bookingModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        RequireCompleteAccount = true; // default, optional
+        await InitializeAccountAsync();
+    }
 
     private void HandleBooking()
     {

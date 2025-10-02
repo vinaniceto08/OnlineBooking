@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelTayo", "TravelTayo\TravelTayo.csproj", "{B640D77A-7420-43EA-A86F-89809E2F4722}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelTayoTest", "TravelTayoTest\TravelTayoTest.csproj", "{970EB4E9-95F9-466A-BEBE-5E6C471A8360}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B640D77A-7420-43EA-A86F-89809E2F4722}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B640D77A-7420-43EA-A86F-89809E2F4722}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B640D77A-7420-43EA-A86F-89809E2F4722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970EB4E9-95F9-466A-BEBE-5E6C471A8360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970EB4E9-95F9-466A-BEBE-5E6C471A8360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970EB4E9-95F9-466A-BEBE-5E6C471A8360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970EB4E9-95F9-466A-BEBE-5E6C471A8360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

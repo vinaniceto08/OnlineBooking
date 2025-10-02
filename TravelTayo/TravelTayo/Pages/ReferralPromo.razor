@@ -1,9 +1,6 @@
 ﻿@page "/referralpromo"
 @attribute [Authorize]
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager Navigation
-@inject IJSRuntime JS
-@inject IReferralService ReferralService
+
 
 @if (isLoading)
 {
@@ -24,21 +21,22 @@ else
 {
     <div class="container my-5">
         <!-- Referral Program Introduction -->
-        <div class="text-center mb-5">
-            <h1 class="display-4 fw-bold">Invite Friends & Earn Rewards!</h1>
+        <section class="py-5 bg-light text-center mb-4">
+            <h1 class="fw-bold text-primary">Invite Friends & Earn Rewards!</h1>
             <p class="lead">
                 Share your unique referral link with friends and earn ₱200 GCash for every confirmed booking.
                 It's simple, fun, and rewarding!
             </p>
-        </div>
+        </section>
 
+ 
         <!-- How It Works Section -->
         <div class="card shadow-sm p-4 text-center mb-4">
             <h3 class="mb-3">How It Works</h3>
             <ol class="list-group list-group-numbered list-group-flush text-start mx-auto" style="max-width: 600px;">
                 <li class="list-group-item">Copy your referral link or share it directly on social media.</li>
                 <li class="list-group-item">Your friends click the link and book a trip with Travel-Tayo.</li>
-                <li class="list-group-item">You earn ₱200 GCash for every confirmed booking!</li>
+                <li class="list-group-item">You earn commision for every confirmed booking!</li>
                 <li class="list-group-item">Payout will be released 7 days after the booking is confirmed and payment is received.</li>
             </ol>
         </div>
@@ -50,7 +48,7 @@ else
             <div class="text-start" style="max-height: 300px; overflow-y: auto;">
                 <p>1. Share your referral link responsibly on social media.</p>
                 <p>2. Only confirmed bookings will be rewarded.</p>
-                <p>3. Each successful referral earns ₱200 GCash.</p>
+                <p>3. Each successful referral earns commision that can be converted through cash or discount for your next booking.</p>
                 <p>4. Payout will be released 7 days after the booking is confirmed and payment is received.</p>
                 <p>5. Travel-Tayo reserves the right to modify or cancel the referral program at any time.</p>
             </div>
