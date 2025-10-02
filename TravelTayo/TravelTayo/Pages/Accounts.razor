@@ -100,7 +100,7 @@
             accountModel.B2CUserId = b2cUserId;
             accountModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? "";
             accountModel.Email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? "";
-            accountModel.Status = "Active";
+            accountModel.Status = "Accept Agreement";
             accountModel.ReferralCode = GenerateReferralCode();
         }
     }

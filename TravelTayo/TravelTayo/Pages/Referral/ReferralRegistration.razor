@@ -35,6 +35,7 @@
 @code {
     private RegistrationModel registrationModel = new();
     private string? UploadedQRPath;
+    private string? ReferralLink;
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,7 +47,15 @@
             Navigation.NavigateTo("/authentication/login");
             return;
         }
+        var b2cUserId = user.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" ||
+         c.Type == "b2cUserID")?.Value;
+        var existingAccount = await AccountService.GetByB2CUserIdAsync(b2cUserId);
 
+        if (existingAccount != null)
+        {
+            ReferralLink = existingAccount.ReferralCode;
+
+        }
 
         // Pre-fill FullName and EmailAddress from B2C claims
         registrationModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? string.Empty;
@@ -81,16 +90,13 @@
             GCashQRCode = UploadedQRPath!,
             Status = "Active",
             RegistrationDate = DateTime.UtcNow,
-            ReferralLink = referralLink
+            ReferralLink = ReferralLink
         };
 
         // Save to database
         await ReferralService.AddReferralAsync(entity);
 
-        Console.WriteLine("Referral Registered:");
-        Console.WriteLine($"Name: {registrationModel.FullName}, Email: {registrationModel.EmailAddress}");
-
-        Navigation.NavigateTo($"/referral/referraldashboard?referralLink={Uri.EscapeDataString(referralLink)}");
+        Navigation.NavigateTo($"/referral/referraldashboard");
     }
 
     private async Task UploadQRCode(InputFileChangeEventArgs e)
