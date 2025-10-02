@@ -1,26 +1,14 @@
 ﻿@page "/referral/referraldashboard"
 @attribute [Authorize]
-@inject IJSRuntime JS
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager Navigation
 
-@if (isLoading)
-{
-    <div class="text-center my-5">
-        <p>Redirecting to login...</p>
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-}
-else
-{
+
+
     <div class="container my-5">
         <!-- Referral Program Introduction -->
         <section class="py-5 bg-light text-center mb-4">
             <h1 class="fw-bold text-primary">Invite Friends & Earn Rewards!</h1>
             <p class="lead">
-                Share your unique referral link with friends and earn ₱200 GCash for every confirmed booking.
+                Share your unique referral link with friends and earn commision for every confirmed booking.
                 It's simple, fun, and rewarding!
             </p>
         </section>            
@@ -100,7 +88,7 @@ else
        
     
     </div>
-}
+
 
 @code {
     private bool isLoading = true;
@@ -110,8 +98,8 @@ else
     private int CompletedBookings => Referrals.Count(r => r.Status == ReferralStatus.Completed);
     private int RewardsEarned => Referrals.Where(r => r.Status == ReferralStatus.Completed).Sum(r => r.Reward);
 
-    private string ReferralLink = "referral link";
-    
+    private string ReferralLink;
+
 
     private List<ReferralItem> Referrals = new()
     {
@@ -127,13 +115,23 @@ else
         var authState = await AuthStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
 
-        if (!user.Identity?.IsAuthenticated ?? true)
+        if (!(user.Identity?.IsAuthenticated ?? false))
         {
-            Navigation.NavigateTo("https://travel-tayo.com/MicrosoftIdentity/Account/SignIn?redirectUri=https://travel-tayo.com/referral", true);
+            // Only redirect if account is required
+            Navigation.NavigateTo("/authentication/login");
+            return;
         }
         else
         {
-            isLoading = false;
+            var b2cUserId = user.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" ||
+             c.Type == "b2cUserID")?.Value;
+            var existingAccount = await AccountService.GetByB2CUserIdAsync(b2cUserId);
+
+            if (existingAccount != null)    
+            {
+                ReferralLink = "https://www.travel-tayo.com/ref?code=" + existingAccount.ReferralCode;
+            }
+
         }
     }
 

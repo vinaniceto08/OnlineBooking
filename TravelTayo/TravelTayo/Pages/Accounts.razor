@@ -28,6 +28,10 @@
         <InputText @bind-Value="accountModel.ContactNumber" class="form-control" />
         <h9>(Ex. 09912345678)</h9>
     </div>
+    <div class="p-1">
+
+            <button type="submit" class="btn btn-primary">Update your contact number</button>
+      </div>
 
 
         <div class="card shadow-sm mt-4">
@@ -50,20 +54,12 @@
                     </a>
                 </h5>
 
-                <div class="text-center mt-3">
-                    <div class="fw-bold">Your Referral Code:</div>
-                    <div class="display-6 text-primary mt-1">
-                        @(accountModel.ReferralCode ?? "Generating...")
-                    </div>
-                </div>
+          
             </div>
         </div>
      
 
-      <div class="p-1">
-
-            <button type="submit" class="btn btn-primary">Save</button>
-      </div>
+      
 </EditForm>
 </div>
 
@@ -105,9 +101,41 @@
             accountModel.FullName = user.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name)?.Value ?? "";
             accountModel.Email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? "";
             accountModel.Status = "Active";
-            accountModel.ReferralCode = "EKS2M-" + accountModel.FullName.Replace(" ", "").ToUpper();
+            accountModel.ReferralCode = GenerateReferralCode();
         }
     }
+    public static string GenerateReferralCode(int randomLength = 6)
+    {
+        // Step 1: Random secure string
+        string randomPart = GenerateRandomString(randomLength);
+
+        // Step 2: Timestamp (yyyyMMddHHmmss)
+        string timestampPart = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+
+        // Combine: EKS2M-RANDOM-TIMESTAMP
+        return $"EKS2M-{randomPart}-{timestampPart}";
+    }
+
+      private static string GenerateRandomString(int length)
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        char[] stringChars = new char[length];
+
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            byte[] randomBytes = new byte[length];
+            rng.GetBytes(randomBytes);
+
+            for (int i = 0; i < length; i++)
+            {
+                stringChars[i] = chars[randomBytes[i] % chars.Length];
+            }
+        }
+
+        return new string(stringChars);
+    }
+
+
 
     private async Task SaveAccount()
     {

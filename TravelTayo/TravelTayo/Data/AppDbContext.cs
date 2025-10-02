@@ -31,7 +31,6 @@ namespace TravelTayo.Data
                       .HasMaxLength(256);
 
                 entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.GCashNumber).HasMaxLength(20);
                 entity.Property(e => e.GCashQRCode).HasMaxLength(500);
 
                 modelBuilder.Entity<Account>()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 using TravelTayo.Data;
 using TravelTayo.Models;
 
@@ -12,6 +13,7 @@ namespace TravelTayo.Interfaces
         Task<Account> GetByB2CUserIdAsync(string b2cuserid);
         Task AddOrUpdateAsync(Account account);
 
+        Task<Account> GetByReferralCodeAsync(string referralCode);
 
     }
 
@@ -60,5 +62,9 @@ namespace TravelTayo.Interfaces
             return await _context.Accounts.FirstOrDefaultAsync(c => c.B2CUserId == b2cuserid);
         }
 
+        public async Task<Account> GetByReferralCodeAsync(string referralCode)
+        {
+            return await _context.Accounts.FirstOrDefaultAsync(a => a.ReferralCode == referralCode);
+        }
     }
 }

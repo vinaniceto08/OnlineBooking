@@ -18,16 +18,12 @@
 @using TravelTayo.Interfaces
 @using TravelTayo.Settings
 @inject IAccountService AccountService
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager Navigation
 @inject EmailService EmailService
-@inject NavigationManager Navigation
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager Navigation
 @inject IJSRuntime JS
 @inject IReferralService ReferralService
-
-
-@inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
 
+
+@using System;
+@using System.Security.Cryptography;

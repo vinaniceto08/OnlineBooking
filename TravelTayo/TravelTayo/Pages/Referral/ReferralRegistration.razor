@@ -23,13 +23,9 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">GCash Number</label>
-            <InputText class="form-control" @bind-Value="registrationModel.GCashNumber" />
-        </div>
-
-        <div class="mb-3">
             <label class="form-label">Upload GCash QR Code</label>
             <InputFile OnChange="UploadQRCode" />
+            <p>For ease of transaction pleae upload your Gcash QR code</p>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Submit Registration</button>
@@ -82,7 +78,6 @@
             ReferralRegistrationId = registrationId,
             FullName = registrationModel.FullName,
             EmailAddress = registrationModel.EmailAddress,
-            GCashNumber = registrationModel.GCashNumber,
             GCashQRCode = UploadedQRPath!,
             Status = "Active",
             RegistrationDate = DateTime.UtcNow,
@@ -129,9 +124,5 @@
 
         [EmailAddress]
         public string EmailAddress { get; set; } = string.Empty;
-
-        [Required]
-        [MaxLength(20)]
-        public string GCashNumber { get; set; } = string.Empty;
     }
 }

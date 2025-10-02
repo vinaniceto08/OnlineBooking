@@ -47,6 +47,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddScoped<IReferralService, ReferralService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ReferralCodeService>();
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
