@@ -90,4 +90,4 @@ desktop.ini
 
 # Production
 appsettings.Production.json
-
+appsettings.Development.json

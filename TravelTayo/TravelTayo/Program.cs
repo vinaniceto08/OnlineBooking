@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
@@ -6,6 +7,7 @@ using Microsoft.Identity.Web.UI;
 using TravelTayo.Data;
 using TravelTayo.Models;
 using TravelTayo.Services;
+using TravelTayo.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,8 +32,9 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         options.Authority = $"{options.Instance}/{options.Domain}/v2.0/";
         options.MetadataAddress = $"{options.Instance}/{options.Domain}/v2.0/.well-known/openid-configuration?p={options.SignUpSignInPolicyId}";
 
-        options.TokenValidationParameters.NameClaimType = "name";
-        options.TokenValidationParameters.NameClaimType = "emails";
+        options.TokenValidationParameters.NameClaimType = "name";      // for display purposes
+         
+
 
     });
 string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING")
@@ -40,17 +43,8 @@ string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STR
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-//agoda api
-builder.Services.AddHttpClient<AgodaService>();
-builder.Services.AddScoped<AgodaService>(sp =>
-{
-    var httpClient = sp.GetRequiredService<HttpClient>();
-    var db = sp.GetRequiredService<AppDbContext>();
-    var apiKey = builder.Configuration["Agoda:ApiKey"];
-    return new AgodaService(httpClient, db, apiKey);
-});
-
 builder.Services.AddTransient<EmailService>();
+builder.Services.AddScoped<IReferralService, ReferralService>();
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
@@ -59,7 +53,8 @@ builder.Services.Configure<EmailSettings>(
 var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
 emailSettings.Email_Password = Environment.GetEnvironmentVariable("Email_Password") ?? emailSettings.Email_Password;
 
-
+// Load static blob config
+BlobConfig.Load(builder.Configuration);
 
 
 builder.Services.AddControllersWithViews()
@@ -71,6 +66,11 @@ builder.Services.AddRazorPages()
 builder.Services.AddServerSideBlazor();
 builder.Services.AddAuthorizationCore();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationStateProvider>();
+}
+
 
 var app = builder.Build();
 
@@ -80,6 +80,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
