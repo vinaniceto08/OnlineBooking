@@ -40,16 +40,16 @@ namespace TravelTayo.Services
             dynamic result = JsonConvert.DeserializeObject(json);
 
             // Optional: save hotel IDs in DB
-            foreach (var hotel in result.hotels)
-            {
-                var dbHotel = await _dbContext.Hotels.FindAsync((int)hotel.id) ?? new Hotel { HotelId = hotel.id };
-                dbHotel.Name = hotel.name;
-                dbHotel.City = hotel.city;
-                dbHotel.ImageUrl = hotel.imageUrl;
-                dbHotel.LastUpdated = DateTime.UtcNow;
+            //foreach (var hotel in result.hotels)
+            //{
+            //    var dbHotel = await _dbContext.Hotels.FindAsync((int)hotel.id) ?? new Hotel { HotelId = hotel.id };
+            //    dbHotel.Name = hotel.name;
+            //    dbHotel.City = hotel.city;
+            //    dbHotel.ImageUrl = hotel.imageUrl;
+            //    dbHotel.LastUpdated = DateTime.UtcNow;
 
-                _dbContext.Hotels.Update(dbHotel);
-            }
+            //    _dbContext.Hotels.Update(dbHotel);
+            //}
             await _dbContext.SaveChangesAsync();
 
             return result;
@@ -72,18 +72,18 @@ namespace TravelTayo.Services
             dynamic result = JsonConvert.DeserializeObject(json);
 
             // Optional: update DB with price/availability
-            foreach (var hotel in result.hotels)
-            {
-                var dbHotel = await _dbContext.Hotels.FindAsync((int)hotel.id);
-                if (dbHotel != null)
-                {
-                    dbHotel.Price = hotel.price;
-                    dbHotel.Currency = hotel.currency;
-                    dbHotel.IsAvailable = hotel.available;
-                    dbHotel.LastUpdated = DateTime.UtcNow;
-                    _dbContext.Hotels.Update(dbHotel);
-                }
-            }
+            //foreach (var hotel in result.hotels)
+            //{
+            //    var dbHotel = await _dbContext.Hotels.FindAsync((int)hotel.id);
+            //    if (dbHotel != null)
+            //    {
+            //        dbHotel.Price = hotel.price;
+            //        dbHotel.Currency = hotel.currency;
+            //        dbHotel.IsAvailable = hotel.available;
+            //        dbHotel.LastUpdated = DateTime.UtcNow;
+            //        _dbContext.Hotels.Update(dbHotel);
+            //    }
+            //}
             await _dbContext.SaveChangesAsync();
 
             return result;

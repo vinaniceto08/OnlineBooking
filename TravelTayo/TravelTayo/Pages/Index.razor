@@ -1,6 +1,8 @@
 ﻿@page "/"
 
-
+@using System;
+@using System.Security.Cryptography;
+@using System.Text;
 
 <!-- 🌍 HERO SECTION -->
 <section class="hero-section position-relative" 
@@ -130,4 +132,37 @@
         public string Description { get; set; }
         public string AgodaAffiliateLink { get; set; }
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var xkey = GenerateSignature();
+        var key = xkey;
+    }
+
+
+        private readonly string apiKey = "7f4933ee9d114692ad82883fe0083af5";
+        private readonly string secret = "873d6e2f44";
+
+
+        /// <summary>
+        /// Generates the X-Signature and returns current timestamp
+        /// </summary>
+        /// <returns>Tuple: (timestamp, x-signature)</returns>
+        public (string timestamp, string xSignature) GenerateSignature()
+        {
+            // Get current UTC timestamp in seconds
+            string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+            // Concatenate API key, secret, and timestamp
+            string data = apiKey + secret + timestamp;
+
+            // Compute SHA256 hash
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(data));
+                string xSignature = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                return (timestamp, xSignature);
+            }
+        }
+    
 }

@@ -1,0 +1,5591 @@
+{
+    "auditData": {
+        "processTime": "110",
+        "timestamp": "2025-10-03 12:48:53.392",
+        "requestHost": "54.86.50.139",
+        "serverId": "hotel-content-api-6d58dd6dc-gtrzl",
+        "environment": "[int, awseucentral1, k8s, secret, hotel-content-api-6d58dd6dc-gtrzl]",
+        "release": ""
+    },
+    "hotel": {
+        "code": 7,
+        "name": {
+            "content": "Servatur Don Miguel Adults Only"
+        },
+        "description": {
+            "content": "The delightful Hotel Servatur Don Miguel is located on the island of Gran Canaria, Spain, a diverse island offering everything from desert landscapes to lush vegetation. This comfortable adults-only (over 18) hotel provides a tranquil escape from the city. Friendly staff and attentive service create a welcoming atmosphere, ensuring a peaceful holiday. Guests can enjoy the hotel's pool and tennis courts, or explore nearby activities such as water sports, mini golf, squash, and cycling. Golf enthusiasts will appreciate the two nearby courses offering various routes and difficulty levels. Weekly entertainment includes a varied program and live music. The resort features a freshwater swimming pool, a sun terrace, and a snack bar for refreshing drinks. Gran Canaria's cuisine is a fusion of flavors and aromas, influenced by global culinary traditions and featuring fresh, local ingredients. While the à la carte restaurant is currently unavailable, the exquisite buffet restaurant offers a selection of local and international dishes, with many options prepared using healthy ingredients. Please note that half-board rates do not include drinks with dinner. At Playa del Inglés, sunshine and entertainment abound, with activities like jet skiing, windsurfing, and sailing readily available. Beach bars, souvenir shops, restaurants, and clubs offering lively music are within easy reach. Explore the scenic Paseo Costa Canaria coastal path, passing through tropical flora, or visit nearby attractions such as Playa de las Burras and the Maspalomas Dunes. Guests should be aware that some facilities or services may be unavailable due to local regulations. "
+        },
+        "country": {
+            "code": "ES",
+            "isoCode": "ES",
+            "description": {
+                "content": "Spain"
+            }
+        },
+        "state": {
+            "code": "35",
+            "name": "Las Palmas"
+        },
+        "destination": {
+            "code": "LPA",
+            "name": {
+                "content": "Gran Canaria"
+            },
+            "countryCode": "ES"
+        },
+        "zone": {
+            "zoneCode": 20,
+            "name": "Playa del Inglés",
+            "description": {
+                "content": "Playa del Ingles"
+            }
+        },
+        "coordinates": {
+            "longitude": -15.57877009031105500000,
+            "latitude": 27.76033734644050500000
+        },
+        "category": {
+            "code": "3EST",
+            "description": {
+                "content": "3 STARS"
+            }
+        },
+        "categoryGroup": {
+            "code": "GRUPO3",
+            "description": {
+                "content": "Includes 3-star hotels and rural hotels."
+            }
+        },
+        "chain": {
+            "code": "SERVA",
+            "description": {
+                "content": "SERVATUR"
+            }
+        },
+        "accommodationType": {
+            "code": "H",
+            "typeMultiDescription": {
+                "content": "Hotel"
+            },
+            "typeDescription": "Hotel"
+        },
+        "boards": [
+            {
+                "code": "BB",
+                "description": {
+                    "content": "BED AND BREAKFAST"
+                }
+            },
+            {
+                "code": "HB",
+                "description": {
+                    "content": "HALF BOARD"
+                }
+            },
+            {
+                "code": "RO",
+                "description": {
+                    "content": "ROOM ONLY"
+                }
+            }
+        ],
+        "segments": [
+            {
+                "code": 103,
+                "description": {
+                    "content": "Adults Only"
+                }
+            }
+        ],
+        "address": {
+            "content": "Av. De Tirajana, 30",
+            "street": "Av. De Tirajana",
+            "number": "30"
+        },
+        "postalCode": "35100",
+        "city": {
+            "content": "San Bartolomé de Tirajana"
+        },
+        "email": "donmiguel@servatur.com",
+        "license": "H-35-1-0000162",
+        "giataCode": 2779,
+        "phones": [
+            {
+                "phoneNumber": "+34928761508",
+                "phoneType": "PHONEBOOKING"
+            },
+            {
+                "phoneNumber": "+34928761508",
+                "phoneType": "PHONEHOTEL"
+            },
+            {
+                "phoneNumber": "+34928771904",
+                "phoneType": "FAXNUMBER"
+            }
+        ],
+        "rooms": [
+            {
+                "roomCode": "APT.B1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "APARTMENT ONE BEDROOM",
+                "type": {
+                    "code": "APT",
+                    "description": {
+                        "content": "APARTMENT"
+                    }
+                },
+                "characteristic": {
+                    "code": "B1",
+                    "description": {
+                        "content": "ONE BEDROOM"
+                    }
+                }
+            },
+            {
+                "roomCode": "CTG.RO",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 4,
+                "minAdults": 0,
+                "description": "HOUSE RUN OF HOUSE",
+                "type": {
+                    "code": "CTG",
+                    "description": {
+                        "content": "HOUSE"
+                    }
+                },
+                "characteristic": {
+                    "code": "RO",
+                    "description": {
+                        "content": "RUN OF HOUSE"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE CLASSIC",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.AS-BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE CLASSIC WITH BALCONY",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-BL",
+                    "description": {
+                        "content": "CLASSIC WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.AS-QN",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE CLASSIC QUEEN BED",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-QN",
+                    "description": {
+                        "content": "CLASSIC QUEEN BED"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.AS-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE CLASSIC POOL VIEW",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-VP",
+                    "description": {
+                        "content": "CLASSIC POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE WITH BALCONY",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.C2-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE SUPERIOR CAPACITY 2",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "C2-SU",
+                    "description": {
+                        "content": "SUPERIOR CAPACITY 2"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.ST-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE STANDARD",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-1",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.ST-11",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE STANDARD",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-11",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE SUPERIOR",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBL.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "DOUBLE SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "DBL",
+                    "description": {
+                        "content": "DOUBLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin CLASSIC",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.ST",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 2,
+                "maxAdults": 0,
+                "maxChildren": 0,
+                "minAdults": 2,
+                "description": "Double or Twin STANDARD",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 120,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Minibar"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 190,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Central heating"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 20,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 150,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Double bed 131-150 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DBT/ST"
+            },
+            {
+                "roomCode": "DBT.ST-11",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin STANDARD",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-11",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.ST-2",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin STANDARD",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-2",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.SU",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 2,
+                "maxAdults": 2,
+                "maxChildren": 0,
+                "minAdults": 2,
+                "description": "Double or Twin SUPERIOR",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 20,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DBT"
+            },
+            {
+                "roomCode": "DBT.SU-1",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 2,
+                "maxAdults": 2,
+                "maxChildren": 0,
+                "minAdults": 2,
+                "description": "Double or Twin SUPERIOR",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-1",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 20,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DBT"
+            },
+            {
+                "roomCode": "DBT.SU-2",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin SUPERIOR",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-2",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.VP-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin POOL VIEW",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "VP-1",
+                    "description": {
+                        "content": "POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.VP-5",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin POOL VIEW",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "VP-5",
+                    "description": {
+                        "content": "POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "DBT.WV",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 6,
+                "maxAdults": 6,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "Double or Twin WITH VIEWS",
+                "type": {
+                    "code": "DBT",
+                    "description": {
+                        "content": "Double or Twin"
+                    }
+                },
+                "characteristic": {
+                    "code": "WV",
+                    "description": {
+                        "content": "WITH VIEWS"
+                    }
+                }
+            },
+            {
+                "roomCode": "DUS.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 2,
+                "maxAdults": 1,
+                "maxChildren": 1,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "DUS.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 0,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE STANDARD",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 20,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Shower"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 30,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Bathtub"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 55,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "TV"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 262,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Wake-up service"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 268,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "220V power supply"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 286,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Fan"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 288,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Satellite TV "
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 18,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 300,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Housekeeping"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DUS/ST"
+            },
+            {
+                "roomCode": "DUS.ST-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 0,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE STANDARD",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-1",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 20,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Shower"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 30,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Bathtub"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 55,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "TV"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 262,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Wake-up service"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 268,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "220V power supply"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 286,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Fan"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 288,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Satellite TV "
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 18,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 300,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Housekeeping"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 155,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "King-size bed 150-183 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DUS/ST-1"
+            },
+            {
+                "roomCode": "DUS.SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE SUPERIOR",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 20,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DUS"
+            },
+            {
+                "roomCode": "DUS.SU-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE SUPERIOR",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-1",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 20,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "DUS"
+            },
+            {
+                "roomCode": "DUS.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 2,
+                "maxAdults": 1,
+                "maxChildren": 1,
+                "minAdults": 1,
+                "description": "DOUBLE SINGLE USE SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "DUS",
+                    "description": {
+                        "content": "DOUBLE SINGLE USE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "JSU.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 5,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "JUNIOR SUITE STANDARD",
+                "type": {
+                    "code": "JSU",
+                    "description": {
+                        "content": "JUNIOR SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room CLASSIC",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.AS-BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room CLASSIC WITH BALCONY",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-BL",
+                    "description": {
+                        "content": "CLASSIC WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.AS-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room CLASSIC POOL VIEW",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-VP",
+                    "description": {
+                        "content": "CLASSIC POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room WITH BALCONY",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.BL-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room WITH BALCONY",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-1",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.DX",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room DELUXE",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "DX",
+                    "description": {
+                        "content": "DELUXE"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.DX-GV",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room DELUXE GARDEN VIEW",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "DX-GV",
+                    "description": {
+                        "content": "DELUXE GARDEN VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.RO",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room RUN OF HOUSE",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "RO",
+                    "description": {
+                        "content": "RUN OF HOUSE"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room STANDARD",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.ST-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room STANDARD",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-1",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room SUPERIOR",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.SU-TR",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room SUPERIOR WITH TERRACE",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-TR",
+                    "description": {
+                        "content": "SUPERIOR WITH TERRACE"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room POOL VIEW",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "VP",
+                    "description": {
+                        "content": "POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "ROO.WV",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 10,
+                "maxAdults": 10,
+                "maxChildren": 6,
+                "minAdults": 1,
+                "description": "Room WITH VIEWS",
+                "type": {
+                    "code": "ROO",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "characteristic": {
+                    "code": "WV",
+                    "description": {
+                        "content": "WITH VIEWS"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE CLASSIC",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.AS-BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE CLASSIC WITH BALCONY",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-BL",
+                    "description": {
+                        "content": "CLASSIC WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE WITH BALCONY",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE STANDARD",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 120,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Minibar"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 190,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Central heating"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 16,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "IBSB"
+            },
+            {
+                "roomCode": "SGL.ST-1",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE STANDARD",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-1",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE SUPERIOR",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "SGL.VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "SINGLE POOL VIEW",
+                "type": {
+                    "code": "SGL",
+                    "description": {
+                        "content": "SINGLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "VP",
+                    "description": {
+                        "content": "POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE CLASSIC",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE WITH BALCONY",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.QN",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE QUEEN SIZE BED",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "QN",
+                    "description": {
+                        "content": "QUEEN SIZE BED"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE STANDARD",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.SU",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 2,
+                "maxAdults": 2,
+                "maxChildren": 0,
+                "minAdults": 2,
+                "description": "SUITE SUPERIOR",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 35,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 150,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Double bed 131-150 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    },
+                    {
+                        "stayType": "BED",
+                        "order": "2",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "SUI"
+            },
+            {
+                "roomCode": "SUI.SU-1",
+                "isParentRoom": false,
+                "minPax": 3,
+                "maxPax": 3,
+                "maxAdults": 3,
+                "maxChildren": 0,
+                "minAdults": 3,
+                "description": "SUITE SUPERIOR",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-1",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 35,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 150,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Double bed 131-150 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    },
+                    {
+                        "stayType": "BED",
+                        "order": "2",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "SUI"
+            },
+            {
+                "roomCode": "SUI.SU-2",
+                "isParentRoom": false,
+                "minPax": 4,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 0,
+                "minAdults": 4,
+                "description": "SUITE SUPERIOR",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-2",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 35,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 150,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Double bed 131-150 width"
+                                },
+                                "number": 1
+                            }
+                        ]
+                    },
+                    {
+                        "stayType": "BED",
+                        "order": "2",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "SUI"
+            },
+            {
+                "roomCode": "SUI.SU-3",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE SUPERIOR",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-3",
+                    "description": {
+                        "content": "SUPERIOR"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.TR",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE WITH TERRACE",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "TR",
+                    "description": {
+                        "content": "WITH TERRACE"
+                    }
+                }
+            },
+            {
+                "roomCode": "SUI.VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 8,
+                "maxAdults": 8,
+                "maxChildren": 5,
+                "minAdults": 1,
+                "description": "SUITE POOL VIEW",
+                "type": {
+                    "code": "SUI",
+                    "description": {
+                        "content": "SUITE"
+                    }
+                },
+                "characteristic": {
+                    "code": "VP",
+                    "description": {
+                        "content": "POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "TPL.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 3,
+                "maxChildren": 4,
+                "minAdults": 1,
+                "description": "TRIPLE CLASSIC",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "TPL.AS-BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 3,
+                "maxChildren": 4,
+                "minAdults": 1,
+                "description": "TRIPLE CLASSIC WITH BALCONY",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-BL",
+                    "description": {
+                        "content": "CLASSIC WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "TPL.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 3,
+                "maxChildren": 4,
+                "minAdults": 1,
+                "description": "TRIPLE WITH BALCONY",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "TPL.ST",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 1,
+                "maxAdults": 1,
+                "maxChildren": 0,
+                "minAdults": 1,
+                "description": "TRIPLE STANDARD",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 20,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Shower"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 30,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Bathtub"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 55,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "TV"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 262,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Wake-up service"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 268,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "220V power supply"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 286,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Fan"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 288,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Satellite TV "
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 24,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 300,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Housekeeping"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 284,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Sofa bed"
+                                },
+                                "number": 1
+                            },
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "TPL/ST"
+            },
+            {
+                "roomCode": "TPL.ST-1",
+                "isParentRoom": false,
+                "minPax": 2,
+                "maxPax": 2,
+                "maxAdults": 0,
+                "maxChildren": 0,
+                "minAdults": 2,
+                "description": "TRIPLE STANDARD",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-1",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 20,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Shower"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 30,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Bathtub"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 55,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "TV"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 262,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Wake-up service"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 268,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "220V power supply"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 286,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Fan"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 288,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Satellite TV "
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 24,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 300,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Housekeeping"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 284,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Sofa bed"
+                                },
+                                "number": 1
+                            },
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "TPL/ST"
+            },
+            {
+                "roomCode": "TPL.ST-11",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 3,
+                "maxChildren": 4,
+                "minAdults": 1,
+                "description": "TRIPLE STANDARD",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-11",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "TPL.ST-2",
+                "isParentRoom": false,
+                "minPax": 3,
+                "maxPax": 3,
+                "maxAdults": 3,
+                "maxChildren": 0,
+                "minAdults": 3,
+                "description": "TRIPLE STANDARD",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-2",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                },
+                "roomFacilities": [
+                    {
+                        "facilityCode": 20,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Shower"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 30,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Bathtub"
+                        },
+                        "indLogic": true,
+                        "number": 1,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 55,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "TV"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 262,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Wake-up service"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 268,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "220V power supply"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 286,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Fan"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 288,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Satellite TV "
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 295,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Room size (sqm)"
+                        },
+                        "number": 24,
+                        "indYesOrNo": true,
+                        "voucher": false
+                    },
+                    {
+                        "facilityCode": 300,
+                        "facilityGroupCode": 60,
+                        "description": {
+                            "content": "Housekeeping"
+                        },
+                        "indLogic": true,
+                        "indFee": false,
+                        "voucher": false
+                    }
+                ],
+                "roomStays": [
+                    {
+                        "stayType": "BED",
+                        "order": "1",
+                        "description": "Bed room",
+                        "roomStayFacilities": [
+                            {
+                                "facilityCode": 284,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Sofa bed"
+                                },
+                                "number": 1
+                            },
+                            {
+                                "facilityCode": 1,
+                                "facilityGroupCode": 61,
+                                "description": {
+                                    "content": "Single bed 80-130 width"
+                                },
+                                "number": 2
+                            }
+                        ]
+                    }
+                ],
+                "PMSRoomCode": "TPL/ST"
+            },
+            {
+                "roomCode": "TPL.ST-3",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 5,
+                "maxAdults": 3,
+                "maxChildren": 4,
+                "minAdults": 1,
+                "description": "TRIPLE STANDARD",
+                "type": {
+                    "code": "TPL",
+                    "description": {
+                        "content": "TRIPLE"
+                    }
+                },
+                "characteristic": {
+                    "code": "ST-3",
+                    "description": {
+                        "content": "STANDARD"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.AS",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN CLASSIC",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS",
+                    "description": {
+                        "content": "CLASSIC"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.AS-BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN CLASSIC WITH BALCONY",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-BL",
+                    "description": {
+                        "content": "CLASSIC WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.AS-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN CLASSIC POOL VIEW",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "AS-VP",
+                    "description": {
+                        "content": "CLASSIC POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.BL",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN WITH BALCONY",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL",
+                    "description": {
+                        "content": "WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.BL-SU",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN SUPERIOR WITH BALCONY",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "BL-SU",
+                    "description": {
+                        "content": "SUPERIOR WITH BALCONY"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.SU-VP",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN SUPERIOR POOL VIEW",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "SU-VP",
+                    "description": {
+                        "content": "SUPERIOR POOL VIEW"
+                    }
+                }
+            },
+            {
+                "roomCode": "TWN.WV",
+                "isParentRoom": false,
+                "minPax": 1,
+                "maxPax": 4,
+                "maxAdults": 4,
+                "maxChildren": 3,
+                "minAdults": 1,
+                "description": "TWIN WITH VIEWS",
+                "type": {
+                    "code": "TWN",
+                    "description": {
+                        "content": "TWIN"
+                    }
+                },
+                "characteristic": {
+                    "code": "WV",
+                    "description": {
+                        "content": "WITH VIEWS"
+                    }
+                }
+            }
+        ],
+        "facilities": [
+            {
+                "facilityCode": 30,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Year of most recent renovation"
+                },
+                "order": 1,
+                "number": 2012,
+                "voucher": false
+            },
+            {
+                "facilityCode": 70,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Total number of rooms"
+                },
+                "order": 1,
+                "indYesOrNo": true,
+                "number": 286,
+                "voucher": false
+            },
+            {
+                "facilityCode": 50,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Number of floors (main building)"
+                },
+                "order": 1,
+                "number": 5,
+                "voucher": false
+            },
+            {
+                "facilityCode": 80,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Single rooms"
+                },
+                "order": 1,
+                "number": 10,
+                "voucher": false
+            },
+            {
+                "facilityCode": 132,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Twin rooms"
+                },
+                "order": 1,
+                "number": 163,
+                "voucher": false
+            },
+            {
+                "facilityCode": 90,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Double rooms"
+                },
+                "order": 1,
+                "number": 80,
+                "voucher": false
+            },
+            {
+                "facilityCode": 100,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Suites"
+                },
+                "order": 1,
+                "number": 9,
+                "voucher": false
+            },
+            {
+                "facilityCode": 126,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Triple rooms"
+                },
+                "order": 1,
+                "number": 21,
+                "voucher": false
+            },
+            {
+                "facilityCode": 124,
+                "facilityGroupCode": 10,
+                "description": {
+                    "content": "Disability-friendly rooms"
+                },
+                "order": 1,
+                "number": 3,
+                "voucher": false
+            },
+            {
+                "facilityCode": 10,
+                "facilityGroupCode": 20,
+                "description": {
+                    "content": "hotel"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 50,
+                "facilityGroupCode": 30,
+                "description": {
+                    "content": "MasterCard"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 60,
+                "facilityGroupCode": 30,
+                "description": {
+                    "content": "Visa"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 10,
+                "facilityGroupCode": 40,
+                "description": {
+                    "content": "City centre"
+                },
+                "order": 1,
+                "distance": 300,
+                "voucher": false
+            },
+            {
+                "facilityCode": 145,
+                "facilityGroupCode": 40,
+                "description": {
+                    "content": "Bus/Train station"
+                },
+                "order": 1,
+                "distance": 200,
+                "voucher": false
+            },
+            {
+                "facilityCode": 40,
+                "facilityGroupCode": 40,
+                "description": {
+                    "content": "Beach"
+                },
+                "order": 1,
+                "distance": 1500,
+                "voucher": false
+            },
+            {
+                "facilityCode": 298,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Number of bedrooms"
+                },
+                "order": 1,
+                "indLogic": false,
+                "number": 1,
+                "voucher": false
+            },
+            {
+                "facilityCode": 220,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Living room"
+                },
+                "order": 1,
+                "indLogic": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 10,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Bathroom"
+                },
+                "order": 1,
+                "indLogic": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 260,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Disability-friendly bathroom"
+                },
+                "order": 1,
+                "indLogic": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 40,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Hairdryer"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 261,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Wi-fi"
+                },
+                "order": 1,
+                "indFee": false,
+                "indYesOrNo": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 100,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Internet access"
+                },
+                "order": 1,
+                "indLogic": false,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 50,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Direct dial telephone"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 170,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Centrally regulated air conditioning"
+                },
+                "order": 1,
+                "indLogic": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 200,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Safe"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 230,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Balcony"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 250,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Wheelchair-accessible"
+                },
+                "order": 1,
+                "indYesOrNo": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 287,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Smoking rooms"
+                },
+                "order": 1,
+                "indYesOrNo": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 275,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Extra beds on demand"
+                },
+                "order": 1,
+                "indLogic": false,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 264,
+                "facilityGroupCode": 60,
+                "description": {
+                    "content": "Cot on demand"
+                },
+                "order": 1,
+                "indLogic": false,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 295,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Wheelchair-accessible"
+                },
+                "order": 1,
+                "indYesOrNo": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 320,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Car park"
+                },
+                "order": 1,
+                "indFee": false,
+                "indYesOrNo": false,
+                "voucher": true
+            },
+            {
+                "facilityCode": 30,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "24-hour reception"
+                },
+                "order": 1,
+                "indYesOrNo": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 260,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Check-in hour"
+                },
+                "order": 1,
+                "timeFrom": "15:00:00",
+                "timeTo": "00:00:00",
+                "voucher": true
+            },
+            {
+                "facilityCode": 390,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Check-out hour"
+                },
+                "order": 1,
+                "timeTo": "12:00:00",
+                "voucher": true
+            },
+            {
+                "facilityCode": 250,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Wired Internet"
+                },
+                "order": 1,
+                "indLogic": false,
+                "indFee": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 550,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Wi-fi"
+                },
+                "order": 1,
+                "indFee": false,
+                "indYesOrNo": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 280,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Laundry service"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 290,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Medical service"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 505,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Multilingual staff"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 12,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Smoke detector"
+                },
+                "order": 1,
+                "indLogic": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 50,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Currency exchange facilities"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 70,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Lift access"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 125,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Garden"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 135,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Terrace"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 430,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Sun terrace"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 470,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Gym"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 568,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Clothes dryer"
+                },
+                "order": 1,
+                "indLogic": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 578,
+                "facilityGroupCode": 70,
+                "description": {
+                    "content": "Towels and bed linen"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 130,
+                "facilityGroupCode": 71,
+                "description": {
+                    "content": "Bar"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 200,
+                "facilityGroupCode": 71,
+                "description": {
+                    "content": "Restaurant"
+                },
+                "order": 1,
+                "indLogic": true,
+                "number": 2,
+                "voucher": false
+            },
+            {
+                "facilityCode": 555,
+                "facilityGroupCode": 71,
+                "description": {
+                    "content": "Poolside snack bar"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 565,
+                "facilityGroupCode": 71,
+                "description": {
+                    "content": "Show cooking"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 170,
+                "facilityGroupCode": 72,
+                "description": {
+                    "content": "Conference room"
+                },
+                "order": 1,
+                "indLogic": true,
+                "number": 1,
+                "voucher": false
+            },
+            {
+                "facilityCode": 363,
+                "facilityGroupCode": 73,
+                "description": {
+                    "content": "Outdoor freshwater pool"
+                },
+                "order": 1,
+                "indFee": false,
+                "number": 1,
+                "voucher": false
+            },
+            {
+                "facilityCode": 395,
+                "facilityGroupCode": 73,
+                "description": {
+                    "content": "Sun loungers"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 400,
+                "facilityGroupCode": 73,
+                "description": {
+                    "content": "Parasols"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 401,
+                "facilityGroupCode": 73,
+                "description": {
+                    "content": "Entertainment programme for adults"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 410,
+                "facilityGroupCode": 74,
+                "description": {
+                    "content": "Hot tub"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 30,
+                "facilityGroupCode": 80,
+                "description": {
+                    "content": "Breakfast buffet"
+                },
+                "order": 1,
+                "indLogic": true,
+                "voucher": false
+            },
+            {
+                "facilityCode": 80,
+                "facilityGroupCode": 80,
+                "description": {
+                    "content": "Buffet dinner"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 130,
+                "facilityGroupCode": 80,
+                "description": {
+                    "content": "Special dietary options"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 203,
+                "facilityGroupCode": 85,
+                "description": {
+                    "content": "Only Adults"
+                },
+                "order": 1,
+                "indLogic": true,
+                "ageFrom": 18,
+                "voucher": true
+            },
+            {
+                "facilityCode": 562,
+                "facilityGroupCode": 85,
+                "description": {
+                    "content": "Non-smoking establishment"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 564,
+                "facilityGroupCode": 85,
+                "description": {
+                    "content": "Minimum check-in age"
+                },
+                "order": 1,
+                "number": 18,
+                "voucher": true
+            },
+            {
+                "facilityCode": 295,
+                "facilityGroupCode": 90,
+                "description": {
+                    "content": "Fitness"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            },
+            {
+                "facilityCode": 430,
+                "facilityGroupCode": 90,
+                "description": {
+                    "content": "Tennis"
+                },
+                "order": 1,
+                "indLogic": true,
+                "indFee": false,
+                "voucher": false
+            }
+        ],
+        "terminals": [
+            {
+                "terminalCode": "LPA",
+                "terminalType": "A",
+                "distance": 30,
+                "name": {
+                    "content": "Gran Canaria, Las Palmas Airport"
+                },
+                "description": {
+                    "content": "Airport"
+                }
+            }
+        ],
+        "images": [
+            {
+                "type": {
+                    "code": "DEP",
+                    "description": {
+                        "content": "Sports and Entertainment"
+                    }
+                },
+                "path": "00/000007/000007a_hb_f_004.jpg",
+                "order": 4,
+                "visualOrder": 807
+            },
+            {
+                "type": {
+                    "code": "DEP",
+                    "description": {
+                        "content": "Sports and Entertainment"
+                    }
+                },
+                "path": "00/000007/000007a_hb_f_002.jpg",
+                "order": 2,
+                "visualOrder": 808
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_286.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 286,
+                "visualOrder": 314
+            },
+            {
+                "type": {
+                    "code": "DEP",
+                    "description": {
+                        "content": "Sports and Entertainment"
+                    }
+                },
+                "path": "00/000007/000007a_hb_f_003.jpg",
+                "order": 3,
+                "visualOrder": 809
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_287.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 287,
+                "visualOrder": 315
+            },
+            {
+                "type": {
+                    "code": "DEP",
+                    "description": {
+                        "content": "Sports and Entertainment"
+                    }
+                },
+                "path": "00/000007/000007a_hb_f_001.jpg",
+                "order": 1,
+                "visualOrder": 805
+            },
+            {
+                "type": {
+                    "code": "COM",
+                    "description": {
+                        "content": "Lobby"
+                    }
+                },
+                "path": "00/000007/000007a_hb_l_001.jpg",
+                "order": 1,
+                "visualOrder": 106
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_176.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 176,
+                "visualOrder": 394
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_303.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 303,
+                "visualOrder": 331
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_302.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 302,
+                "visualOrder": 330
+            },
+            {
+                "type": {
+                    "code": "COM",
+                    "description": {
+                        "content": "Lobby"
+                    }
+                },
+                "path": "00/000007/000007a_hb_l_003.jpg",
+                "order": 3,
+                "visualOrder": 105
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_178.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 178,
+                "visualOrder": 395
+            },
+            {
+                "type": {
+                    "code": "COM",
+                    "description": {
+                        "content": "Lobby"
+                    }
+                },
+                "path": "00/000007/000007a_hb_l_002.jpg",
+                "order": 2,
+                "visualOrder": 104
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_304.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 304,
+                "visualOrder": 332
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_284.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 284,
+                "visualOrder": 312
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_285.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 285,
+                "visualOrder": 313
+            },
+            {
+                "type": {
+                    "code": "PIS",
+                    "description": {
+                        "content": "Pool"
+                    }
+                },
+                "path": "00/000007/000007a_hb_p_002.jpg",
+                "order": 2,
+                "visualOrder": 408
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_301.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 301,
+                "visualOrder": 329
+            },
+            {
+                "type": {
+                    "code": "BAR",
+                    "description": {
+                        "content": "Bar"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ba_001_20250702_093500.jpg",
+                "order": 1,
+                "visualOrder": 601
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_283.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 283,
+                "visualOrder": 311
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_300.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 300,
+                "visualOrder": 328
+            },
+            {
+                "type": {
+                    "code": "BAR",
+                    "description": {
+                        "content": "Bar"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ba_002_20250702_093506.jpg",
+                "order": 2,
+                "visualOrder": 602
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_151.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 151,
+                "visualOrder": 382
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_315.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 315,
+                "visualOrder": 343
+            },
+            {
+                "type": {
+                    "code": "PIS",
+                    "description": {
+                        "content": "Pool"
+                    }
+                },
+                "path": "00/000007/000007a_hb_p_004.jpg",
+                "order": 4,
+                "visualOrder": 407
+            },
+            {
+                "type": {
+                    "code": "PIS",
+                    "description": {
+                        "content": "Pool"
+                    }
+                },
+                "path": "00/000007/000007a_hb_p_003.jpg",
+                "order": 3,
+                "visualOrder": 406
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_170.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 170,
+                "visualOrder": 393
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_031.jpg",
+                "order": 31,
+                "visualOrder": 546
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_033.jpg",
+                "order": 33,
+                "visualOrder": 501
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_166.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 166,
+                "visualOrder": 391
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_168.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 168,
+                "visualOrder": 392
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_135.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 135,
+                "visualOrder": 365
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_136.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 136,
+                "visualOrder": 366
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_213.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 213,
+                "visualOrder": 374
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_321_20250321_113805.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 321,
+                "visualOrder": 1106
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_320_20250321_113805.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 320,
+                "visualOrder": 1105
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_020.jpg",
+                "order": 20,
+                "visualOrder": 554
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_021.jpg",
+                "order": 21,
+                "visualOrder": 555
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_215.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 215,
+                "visualOrder": 1114
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_022.jpg",
+                "order": 22,
+                "visualOrder": 556
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_214.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 214,
+                "visualOrder": 375
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_023.jpg",
+                "order": 23,
+                "visualOrder": 540
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_216.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 216,
+                "visualOrder": 1115
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_025.jpg",
+                "order": 25,
+                "visualOrder": 541
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_231.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 231,
+                "visualOrder": 399
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_318_20250321_113749.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 318,
+                "visualOrder": 1103
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_026.jpg",
+                "order": 26,
+                "visualOrder": 542
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_230.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 230,
+                "visualOrder": 398
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_317_20250321_113739.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 317,
+                "visualOrder": 1102
+            },
+            {
+                "type": {
+                    "code": "CON",
+                    "description": {
+                        "content": "Conferences"
+                    }
+                },
+                "path": "00/000007/000007a_hb_k_002_20250702_094906.jpeg",
+                "order": 2,
+                "visualOrder": 702
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_027.jpg",
+                "order": 27,
+                "visualOrder": 543
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_233.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 233,
+                "visualOrder": 301
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_316_20250321_113720.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 316,
+                "visualOrder": 1101
+            },
+            {
+                "type": {
+                    "code": "CON",
+                    "description": {
+                        "content": "Conferences"
+                    }
+                },
+                "path": "00/000007/000007a_hb_k_001_20250702_094905.jpeg",
+                "order": 1,
+                "visualOrder": 701
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_232.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 232,
+                "visualOrder": 400
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_319_20250321_113756.jpg",
+                "roomCode": "SGL.ST",
+                "roomType": "SGL",
+                "characteristicCode": "ST",
+                "order": 319,
+                "visualOrder": 1104
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_277.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 277,
+                "visualOrder": 305
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_276.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 276,
+                "visualOrder": 304
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_275.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 275,
+                "visualOrder": 303
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_274.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 274,
+                "visualOrder": 302
+            },
+            {
+                "type": {
+                    "code": "CON",
+                    "description": {
+                        "content": "Conferences"
+                    }
+                },
+                "path": "00/000007/000007a_hb_k_003_20250702_094908.jpeg",
+                "order": 3,
+                "visualOrder": 703
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_273.jpg",
+                "roomCode": "DBT.SU",
+                "roomType": "DBT",
+                "characteristicCode": "SU",
+                "order": 273,
+                "visualOrder": 301
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_157.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 157,
+                "visualOrder": 1121
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_156.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 156,
+                "visualOrder": 1120
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_278.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 278,
+                "visualOrder": 306
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_010.jpg",
+                "order": 10,
+                "visualOrder": 526
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_011.jpg",
+                "order": 11,
+                "visualOrder": 533
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_314.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 314,
+                "visualOrder": 342
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_012.jpg",
+                "order": 12,
+                "visualOrder": 534
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_013.jpg",
+                "order": 13,
+                "visualOrder": 535
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_279.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 279,
+                "visualOrder": 307
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_014.jpg",
+                "order": 14,
+                "visualOrder": 536
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_281.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 281,
+                "visualOrder": 309
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_280.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 280,
+                "visualOrder": 308
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_016.jpg",
+                "order": 16,
+                "visualOrder": 550
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_018.jpg",
+                "order": 18,
+                "visualOrder": 552
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_292.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 292,
+                "visualOrder": 320
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_299.jpg",
+                "roomCode": "SUI.SU-1",
+                "roomType": "SUI",
+                "characteristicCode": "SU-1",
+                "order": 299,
+                "visualOrder": 327
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_019.jpg",
+                "order": 19,
+                "visualOrder": 553
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_291.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 291,
+                "visualOrder": 319
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_290.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 290,
+                "visualOrder": 318
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_282.jpg",
+                "roomCode": "DBT.SU-1",
+                "roomType": "DBT",
+                "characteristicCode": "SU-1",
+                "order": 282,
+                "visualOrder": 310
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_160.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 160,
+                "visualOrder": 1122
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_228.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 228,
+                "visualOrder": 397
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_161.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 161,
+                "visualOrder": 1123
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_227.jpg",
+                "roomCode": "TPL.ST-1",
+                "roomType": "TPL",
+                "characteristicCode": "ST-1",
+                "order": 227,
+                "visualOrder": 396
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_001.jpg",
+                "order": 1,
+                "visualOrder": 524
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_223.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 223,
+                "visualOrder": 387
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_002.jpg",
+                "order": 2,
+                "visualOrder": 527
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_224.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 224,
+                "visualOrder": 388
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_003.jpg",
+                "order": 3,
+                "visualOrder": 528
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_225.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 225,
+                "visualOrder": 389
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_226.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 226,
+                "visualOrder": 390
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_182.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 182,
+                "visualOrder": 1127
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_183.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 183,
+                "visualOrder": 1128
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_221.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 221,
+                "visualOrder": 385
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_322_20250702_094720.jpg",
+                "roomCode": "DBT.ST",
+                "roomType": "DBT",
+                "characteristicCode": "ST",
+                "order": 322,
+                "visualOrder": 1135
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_222.jpg",
+                "roomCode": "TPL.ST",
+                "roomType": "TPL",
+                "characteristicCode": "ST",
+                "order": 222,
+                "visualOrder": 386
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_323_20250702_094721.jpg",
+                "roomCode": "DBT.ST",
+                "roomType": "DBT",
+                "characteristicCode": "ST",
+                "order": 323,
+                "visualOrder": 1136
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_009.jpg",
+                "order": 9,
+                "visualOrder": 525
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_308.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 308,
+                "visualOrder": 336
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_307.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 307,
+                "visualOrder": 335
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_306.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 306,
+                "visualOrder": 334
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_305.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 305,
+                "visualOrder": 333
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_289.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 289,
+                "visualOrder": 317
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_006.jpg",
+                "order": 6,
+                "visualOrder": 549
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_288.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 288,
+                "visualOrder": 316
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_007.jpg",
+                "order": 7,
+                "visualOrder": 531
+            },
+            {
+                "type": {
+                    "code": "RES",
+                    "description": {
+                        "content": "Restaurant"
+                    }
+                },
+                "path": "00/000007/000007a_hb_r_008.jpg",
+                "order": 8,
+                "visualOrder": 532
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_309.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 309,
+                "visualOrder": 337
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_208.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 208,
+                "visualOrder": 367
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_209.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 209,
+                "visualOrder": 368
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_310.jpg",
+                "roomCode": "SUI.SU-2",
+                "roomType": "SUI",
+                "characteristicCode": "SU-2",
+                "order": 310,
+                "visualOrder": 338
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_313.jpg",
+                "roomCode": "DUS.SU-1",
+                "roomType": "DUS",
+                "characteristicCode": "SU-1",
+                "order": 313,
+                "visualOrder": 341
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_237.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 237,
+                "visualOrder": 1132
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_238.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 238,
+                "visualOrder": 1133
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_239.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 239,
+                "visualOrder": 1134
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_234.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 234,
+                "visualOrder": 1129
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_235.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 235,
+                "visualOrder": 1130
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_236.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 236,
+                "visualOrder": 1131
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_324_20250702_094730.jpg",
+                "roomCode": "DBT.ST",
+                "roomType": "DBT",
+                "characteristicCode": "ST",
+                "order": 324,
+                "visualOrder": 1137
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_325_20250702_094740.jpg",
+                "roomCode": "DBT.ST",
+                "roomType": "DBT",
+                "characteristicCode": "ST",
+                "order": 325,
+                "visualOrder": 1138
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_210.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 210,
+                "visualOrder": 369
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_211.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 211,
+                "visualOrder": 1112
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_212.jpg",
+                "roomCode": "DUS.ST",
+                "roomType": "DUS",
+                "characteristicCode": "ST",
+                "order": 212,
+                "visualOrder": 1113
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_006.jpg",
+                "order": 6,
+                "visualOrder": 6
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_297.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 297,
+                "visualOrder": 325
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_005.jpg",
+                "order": 5,
+                "visualOrder": 5
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_296.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 296,
+                "visualOrder": 324
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_295.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 295,
+                "visualOrder": 323
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_007_20250811_130515.jpg",
+                "order": 7,
+                "visualOrder": 7
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_294.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 294,
+                "visualOrder": 322
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_298.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 298,
+                "visualOrder": 326
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_004.jpg",
+                "order": 0,
+                "visualOrder": 0
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_293.jpg",
+                "roomCode": "SUI.SU",
+                "roomType": "SUI",
+                "characteristicCode": "SU",
+                "order": 293,
+                "visualOrder": 321
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_001.jpg",
+                "order": 1,
+                "visualOrder": 2
+            },
+            {
+                "type": {
+                    "code": "GEN",
+                    "description": {
+                        "content": "General view"
+                    }
+                },
+                "path": "00/000007/000007a_hb_a_003.jpg",
+                "order": 3,
+                "visualOrder": 3
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_175.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 175,
+                "visualOrder": 1126
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_141.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 141,
+                "visualOrder": 371
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_171.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 171,
+                "visualOrder": 1124
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_143.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 143,
+                "visualOrder": 373
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_142.jpg",
+                "roomCode": "DUS.ST-1",
+                "roomType": "DUS",
+                "characteristicCode": "ST-1",
+                "order": 142,
+                "visualOrder": 372
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_173.jpg",
+                "roomCode": "TPL.ST-2",
+                "roomType": "TPL",
+                "characteristicCode": "ST-2",
+                "order": 173,
+                "visualOrder": 1125
+            },
+            {
+                "type": {
+                    "code": "HAB",
+                    "description": {
+                        "content": "Room"
+                    }
+                },
+                "path": "00/000007/000007a_hb_ro_312.jpg",
+                "roomCode": "DUS.SU",
+                "roomType": "DUS",
+                "characteristicCode": "SU",
+                "order": 312,
+                "visualOrder": 340
+            }
+        ],
+        "wildcards": [
+            {
+                "roomType": "SUI.SU-2",
+                "roomCode": "SUI",
+                "characteristicCode": "SU-2",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR SUITE WITH BALCONY 4 ADULTS"
+                }
+            },
+            {
+                "roomType": "DUS.SU-1",
+                "roomCode": "DUS",
+                "characteristicCode": "SU-1",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR DOUBLE ROOM BALCONY POOL VIEW 1 ADULT"
+                }
+            },
+            {
+                "roomType": "TPL.ST",
+                "roomCode": "TPL",
+                "characteristicCode": "ST",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC TRIPLE ROOM  BALCONY 1 ADULT"
+                }
+            },
+            {
+                "roomType": "DUS.ST",
+                "roomCode": "DUS",
+                "characteristicCode": "ST",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC TWIN ROOM 1 ADULTO"
+                }
+            },
+            {
+                "roomType": "SUI.SU",
+                "roomCode": "SUI",
+                "characteristicCode": "SU",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR SUITE WITH BALCONY 2 ADULTS"
+                }
+            },
+            {
+                "roomType": "DUS.ST-1",
+                "roomCode": "DUS",
+                "characteristicCode": "ST-1",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC DOUBLE ROOM BALCONY 1 ADULT"
+                }
+            },
+            {
+                "roomType": "DUS.SU",
+                "roomCode": "DUS",
+                "characteristicCode": "SU",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR DOUBLE ROOM WITH BALCONY 1 ADULT"
+                }
+            },
+            {
+                "roomType": "SGL.ST",
+                "roomCode": "SGL",
+                "characteristicCode": "ST",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC SINGLE ROOM BALCONY 1 ADULT"
+                }
+            },
+            {
+                "roomType": "DBT.SU",
+                "roomCode": "DBT",
+                "characteristicCode": "SU",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR DOUBLE ROOM WITH BALCONY 2 ADULTS"
+                }
+            },
+            {
+                "roomType": "TPL.ST-1",
+                "roomCode": "TPL",
+                "characteristicCode": "ST-1",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC TRIPLE ROOM BALCONY 2 ADULTS"
+                }
+            },
+            {
+                "roomType": "TPL.ST-2",
+                "roomCode": "TPL",
+                "characteristicCode": "ST-2",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC TRIPLE ROOM BALCONY 3 ADULTS"
+                }
+            },
+            {
+                "roomType": "SUI.SU-1",
+                "roomCode": "SUI",
+                "characteristicCode": "SU-1",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR SUITE WITH BALCONY 3 ADULTS"
+                }
+            },
+            {
+                "roomType": "DBT.SU-1",
+                "roomCode": "DBT",
+                "characteristicCode": "SU-1",
+                "hotelRoomDescription": {
+                    "content": "SUPERIOR DOUBLE ROOM BALCONY POOL VIEW 2 ADULTS"
+                }
+            },
+            {
+                "roomType": "DBT.ST",
+                "roomCode": "DBT",
+                "characteristicCode": "ST",
+                "hotelRoomDescription": {
+                    "content": "CLASSIC DOUBLE ROOM WITH BALCONY 2 ADULTS"
+                }
+            }
+        ],
+        "web": "www.servatur.com",
+        "lastUpdate": "2025-08-11",
+        "S2C": "4*",
+        "ranking": 30
+    }
+}
