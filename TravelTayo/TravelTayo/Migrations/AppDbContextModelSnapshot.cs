@@ -31,15 +31,6 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TypeDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TypeMultiDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -60,7 +51,6 @@ namespace TravelTayo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Number")
@@ -72,7 +62,6 @@ namespace TravelTayo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -89,11 +78,9 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HotelId")
@@ -115,11 +102,9 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -136,37 +121,14 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("CategoryGroups");
-                });
-
-            modelBuilder.Entity("Chain", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Chains");
                 });
 
             modelBuilder.Entity("Country", b =>
@@ -178,7 +140,6 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -186,59 +147,11 @@ namespace TravelTayo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IsoCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("Destination", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CountryCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Destinations");
-                });
-
-            modelBuilder.Entity("Facility", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
-
-                    b.ToTable("Facilities");
                 });
 
             modelBuilder.Entity("Hotel", b =>
@@ -249,33 +162,25 @@ namespace TravelTayo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AccommodationTypeId")
+                    b.Property<int?>("AccommodationTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryGroupId")
+                    b.Property<int?>("CategoryGroupId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChainId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GiataCode")
@@ -285,28 +190,25 @@ namespace TravelTayo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("License")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Ranking")
+                    b.Property<int?>("Ranking")
                         .HasColumnType("int");
 
                     b.Property<string>("S2C")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StateId")
+                    b.Property<int?>("StateId")
                         .HasColumnType("int");
 
                     b.Property<string>("Web")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ZoneId")
+                    b.Property<int?>("ZoneId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -319,17 +221,138 @@ namespace TravelTayo.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("ChainId");
-
                     b.HasIndex("CountryId");
-
-                    b.HasIndex("DestinationId");
 
                     b.HasIndex("StateId");
 
                     b.HasIndex("ZoneId");
 
                     b.ToTable("Hotels");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomFacility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("FacilityCode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacilityGroupCode")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IndYesOrNo")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Voucher")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomCode");
+
+                    b.ToTable("RoomFacility");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.Rooms", b =>
+                {
+                    b.Property<string>("RoomCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CharacteristicCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsParentRoom")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaxAdults")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxChildren")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxPax")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinAdults")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinPax")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoomCode");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomStay", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoomsRoomCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StayType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomsRoomCode");
+
+                    b.ToTable("RoomStay");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoomsRoomCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomsRoomCode");
+
+                    b.ToTable("RoomType");
                 });
 
             modelBuilder.Entity("HotelPhone", b =>
@@ -340,11 +363,11 @@ namespace TravelTayo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("HotelId")
+                    b.Property<int?>("HotelId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -362,11 +385,11 @@ namespace TravelTayo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("HotelId")
+                    b.Property<int?>("HotelId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -388,7 +411,6 @@ namespace TravelTayo.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Path")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -396,28 +418,6 @@ namespace TravelTayo.Migrations
                     b.HasIndex("HotelId");
 
                     b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("Room", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
-
-                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("Segment", b =>
@@ -428,11 +428,10 @@ namespace TravelTayo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Code")
+                    b.Property<int?>("Code")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HotelId")
@@ -454,11 +453,9 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -478,7 +475,6 @@ namespace TravelTayo.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TerminalCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -594,10 +590,9 @@ namespace TravelTayo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ZoneCode")
+                    b.Property<int?>("ZoneCode")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -612,20 +607,12 @@ namespace TravelTayo.Migrations
                         .HasForeignKey("HotelId");
                 });
 
-            modelBuilder.Entity("Facility", b =>
-                {
-                    b.HasOne("Hotel", null)
-                        .WithMany("Facilities")
-                        .HasForeignKey("HotelId");
-                });
-
             modelBuilder.Entity("Hotel", b =>
                 {
                     b.HasOne("AccommodationType", "AccommodationType")
                         .WithMany("Hotels")
                         .HasForeignKey("AccommodationTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Address", "Address")
                         .WithMany("Hotels")
@@ -636,20 +623,12 @@ namespace TravelTayo.Migrations
                     b.HasOne("CategoryGroup", "CategoryGroup")
                         .WithMany("Hotels")
                         .HasForeignKey("CategoryGroupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Category", "Category")
                         .WithMany("Hotels")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Chain", "Chain")
-                        .WithMany("Hotels")
-                        .HasForeignKey("ChainId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Country", "Country")
                         .WithMany("Hotels")
@@ -657,23 +636,15 @@ namespace TravelTayo.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Destination", "Destination")
-                        .WithMany("Hotels")
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("State", "State")
                         .WithMany("Hotels")
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Zone", "Zone")
                         .WithMany("Hotels")
                         .HasForeignKey("ZoneId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("AccommodationType");
 
@@ -683,15 +654,51 @@ namespace TravelTayo.Migrations
 
                     b.Navigation("CategoryGroup");
 
-                    b.Navigation("Chain");
-
                     b.Navigation("Country");
-
-                    b.Navigation("Destination");
 
                     b.Navigation("State");
 
                     b.Navigation("Zone");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomFacility", b =>
+                {
+                    b.HasOne("HotelbedsAPI.Models.Rooms", "Room")
+                        .WithMany("RoomFacilities")
+                        .HasForeignKey("RoomCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.Rooms", b =>
+                {
+                    b.HasOne("Hotel", "Hotel")
+                        .WithMany("Rooms")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomStay", b =>
+                {
+                    b.HasOne("HotelbedsAPI.Models.Rooms", "Rooms")
+                        .WithMany("RoomStays")
+                        .HasForeignKey("RoomsRoomCode");
+
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomType", b =>
+                {
+                    b.HasOne("HotelbedsAPI.Models.Rooms", "Rooms")
+                        .WithMany()
+                        .HasForeignKey("RoomsRoomCode");
+
+                    b.Navigation("Rooms");
                 });
 
             modelBuilder.Entity("HotelPhone", b =>
@@ -720,13 +727,6 @@ namespace TravelTayo.Migrations
                 {
                     b.HasOne("Hotel", null)
                         .WithMany("Images")
-                        .HasForeignKey("HotelId");
-                });
-
-            modelBuilder.Entity("Room", b =>
-                {
-                    b.HasOne("Hotel", null)
-                        .WithMany("Rooms")
                         .HasForeignKey("HotelId");
                 });
 
@@ -764,17 +764,7 @@ namespace TravelTayo.Migrations
                     b.Navigation("Hotels");
                 });
 
-            modelBuilder.Entity("Chain", b =>
-                {
-                    b.Navigation("Hotels");
-                });
-
             modelBuilder.Entity("Country", b =>
-                {
-                    b.Navigation("Hotels");
-                });
-
-            modelBuilder.Entity("Destination", b =>
                 {
                     b.Navigation("Hotels");
                 });
@@ -782,8 +772,6 @@ namespace TravelTayo.Migrations
             modelBuilder.Entity("Hotel", b =>
                 {
                     b.Navigation("Boards");
-
-                    b.Navigation("Facilities");
 
                     b.Navigation("Images");
 
@@ -796,6 +784,13 @@ namespace TravelTayo.Migrations
                     b.Navigation("Terminals");
 
                     b.Navigation("Wildcards");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.Rooms", b =>
+                {
+                    b.Navigation("RoomFacilities");
+
+                    b.Navigation("RoomStays");
                 });
 
             modelBuilder.Entity("State", b =>

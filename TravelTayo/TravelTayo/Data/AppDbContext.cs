@@ -1,4 +1,5 @@
 ﻿
+using HotelbedsAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using TravelTayo.Models;
@@ -16,21 +17,22 @@ namespace TravelTayo.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<Destination> Destinations { get; set; }
         public DbSet<Zone> Zones { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryGroup> CategoryGroups { get; set; }
-        public DbSet<Chain> Chains { get; set; }
         public DbSet<AccommodationType> AccommodationTypes { get; set; }
         public DbSet<Board> Boards { get; set; }
         public DbSet<Segment> Segments { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Room> Rooms { get; set; }
-        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<Rooms> Rooms { get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<HotelPhone> HotelPhones { get; set; }
         public DbSet<HotelWildcard> HotelWildcards { get; set; }
+        public DbSet<RoomFacility> RoomFacility { get; set; }
+
+        public DbSet<RoomStay> RoomStay { get; set; }
+        public DbSet<RoomType> RoomType { get; set; }
         //public DbSet<Room> Rooms { get; set; }
         //public DbSet<Facility> Facilities { get; set; }
         //public DbSet<Terminal> Terminals { get; set; }
@@ -53,12 +55,6 @@ namespace TravelTayo.Data
                     .OnDelete(DeleteBehavior.Restrict);
 
                 modelBuilder.Entity<Hotel>()
-                    .HasOne(h => h.Destination)
-                    .WithMany(d => d.Hotels)
-                    .HasForeignKey(h => h.DestinationId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                modelBuilder.Entity<Hotel>()
                     .HasOne(h => h.Zone)
                     .WithMany(z => z.Hotels)
                     .HasForeignKey(h => h.ZoneId)
@@ -74,12 +70,6 @@ namespace TravelTayo.Data
                     .HasOne(h => h.CategoryGroup)
                     .WithMany(cg => cg.Hotels)
                     .HasForeignKey(h => h.CategoryGroupId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                modelBuilder.Entity<Hotel>()
-                    .HasOne(h => h.Chain)
-                    .WithMany(c => c.Hotels)
-                    .HasForeignKey(h => h.ChainId)
                     .OnDelete(DeleteBehavior.Restrict);
 
                 modelBuilder.Entity<Hotel>()
@@ -112,6 +102,11 @@ namespace TravelTayo.Data
                 entity.Property(e => e.EmailAddress)
                       .IsRequired()
                       .HasMaxLength(256);
+
+                modelBuilder.Entity<Rooms>()
+                    .HasOne(r => r.Hotel)
+                    .WithMany(h => h.Rooms)
+                    .HasForeignKey(r => r.HotelId);
 
                 entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.GCashQRCode).HasMaxLength(500);

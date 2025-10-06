@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelbedsAPI.Models
 {
-    public class Room
+    public class Rooms
     {
         [Key]
         public string RoomCode { get; set; } // maps to "roomCode"
 
-        public long HotelId { get; set; }
+        public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
 
         public bool IsParentRoom { get; set; }
@@ -31,9 +31,7 @@ namespace HotelbedsAPI.Models
     {
         [Key]
         public int Id { get; set; }
-
-        public string RoomCode { get; set; }
-        public Room Room { get; set; }
+        public Rooms Room { get; set; }
 
         public int FacilityCode { get; set; }
         public int FacilityGroupCode { get; set; }
@@ -46,25 +44,24 @@ namespace HotelbedsAPI.Models
     {
         [Key]
         public int Id { get; set; }
-
-        public string RoomCode { get; set; }
-        public Room Room { get; set; }
+        public Rooms Rooms { get; set; }
 
         public string StayType { get; set; } // e.g., "BED"
         public int Order { get; set; } // sequence/order
         public string Description { get; set; }
 
-        public List<RoomStayFacility> RoomStayFacilities { get; set; }
+   
     }
 
-    public class RoomStayFacility
+
+
+    public class RoomType
     {
         [Key]
         public int Id { get; set; }
+        public string? Code { get; set; }
 
-        public int RoomStayId { get; set; }
-        public RoomStay RoomStay { get; set; }
+        public Rooms Rooms { get; set; }
 
-        public string PMSRoomCode { get; set; } // e.g., "N/A"
     }
 }
