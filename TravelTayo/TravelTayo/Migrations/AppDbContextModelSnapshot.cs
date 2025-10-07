@@ -238,69 +238,78 @@ namespace TravelTayo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("FacilityCode")
+                    b.Property<int?>("FacilityCode")
                         .HasColumnType("int");
 
-                    b.Property<int>("FacilityGroupCode")
+                    b.Property<int?>("FacilityGroupCode")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IndYesOrNo")
+                    b.Property<bool?>("IndYesOrNo")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Number")
+                    b.Property<int?>("Number")
                         .HasColumnType("int");
 
-                    b.Property<string>("RoomCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("Voucher")
+                    b.Property<bool?>("Voucher")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomCode");
+                    b.HasIndex("RoomId");
 
                     b.ToTable("RoomFacility");
                 });
 
             modelBuilder.Entity("HotelbedsAPI.Models.Rooms", b =>
                 {
-                    b.Property<string>("RoomCode")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CharacteristicCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsParentRoom")
+                    b.Property<bool?>("IsParentRoom")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MaxAdults")
+                    b.Property<int?>("MaxAdults")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxChildren")
+                    b.Property<int?>("MaxChildren")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxPax")
+                    b.Property<int?>("MaxPax")
                         .HasColumnType("int");
 
-                    b.Property<int>("MinAdults")
+                    b.Property<int?>("MinAdults")
                         .HasColumnType("int");
 
-                    b.Property<int>("MinPax")
+                    b.Property<int?>("MinPax")
                         .HasColumnType("int");
 
-                    b.Property<string>("RoomType")
+                    b.Property<string>("RoomCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("RoomCode");
+                    b.Property<string>("RoomType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoomTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("HotelId");
+
+                    b.HasIndex("RoomTypeId");
 
                     b.ToTable("Rooms");
                 });
@@ -314,22 +323,20 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
+                    b.Property<int?>("Order")
                         .HasColumnType("int");
 
-                    b.Property<string>("RoomsRoomCode")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
 
                     b.Property<string>("StayType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomsRoomCode");
+                    b.HasIndex("RoomId");
 
                     b.ToTable("RoomStay");
                 });
@@ -345,12 +352,7 @@ namespace TravelTayo.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoomsRoomCode")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomsRoomCode");
 
                     b.ToTable("RoomType");
                 });
@@ -386,7 +388,6 @@ namespace TravelTayo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("HotelId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
@@ -396,7 +397,7 @@ namespace TravelTayo.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("HotelWildcards");
+                    b.ToTable("HotelWildcard");
                 });
 
             modelBuilder.Entity("Image", b =>
@@ -665,7 +666,7 @@ namespace TravelTayo.Migrations
                 {
                     b.HasOne("HotelbedsAPI.Models.Rooms", "Room")
                         .WithMany("RoomFacilities")
-                        .HasForeignKey("RoomCode")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -680,25 +681,22 @@ namespace TravelTayo.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("HotelbedsAPI.Models.RoomType", null)
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomTypeId");
+
                     b.Navigation("Hotel");
                 });
 
             modelBuilder.Entity("HotelbedsAPI.Models.RoomStay", b =>
                 {
-                    b.HasOne("HotelbedsAPI.Models.Rooms", "Rooms")
+                    b.HasOne("HotelbedsAPI.Models.Rooms", "Room")
                         .WithMany("RoomStays")
-                        .HasForeignKey("RoomsRoomCode");
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("HotelbedsAPI.Models.RoomType", b =>
-                {
-                    b.HasOne("HotelbedsAPI.Models.Rooms", "Rooms")
-                        .WithMany()
-                        .HasForeignKey("RoomsRoomCode");
-
-                    b.Navigation("Rooms");
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("HotelPhone", b =>
@@ -716,9 +714,7 @@ namespace TravelTayo.Migrations
                 {
                     b.HasOne("Hotel", "Hotel")
                         .WithMany("Wildcards")
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HotelId");
 
                     b.Navigation("Hotel");
                 });
@@ -791,6 +787,11 @@ namespace TravelTayo.Migrations
                     b.Navigation("RoomFacilities");
 
                     b.Navigation("RoomStays");
+                });
+
+            modelBuilder.Entity("HotelbedsAPI.Models.RoomType", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 
             modelBuilder.Entity("State", b =>

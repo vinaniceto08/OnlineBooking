@@ -28,7 +28,6 @@ namespace TravelTayo.Data
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<HotelPhone> HotelPhones { get; set; }
-        public DbSet<HotelWildcard> HotelWildcards { get; set; }
         public DbSet<RoomFacility> RoomFacility { get; set; }
 
         public DbSet<RoomStay> RoomStay { get; set; }
@@ -88,11 +87,6 @@ namespace TravelTayo.Data
                     .HasOne(p => p.Hotel)
                     .WithMany(h => h.Phones)
                     .HasForeignKey(p => p.HotelId);
-
-                modelBuilder.Entity<HotelWildcard>()
-                    .HasOne(w => w.Hotel)
-                    .WithMany(h => h.Wildcards)
-                    .HasForeignKey(w => w.HotelId);
 
                 entity.HasKey(e => e.ReferralRegistrationId);
 

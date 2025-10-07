@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TravelTayo.Migrations
 {
-    public partial class InitialCreation : Migration
+    public partial class NewCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -117,6 +117,19 @@ namespace TravelTayo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ReferralRegistrations", x => x.ReferralRegistrationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoomType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -259,23 +272,22 @@ namespace TravelTayo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HotelWildcards",
+                name: "HotelWildcard",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HotelId = table.Column<int>(type: "int", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: true),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HotelWildcards", x => x.Id);
+                    table.PrimaryKey("PK_HotelWildcard", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HotelWildcards_Hotels_HotelId",
+                        name: "FK_HotelWildcard_Hotels_HotelId",
                         column: x => x.HotelId,
                         principalTable: "Hotels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -301,26 +313,34 @@ namespace TravelTayo.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    RoomCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HotelId = table.Column<int>(type: "int", nullable: false),
-                    IsParentRoom = table.Column<bool>(type: "bit", nullable: false),
-                    MinPax = table.Column<int>(type: "int", nullable: false),
-                    MaxPax = table.Column<int>(type: "int", nullable: false),
-                    MaxAdults = table.Column<int>(type: "int", nullable: false),
-                    MaxChildren = table.Column<int>(type: "int", nullable: false),
-                    MinAdults = table.Column<int>(type: "int", nullable: false),
-                    RoomType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CharacteristicCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsParentRoom = table.Column<bool>(type: "bit", nullable: true),
+                    MinPax = table.Column<int>(type: "int", nullable: true),
+                    MaxPax = table.Column<int>(type: "int", nullable: true),
+                    MaxAdults = table.Column<int>(type: "int", nullable: true),
+                    MaxChildren = table.Column<int>(type: "int", nullable: true),
+                    MinAdults = table.Column<int>(type: "int", nullable: true),
+                    RoomType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CharacteristicCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoomTypeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.RoomCode);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Rooms_Hotels_HotelId",
                         column: x => x.HotelId,
                         principalTable: "Hotels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomType_RoomTypeId",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomType",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -368,21 +388,21 @@ namespace TravelTayo.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FacilityCode = table.Column<int>(type: "int", nullable: false),
-                    FacilityGroupCode = table.Column<int>(type: "int", nullable: false),
-                    Number = table.Column<int>(type: "int", nullable: false),
-                    IndYesOrNo = table.Column<bool>(type: "bit", nullable: false),
-                    Voucher = table.Column<bool>(type: "bit", nullable: false)
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    FacilityCode = table.Column<int>(type: "int", nullable: true),
+                    FacilityGroupCode = table.Column<int>(type: "int", nullable: true),
+                    Number = table.Column<int>(type: "int", nullable: true),
+                    IndYesOrNo = table.Column<bool>(type: "bit", nullable: true),
+                    Voucher = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RoomFacility", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoomFacility_Rooms_RoomCode",
-                        column: x => x.RoomCode,
+                        name: "FK_RoomFacility_Rooms_RoomId",
+                        column: x => x.RoomId,
                         principalTable: "Rooms",
-                        principalColumn: "RoomCode",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -392,38 +412,20 @@ namespace TravelTayo.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomsRoomCode = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    StayType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Order = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    StayType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Order = table.Column<int>(type: "int", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RoomStay", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoomStay_Rooms_RoomsRoomCode",
-                        column: x => x.RoomsRoomCode,
+                        name: "FK_RoomStay_Rooms_RoomId",
+                        column: x => x.RoomId,
                         principalTable: "Rooms",
-                        principalColumn: "RoomCode");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RoomType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RoomsRoomCode = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomType", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RoomType_Rooms_RoomsRoomCode",
-                        column: x => x.RoomsRoomCode,
-                        principalTable: "Rooms",
-                        principalColumn: "RoomCode");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -478,8 +480,8 @@ namespace TravelTayo.Migrations
                 column: "ZoneId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HotelWildcards_HotelId",
-                table: "HotelWildcards",
+                name: "IX_HotelWildcard_HotelId",
+                table: "HotelWildcard",
                 column: "HotelId");
 
             migrationBuilder.CreateIndex(
@@ -494,9 +496,9 @@ namespace TravelTayo.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomFacility_RoomCode",
+                name: "IX_RoomFacility_RoomId",
                 table: "RoomFacility",
-                column: "RoomCode");
+                column: "RoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_HotelId",
@@ -504,14 +506,14 @@ namespace TravelTayo.Migrations
                 column: "HotelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomStay_RoomsRoomCode",
-                table: "RoomStay",
-                column: "RoomsRoomCode");
+                name: "IX_Rooms_RoomTypeId",
+                table: "Rooms",
+                column: "RoomTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomType_RoomsRoomCode",
-                table: "RoomType",
-                column: "RoomsRoomCode");
+                name: "IX_RoomStay_RoomId",
+                table: "RoomStay",
+                column: "RoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Segments_HotelId",
@@ -536,7 +538,7 @@ namespace TravelTayo.Migrations
                 name: "HotelPhones");
 
             migrationBuilder.DropTable(
-                name: "HotelWildcards");
+                name: "HotelWildcard");
 
             migrationBuilder.DropTable(
                 name: "Images");
@@ -551,9 +553,6 @@ namespace TravelTayo.Migrations
                 name: "RoomStay");
 
             migrationBuilder.DropTable(
-                name: "RoomType");
-
-            migrationBuilder.DropTable(
                 name: "Segments");
 
             migrationBuilder.DropTable(
@@ -564,6 +563,9 @@ namespace TravelTayo.Migrations
 
             migrationBuilder.DropTable(
                 name: "Hotels");
+
+            migrationBuilder.DropTable(
+                name: "RoomType");
 
             migrationBuilder.DropTable(
                 name: "AccommodationTypes");

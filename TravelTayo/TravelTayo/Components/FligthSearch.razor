@@ -1,0 +1,253 @@
+﻿@page "/flightsearch"
+
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+
+    .flight-card {
+        max-width: 80%;
+        margin: 40px auto;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        background: #fff;
+    }
+
+    .btn-lightblue {
+        background-color: #add8e6;
+        color: #000;
+        border: none;
+    }
+
+        .btn-lightblue:hover {
+            background-color: #9bc9dc;
+            color: #000;
+        }
+
+    /* Guest dropdown */
+    .guests-wrapper {
+        position: relative;
+    }
+
+    .guests-menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 56px;
+        left: 0;
+        z-index: 1200;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+        .guests-menu.show {
+            display: block;
+        }
+
+    .guest-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 4px;
+    }
+
+    .guest-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .guest-circle-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        font-size: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: #add8e6;
+        color: #000;
+    }
+
+    .guest-count {
+        min-width: 28px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+</style>
+
+<div class="flight-card">
+    <h4 class="mb-3">Search Flights</h4>
+
+    <form method="post">
+        <!-- Trip Type -->
+        <div class="col-12 mb-3">
+            <div class="d-flex gap-3 align-items-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="TripType" id="oneWay" value="OneWay">
+                    <label class="form-check-label fw-semibold" for="oneWay">One Way</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="TripType" id="roundTrip" value="RoundTrip">
+                    <label class="form-check-label fw-semibold" for="roundTrip">Round Trip</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flight Inputs -->
+        <div class="row g-2 p-1 rounded shadow-sm bg-white border">
+            <div class="col-md-6">
+                <label asp-for="From" class="form-label">From</label>
+                <input asp-for="From" class="form-control" placeholder="City or Airport" />
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="To" class="form-label">To</label>
+                <input asp-for="To" class="form-control" placeholder="City or Airport" />
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="DepartDate" class="form-label">Departure Date</label>
+                <input asp-for="DepartDate" type="date" class="form-control" />
+            </div>
+
+            <div class="col-md-6" id="returnDateContainer">
+                <label asp-for="ReturnDate" class="form-label">Return Date</label>
+                <input asp-for="ReturnDate" type="date" class="form-control" />
+            </div>
+
+            <!-- Guests -->
+            <div class="col-6">
+                <label class="form-label">Guests</label>
+                <div class="guests-wrapper">
+                    <input type="text" id="guestsDisplay" class="form-control" readonly placeholder="1 Adult" />
+                    <input asp-for="Adults" type="hidden" id="AdultsInput" />
+                    <input asp-for="Children" type="hidden" id="ChildrenInput" />
+
+                    <div id="guestsMenu" class="guests-menu" role="menu" aria-hidden="true">
+                        <div>
+                            <p style="font-weight:bold; color:black">Number of Guests</p>
+                            <p style="font-style:italic; color:gray">You can only book a maximum of 20 guests excluding infants</p>
+                        </div>
+                        <div class="guest-row">
+                            <div>Adults<p style="font-style:italic; color:gray;">12+ years</p></div>
+                            <div class="guest-controls">
+                                <button type="button" class="guest-circle-btn minus-adult">−</button>
+                                <div class="guest-count" id="adultCountLabel">1</div>
+                                <button type="button" class="guest-circle-btn plus-adult">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row">
+                            <div>Children<p style="font-style:italic; color:gray;">2–11 years</p></div>
+                            <div class="guest-controls">
+                                <button type="button" class="guest-circle-btn minus-child">−</button>
+                                <div class="guest-count" id="childCountLabel">0</div>
+                                <button type="button" class="guest-circle-btn plus-child">+</button>
+                            </div>
+                        </div>
+                        <div class="text-end mt-2">
+                            <button type="button" class="btn btn-lightblue" id="guestsDoneBtn">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">
+                    <i class="bi bi-search me-1"></i> Search Flights
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- jQuery + Script -->
+<script>
+    $(function () {
+        const storageKey = "travelTayoGuests";
+
+        // === Trip Type ===
+        $("#oneWay").prop("checked", true);
+        $("#returnDateContainer").hide();
+
+        $("input[name='TripType']").change(function () {
+            if ($("#oneWay").is(":checked")) {
+                $("#returnDateContainer").slideUp(200);
+            } else {
+                $("#returnDateContainer").slideDown(200);
+            }
+        });
+
+        // === Guests ===
+        let adults = 1, children = 0;
+
+        // Load from cache
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                adults = parsed.adults ?? 1;
+                children = parsed.children ?? 0;
+            } catch (e) { console.warn("Invalid cache"); }
+        }
+
+        updateGuestsDisplay();
+
+        function updateGuestsDisplay() {
+            $("#adultCountLabel").text(adults);
+            $("#childCountLabel").text(children);
+            let summary = `${adults} Adult${adults > 1 ? 's' : ''}`;
+            if (children > 0) summary += `, ${children} Child${children > 1 ? 'ren' : ''}`;
+            $("#guestsDisplay").val(summary);
+        }
+
+        // Toggle guest menu
+        $("#guestsDisplay").on("click", function (e) {
+            e.stopPropagation();
+            $("#guestsMenu").toggleClass("show");
+        });
+
+        $(document).on("click", function (e) {
+            if (!$(e.target).closest("#guestsMenu, #guestsDisplay").length) {
+                $("#guestsMenu").removeClass("show");
+            }
+        });
+
+        // Buttons
+        $(".plus-adult").click(function () {
+            adults = Math.min(20, adults + 1);
+            updateGuestsDisplay();
+        });
+        $(".minus-adult").click(function () {
+            adults = Math.max(1, adults - 1);
+            updateGuestsDisplay();
+        });
+        $(".plus-child").click(function () {
+            children = Math.min(20, children + 1);
+            updateGuestsDisplay();
+        });
+        $(".minus-child").click(function () {
+            children = Math.max(0, children - 1);
+            updateGuestsDisplay();
+        });
+
+        // Apply button
+        $("#guestsDoneBtn").click(function () {
+            $("#AdultsInput").val(adults);
+            $("#ChildrenInput").val(children);
+            localStorage.setItem(storageKey, JSON.stringify({ adults, children }));
+            $("#guestsMenu").removeClass("show");
+        });
+    });
+</script>
