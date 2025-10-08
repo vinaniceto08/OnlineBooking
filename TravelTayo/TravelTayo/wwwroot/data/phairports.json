@@ -1,0 +1,127 @@
+[
+  {
+    "code": "MNL",
+    "city": "Manila",
+    "name": "Ninoy Aquino International Airport"
+  },
+  {
+    "code": "CRK",
+    "city": "Clark / Angeles City",
+    "name": "Clark International Airport"
+  },
+  {
+    "code": "CEB",
+    "city": "Cebu / Lapu-Lapu City",
+    "name": "Mactan-Cebu International Airport"
+  },
+  {
+    "code": "DVO",
+    "city": "Davao City",
+    "name": "Francisco Bangoy International Airport"
+  },
+  {
+    "code": "ILO",
+    "city": "Iloilo City",
+    "name": "Iloilo International Airport"
+  },
+  {
+    "code": "KLO",
+    "city": "Kalibo",
+    "name": "Kalibo International Airport"
+  },
+  {
+    "code": "LAO",
+    "city": "Laoag",
+    "name": "Laoag International Airport"
+  },
+  {
+    "code": "PPS",
+    "city": "Puerto Princesa",
+    "name": "Puerto Princesa International Airport"
+  },
+  {
+    "code": "TAG",
+    "city": "Panglao / Bohol",
+    "name": "Bohol-Panglao International Airport"
+  },
+  {
+    "code": "ZAM",
+    "city": "Zamboanga City",
+    "name": "Zamboanga International Airport"
+  },
+  {
+    "code": "CBO",
+    "city": "Cotabato",
+    "name": "Cotabato Airport (Awang Airport)"
+  },
+  {
+    "code": "VRC",
+    "city": "Virac",
+    "name": "Virac Airport"
+  },
+  {
+    "code": "OMC",
+    "city": "Ormoc",
+    "name": "Ormoc Airport"
+  },
+  {
+    "code": "TAC",
+    "city": "Tacloban",
+    "name": "Daniel Z. Romualdez Airport"
+  },
+  {
+    "code": "BCD",
+    "city": "Bacolod",
+    "name": "Bacolod-Silay International Airport"
+  },
+  {
+    "code": "DPL",
+    "city": "Dipolog",
+    "name": "Dipolog Airport"
+  },
+  {
+    "code": "PAG",
+    "city": "Pagadian",
+    "name": "Pagadian Airport"
+  },
+  {
+    "code": "MPH",
+    "city": "Caticlan / Boracay",
+    "name": "Godofredo P. Ramos Airport (Caticlan)"
+  },
+  {
+    "code": "CGY",
+    "city": "Cagayan de Oro / Laguindingan",
+    "name": "Laguindingan Airport"
+  },
+  {
+    "code": "OZC",
+    "city": "Ozamiz",
+    "name": "Ozamiz City Airport"
+  },
+  {
+    "code": "BXU",
+    "city": "Butuan",
+    "name": "Bancasi Airport"
+  },
+  {
+    "code": "SUG",
+    "city": "Surigao",
+    "name": "Surigao Airport"
+  },
+  {
+    "code": "CRM",
+    "city": "Catarman",
+    "name": "Catarman National Airport"
+  },
+  {
+    "code": "CYP",
+    "city": "Calbayog",
+    "name": "Calbayog Airport"
+  },
+  {
+    "code": "MBO",
+    "city": "Mamburao",
+    "name": "Mamburao Airport"
+  }
+]
