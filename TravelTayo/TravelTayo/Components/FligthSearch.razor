@@ -1,5 +1,9 @@
 ﻿@page "/flightsearch"
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 <style>
     body {
         background-color: #ffffff;
@@ -7,23 +11,44 @@
     }
 
     .flight-card {
-        max-width: 80%;
         margin: 40px auto;
-        padding: 22px;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
         background: #fff;
+        max-width: 900px;
     }
 
     .btn-lightblue {
-        background-color: #add8e6;
-        color: #000;
+        background-color: #e7f4fa;
+        color: #0077b6;
         border: none;
+        font-size: 20px;
+        padding: 6px 12px;
+        transition: background 0.2s;
     }
 
         .btn-lightblue:hover {
-            background-color: #9bc9dc;
-            color: #000;
+            background-color: #d5effc;
+        }
+
+    /* Inputs Row */
+    .input-group-flex {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .form-control {
+        height: 48px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+    }
+
+        .form-control:focus {
+            border-color: #0077b6;
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
         }
 
     /* Guest dropdown */
@@ -35,11 +60,11 @@
         display: none;
         position: absolute;
         width: 100%;
-        top: 56px;
+        top: 54px;
         left: 0;
-        z-index: 1200;
+        z-index: 1000;
         background: #fff;
-        border: 1px solid #e0e0e0;
+        border: 1px solid #ddd;
         border-radius: 8px;
         padding: 12px;
         box-shadow: 0 8px 22px rgba(0,0,0,0.08);
@@ -53,7 +78,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 4px;
+        padding: 6px 2px;
     }
 
     .guest-controls {
@@ -63,8 +88,8 @@
     }
 
     .guest-circle-btn {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         border: none;
         font-size: 18px;
@@ -72,76 +97,226 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        background: #add8e6;
-        color: #000;
+        background: #e7f4fa;
+        color: #0077b6;
     }
 
     .guest-count {
-        min-width: 28px;
+        min-width: 26px;
         text-align: center;
         font-weight: 600;
     }
 
-    .form-label {
-        font-weight: 600;
+    /* Compact row for date + guests */
+    .date-guest-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 12px;
     }
+
+        .date-guest-row input {
+            flex: 1;
+        }
+
+    /* Icons inside placeholders */
+    .input-icon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 6px 10px;
+        margin-bottom: 10px;
+    }
+
+        .input-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #666;
+        }
+
+        .input-icon input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+
+            .input-icon input::placeholder {
+                color: #999;
+            }
+
+    /* Ensure 2 buttons per row */
+    .fare-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        max-width: 1000px; /* adjust as needed */
+    }
+
+        /* Highlight active button */
+        .fare-options .btn.active {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            border: 2px solid #0056b3;
+        }
 </style>
 
+
 <div class="flight-card">
-    <h4 class="mb-3">Search Flights</h4>
+    <h2 class="text-center fw-bold text-primary">Search Flights</h2>
 
     <form method="post">
         <!-- Trip Type -->
-        <div class="col-12 mb-3">
-            <div class="d-flex gap-3 align-items-center">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="TripType" id="oneWay" value="OneWay">
-                    <label class="form-check-label fw-semibold" for="oneWay">One Way</label>
+        <div class="d-flex gap-3 align-items-center mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="TripType" id="oneWay" value="OneWay" checked>
+                <label class="form-check-label fw-semibold" for="oneWay">One Way</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="TripType" id="roundTrip" value="RoundTrip">
+                <label class="form-check-label fw-semibold" for="roundTrip">Round Trip</label>
+            </div>
+        </div>
+
+
+
+        <!-- From / To -->
+    @*     <div class="input-group-flex">
+            <div class="input-icon flex-grow-1">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 1 0-3 0V9L2 14v2l8-2.5V21l2-1 2 1v-9.5z" /></svg>
+                <input asp-for="From" id="FromInput" class="form-control" placeholder="From (City or Airport)" />
+            </div>
+
+            <button type="button" id="swapAirport" class="btn btn-lightblue rounded-circle" title="Swap From/To">
+                ⇄
+            </button>
+
+            <div class="input-icon flex-grow-1">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 8v2l8 5v5.5a1.5 1.5 0 1 0 3 0V15l8-5V8l-8 2.5V3l-2 1-2-1v7.5z" /></svg>
+                <input asp-for="To" id="ToInput" class="form-control" placeholder="To (City or Airport)" />
+            </div>
+        </div> *@
+        <div class="row g-2 align-items-center">
+            <div class="col-12 col-md-5">
+                <div class="input-icon">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 1 0-3 0V9L2 14v2l8-2.5V21l2-1 2 1v-9.5z" /></svg>
+                    <input asp-for="From" id="FromInput" class="form-control" placeholder="From (City or Airport)" />
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="TripType" id="roundTrip" value="RoundTrip">
-                    <label class="form-check-label fw-semibold" for="roundTrip">Round Trip</label>
+            </div>
+
+            <div class="col-12 col-md-2 text-center">
+                <button type="button" id="swapAirport" class="btn btn-lightblue rounded-circle" title="Swap From/To">
+                    ⇄
+                </button>
+            </div>
+
+            <div class="col-12 col-md-5">
+                <div class="input-icon">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 8v2l8 5v5.5a1.5 1.5 0 1 0 3 0V15l8-5V8l-8 2.5V3l-2 1-2-1v7.5z" /></svg>
+                    <input asp-for="To" id="ToInput" class="form-control" placeholder="To (City or Airport)" />
                 </div>
             </div>
         </div>
 
-        <!-- Flight Inputs -->
-        <div class="row g-2 p-1 rounded shadow-sm bg-white border">
-            <div class="col-md-6">
-                <label asp-for="From" class="form-label">From</label>
-                <input asp-for="From" class="form-control" placeholder="City or Airport" />
+
+        <!-- Date + Guests -->
+       @*  <div class="date-guest-row">
+            <div class="input-icon">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 6H5v12h14V8z" /></svg>
+                <input asp-for="DepartDate" type="text" id="departDate" class="form-control" placeholder="Depart" autocomplete="off" />
             </div>
 
-            <div class="col-md-6">
-                <label asp-for="To" class="form-label">To</label>
-                <input asp-for="To" class="form-control" placeholder="City or Airport" />
+            <div class="input-icon" id="returnDateContainer">
+                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10z" /></svg>
+                <input asp-for="ReturnDate" type="text" id="returnDate" class="form-control" placeholder="Return" autocomplete="off" />
             </div>
 
-            <div class="col-md-6">
-                <label asp-for="DepartDate" class="form-label">Departure Date</label>
-                <input asp-for="DepartDate" type="date" class="form-control" />
-            </div>
-
-            <div class="col-md-6" id="returnDateContainer">
-                <label asp-for="ReturnDate" class="form-label">Return Date</label>
-                <input asp-for="ReturnDate" type="date" class="form-control" />
-            </div>
-
-            <!-- Guests -->
-            <div class="col-6">
-                <label class="form-label">Guests</label>
-                <div class="guests-wrapper">
+            <div class="guests-wrapper flex-grow-1">
+                <div class="input-icon">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4a4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
                     <input type="text" id="guestsDisplay" class="form-control" readonly placeholder="1 Adult" />
+                </div>
+                <input asp-for="Adults" type="hidden" id="AdultsInput" />
+                <input asp-for="Children" type="hidden" id="ChildrenInput" />
+                <input asp-for="Infants" type="hidden" id="InfantsInput" />
+                <input asp-for="PlaneType" type="hidden" id="PlaneTypeInput" />
+
+                <!-- Guests Dropdown -->
+                <div id="guestsMenu" class="guests-menu">
+                    <div></div>
+                    <div class="guest-row">
+                        <div>Adults <p style="color:gray;font-size:12px;font-style:italic">(12+ years and above)</p></div>
+                        <div class="guest-controls">
+                            <button type="button" class="guest-circle-btn minus-adult">−</button>
+                            <div class="guest-count" id="adultCountLabel">1</div>
+                            <button type="button" class="guest-circle-btn plus-adult">+</button>
+                        </div>
+                    </div>
+                    <div class="guest-row">
+                        <div>Children <p style="color:gray;font-size:12px; font-style:italic">2–11 years</p></div>
+                        <div class="guest-controls">
+                            <button type="button" class="guest-circle-btn minus-child">−</button>
+                            <div class="guest-count" id="childCountLabel">0</div>
+                            <button type="button" class="guest-circle-btn plus-child">+</button>
+                        </div>
+                    </div>
+                    <div class="guest-row">
+                        <div>Infants <p style="color:gray;font-size:12px; font-style:italic">(below 2 years)</p></div>
+                        <div class="guest-controls">
+                            <button type="button" class="guest-circle-btn minus-infant">−</button>
+                            <div class="guest-count" id="infantCountLabel">0</div>
+                            <button type="button" class="guest-circle-btn plus-infant">+</button>
+                        </div>
+                    </div>
+                    <div class="fare-options g-1 mt-2">
+                        <button type="button" class="btn btn-outline-primary active" id="Economy">Economy</button>
+                        <button type="button" class="btn btn-outline-primary" id="Premium">Premium Economy</button>
+                        <button type="button" class="btn btn-outline-primary" id="Business">Business</button>
+                        <button type="button" class="btn btn-outline-primary" id="First">First</button>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button type="button" class="btn btn-primary" id="guestsDoneBtn">Done</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div> *@
+
+        <div class="row g-2 align-items-center date-guest-row">
+            <div class="col-12 col-md-4">
+                <div class="input-icon">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 6H5v12h14V8z" /></svg>
+                    <input asp-for="DepartDate" type="text" id="departDate" class="form-control" placeholder="Depart" autocomplete="off" />
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="input-icon" id="returnDateContainer">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10z" /></svg>
+                    <input asp-for="ReturnDate" type="text" id="returnDate" class="form-control" placeholder="Return" autocomplete="off" />
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12">
+                <div class="guests-wrapper flex-grow-1">
+                    <div class="input-icon">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4a4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+                        <input type="text" id="guestsDisplay" class="form-control" readonly placeholder="1 Adult" />
+                    </div>
+                    <!-- your hidden inputs and dropdown go here -->
                     <input asp-for="Adults" type="hidden" id="AdultsInput" />
                     <input asp-for="Children" type="hidden" id="ChildrenInput" />
+                    <input asp-for="Infants" type="hidden" id="InfantsInput" />
+                    <input asp-for="PlaneType" type="hidden" id="PlaneTypeInput" />
 
-                    <div id="guestsMenu" class="guests-menu" role="menu" aria-hidden="true">
-                        <div>
-                            <p style="font-weight:bold; color:black">Number of Guests</p>
-                            <p style="font-style:italic; color:gray">You can only book a maximum of 20 guests excluding infants</p>
-                        </div>
+                    <!-- Guests Dropdown -->
+                    <div id="guestsMenu" class="guests-menu">
+                        <div></div>
                         <div class="guest-row">
-                            <div>Adults<p style="font-style:italic; color:gray;">12+ years</p></div>
+                            <div>Adults <p style="color:gray;font-size:12px;font-style:italic">(12+ years and above)</p></div>
                             <div class="guest-controls">
                                 <button type="button" class="guest-circle-btn minus-adult">−</button>
                                 <div class="guest-count" id="adultCountLabel">1</div>
@@ -149,28 +324,44 @@
                             </div>
                         </div>
                         <div class="guest-row">
-                            <div>Children<p style="font-style:italic; color:gray;">2–11 years</p></div>
+                            <div>Children <p style="color:gray;font-size:12px; font-style:italic">2–11 years</p></div>
                             <div class="guest-controls">
                                 <button type="button" class="guest-circle-btn minus-child">−</button>
                                 <div class="guest-count" id="childCountLabel">0</div>
                                 <button type="button" class="guest-circle-btn plus-child">+</button>
                             </div>
                         </div>
+                        <div class="guest-row">
+                            <div>Infants <p style="color:gray;font-size:12px; font-style:italic">(below 2 years)</p></div>
+                            <div class="guest-controls">
+                                <button type="button" class="guest-circle-btn minus-infant">−</button>
+                                <div class="guest-count" id="infantCountLabel">0</div>
+                                <button type="button" class="guest-circle-btn plus-infant">+</button>
+                            </div>
+                        </div>
+                        <div class="fare-options g-1 mt-2">
+                            <button type="button" class="btn btn-outline-primary active" id="Economy">Economy</button>
+                            <button type="button" class="btn btn-outline-primary" id="Premium">Premium Economy</button>
+                            <button type="button" class="btn btn-outline-primary" id="Business">Business</button>
+                            <button type="button" class="btn btn-outline-primary" id="First">First</button>
+                        </div>
                         <div class="text-end mt-2">
-                            <button type="button" class="btn btn-lightblue" id="guestsDoneBtn">Done</button>
+                            <button type="button" class="btn btn-primary" id="guestsDoneBtn">Done</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-12 text-center mt-4">
-                <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">
-                    <i class="bi bi-search me-1"></i> Search Flights
-                </button>
-            </div>
+        <!-- Search Button -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">
+                🔍 Search Flights
+            </button>
         </div>
     </form>
 </div>
+
 
 <!-- jQuery + Script -->
 <script>
@@ -178,19 +369,41 @@
         const storageKey = "travelTayoGuests";
 
         // === Trip Type ===
-        $("#oneWay").prop("checked", true);
-        $("#returnDateContainer").hide();
+        if ($("#oneWay").length) {
+            $("#oneWay").prop("checked", true);
+            $("#returnDateContainer").hide();
 
-        $("input[name='TripType']").change(function () {
-            if ($("#oneWay").is(":checked")) {
-                $("#returnDateContainer").slideUp(200);
-            } else {
-                $("#returnDateContainer").slideDown(200);
+            $("input[name='TripType']").change(function () {
+                if ($("#oneWay").is(":checked")) {
+                    $("#returnDateContainer").slideUp(200);
+                } else {
+                    $("#returnDateContainer").slideDown(200);
+                }
+            });
+        }
+
+        // === Swap From/To ===
+        $("#swapAirport").on("click", function () {
+            const $from = $("#FromInput");
+            const $to = $("#ToInput");
+            if ($from.length && $to.length) {
+                const fromVal = $from.val();
+                const toVal = $to.val();
+
+                $from.val(toVal);
+                $to.val(fromVal);
+
+                // animation for feedback
+                $from.add($to).fadeOut(100).fadeIn(100);
             }
         });
 
         // === Guests ===
-        let adults = 1, children = 0;
+        let adults = 1,
+            children = 0,
+            infants = 0,
+            total = 0,
+            planeType = "Economy";
 
         // Load from cache
         const saved = localStorage.getItem(storageKey);
@@ -199,18 +412,24 @@
                 const parsed = JSON.parse(saved);
                 adults = parsed.adults ?? 1;
                 children = parsed.children ?? 0;
-            } catch (e) { console.warn("Invalid cache"); }
+                infants = parsed.infants ?? 0;
+                planeType = parsed.planeType ?? "Economy";
+            } catch (e) {
+                console.warn("Invalid cache");
+            }
         }
-
-        updateGuestsDisplay();
 
         function updateGuestsDisplay() {
             $("#adultCountLabel").text(adults);
             $("#childCountLabel").text(children);
-            let summary = `${adults} Adult${adults > 1 ? 's' : ''}`;
-            if (children > 0) summary += `, ${children} Child${children > 1 ? 'ren' : ''}`;
+            $("#infantCountLabel").text(infants);
+            total = adults + children + infants;
+            let summary = `Total Passenger${total > 1 ? "s" : ""}: ${total}`;
+            if (planeType) summary += `   ${planeType}`;
             $("#guestsDisplay").val(summary);
         }
+
+        updateGuestsDisplay();
 
         // Toggle guest menu
         $("#guestsDisplay").on("click", function (e) {
@@ -224,30 +443,82 @@
             }
         });
 
-        // Buttons
-        $(".plus-adult").click(function () {
+        // Increment/decrement handlers
+        $(".plus-adult").on("click", function () {
             adults = Math.min(20, adults + 1);
             updateGuestsDisplay();
         });
-        $(".minus-adult").click(function () {
+        $(".minus-adult").on("click", function () {
             adults = Math.max(1, adults - 1);
             updateGuestsDisplay();
         });
-        $(".plus-child").click(function () {
+        $(".plus-child").on("click", function () {
             children = Math.min(20, children + 1);
             updateGuestsDisplay();
         });
-        $(".minus-child").click(function () {
+        $(".minus-child").on("click", function () {
             children = Math.max(0, children - 1);
+            updateGuestsDisplay();
+        });
+        $(".plus-infant").on("click", function () {
+            infants = Math.min(20, infants + 1);
+            updateGuestsDisplay();
+        });
+        $(".minus-infant").on("click", function () {
+            infants = Math.max(0, infants - 1);
             updateGuestsDisplay();
         });
 
         // Apply button
-        $("#guestsDoneBtn").click(function () {
+        $("#guestsDoneBtn").on("click", function () {
             $("#AdultsInput").val(adults);
             $("#ChildrenInput").val(children);
-            localStorage.setItem(storageKey, JSON.stringify({ adults, children }));
+            $("#InfantsInput").val(infants);
+            $("#PlaneTypeInput").val(planeType);
+            localStorage.setItem(storageKey, JSON.stringify({ adults, children, infants, planeType }));
             $("#guestsMenu").removeClass("show");
         });
+
+        // === Plane Type Buttons ===
+        $(".fare-options .btn").on("click", function () {
+            $(".fare-options .btn").removeClass("active");
+            $(this).addClass("active");
+            planeType = $(this).text();
+            updateGuestsDisplay();
+        });
+
+        // Ensure Economy is active by default
+        $("#Economy").addClass("active");
+
+        // === Datepickers ===
+        if (typeof flatpickr !== "undefined") {
+            const departPicker = flatpickr("#departDate", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                onChange: function (selectedDates) {
+                    if (selectedDates.length > 0) {
+                        const departDate = selectedDates[0];
+                        returnPicker.set("minDate", departDate);
+                    }
+                }
+            });
+
+            const returnPicker = flatpickr("#returnDate", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                onChange: function (selectedDates) {
+                    const departValue = departPicker.selectedDates[0];
+                    const returnValue = selectedDates[0];
+
+                    if (departValue && returnValue < departValue) {
+                        alert("Return date cannot be earlier than departure date.");
+                        this.clear();
+                    }
+                }
+            });
+        } else {
+            console.warn("Flatpickr not loaded");
+        }
     });
 </script>
+

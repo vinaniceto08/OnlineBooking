@@ -74,6 +74,14 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationStateProvider>();
 }
 
+//builder.Services.AddServerSideBlazor()
+//    .AddHubOptions(options =>
+//    {
+//        options.ClientTimeoutInterval = TimeSpan.FromMinutes(5);
+//        options.HandshakeTimeout = TimeSpan.FromSeconds(30);
+//        options.KeepAliveInterval = TimeSpan.FromSeconds(15);
+//    });
+
 
 var app = builder.Build();
 

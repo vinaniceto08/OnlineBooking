@@ -1,0 +1,132 @@
+﻿  body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+
+    .flight-card {
+        margin: 40px auto;
+        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        background: #fff;
+        max-width: 900px;
+    }
+
+    .btn-lightblue {
+        background-color: #e7f4fa;
+        color: #0077b6;
+        border: none;
+        font-size: 20px;
+        padding: 6px 12px;
+        transition: background 0.2s;
+    }
+
+        .btn-lightblue:hover {
+            background-color: #d5effc;
+        }
+
+    /* Inputs Row */
+    .input-group-flex {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .form-control {
+        height: 48px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+    }
+
+        .form-control:focus {
+            border-color: #0077b6;
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+        }
+
+    /* Guest dropdown */
+    .guests-wrapper {
+        position: relative;
+    }
+
+    .guests-menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 54px;
+        left: 0;
+        z-index: 1000;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+        .guests-menu.show {
+            display: block;
+        }
+
+    .guest-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 2px;
+    }
+
+    .guest-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .guest-circle-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        font-size: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: #e7f4fa;
+        color: #0077b6;
+    }
+
+    .guest-count {
+        min-width: 26px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    /* Compact row for date + guests */
+    .date-guest-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 12px;
+        flex-wrap: wrap;
+    }
+
+        .date-guest-row input {
+            flex: 1;
+        }
+
+    /* Icons inside placeholders */
+    .input-icon {
+        position: relative;
+    }
+
+        .input-icon svg {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            width: 18px;
+            height: 18px;
+            color: gray;
+            transform: translateY(-50%);
+        }
+
+        .input-icon input {
