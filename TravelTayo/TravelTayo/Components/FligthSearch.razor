@@ -373,6 +373,16 @@
 
         console.log("Loading airports...");
 
+        flatpickr("#departDate", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        flatpickr("#returnDate", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
         // === Load airports data first ===
         $.getJSON('/data/phairports.json')
             .done(function (data) {
