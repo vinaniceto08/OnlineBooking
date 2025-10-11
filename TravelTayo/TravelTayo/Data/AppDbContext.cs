@@ -22,7 +22,7 @@ namespace TravelTayo.Data
         public DbSet<CategoryGroup> CategoryGroups { get; set; }
         public DbSet<AccommodationType> AccommodationTypes { get; set; }
         public DbSet<Board> Boards { get; set; }
-        public DbSet<Segment> Segments { get; set; }
+        //public DbSet<Segment> Segments { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Rooms> Rooms { get; set; }
         public DbSet<Terminal> Terminals { get; set; }

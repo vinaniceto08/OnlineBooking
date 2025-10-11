@@ -68,7 +68,7 @@ public class Category { public int Id { get; set; } public string? Code { get; s
 public class CategoryGroup { public int Id { get; set; } public string? Code { get; set; } public string? Description { get; set; } public List<Hotel> Hotels { get; set; } }
 public class AccommodationType { public int Id { get; set; } public string? Code { get; set; }   public List<Hotel> Hotels { get; set; } }
 public class Board { public int Id { get; set; } public string? Code { get; set; } public string? Description { get; set; } }
-public class Segment { public int Id { get; set; } public int? Code { get; set; } public string? Description { get; set; } }
+//public class Segment { public int Id { get; set; } public int? Code { get; set; } public string? Description { get; set; } }
 public class Address { public int Id { get; set; } public string? Content { get; set; } public string? Street { get; set; } public string Number { get; set; } public string PostalCode { get; set; } public string City { get; set; } public List<Hotel> Hotels { get; set; } }
 
 public class Terminal { public int Id { get; set; } public string? TerminalCode { get; set; } }

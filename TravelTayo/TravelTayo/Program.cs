@@ -38,6 +38,16 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
 
 
     });
+builder.Services.Configure<AmadeusOptions>(builder.Configuration.GetSection("Amadeus"));
+
+builder.Services.AddHttpClient<AmadeusService>();
+
+// If you use IAmadeusService interface:
+builder.Services.AddScoped<IAmadeusService, AmadeusService>();
+
+// Or if you're injecting the concrete type directly:
+builder.Services.AddScoped<AmadeusService>();
+
 string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING")
                           ?? builder.Configuration.GetConnectionString("TravelTayoDb");
 
