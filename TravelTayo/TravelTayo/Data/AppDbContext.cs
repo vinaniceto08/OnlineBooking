@@ -108,6 +108,8 @@ namespace TravelTayo.Data
                 modelBuilder.Entity<Account>()
                .HasIndex(a => a.B2CUserId)
                .IsUnique();
+
+                modelBuilder.Entity<FlightEndpoint>().HasNoKey();
             });
         }
 
