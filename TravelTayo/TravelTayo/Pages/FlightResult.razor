@@ -1,0 +1,83 @@
+﻿@page "/flightresult"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager Navigation
+@inject AmadeusService AmadeusService
+
+<h3>Flight Results</h3>
+@if (isLoading)
+{
+    <div class="page-loading-overlay">
+        <div class="spinner"></div>
+    </div>
+}
+
+
+@if (flightResults == null)
+{
+    <p>No results yet. Please search.</p>
+}
+else
+{
+    @foreach (var offer in flightResults)
+    {
+        <div class="card mt-2 p-3">
+            <h4>€ @offer.Price.Total</h4>
+            @foreach (var segment in offer.Itineraries[0].Segments)
+            {
+                <p>@segment.Departure.IataCode → @segment.Arrival.IataCode</p>
+                <small>@segment.Departure.At → @segment.Arrival.At</small>
+
+                <br />
+            }
+        </div>
+    }
+}
+
+@code {
+    private FlightSearchRequest? searchRequest;
+    private FlightOffer[]? flightResults;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ParseQueryParams();
+
+        if (searchRequest != null)
+            await HandleSearch(searchRequest);
+
+        isLoading = false;
+    }
+
+    private void ParseQueryParams()
+    {
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var queryParams = QueryHelpers.ParseQuery(uri.Query);
+
+        searchRequest = new FlightSearchRequest
+        {
+            Origin = queryParams["origin"],
+            Destination = queryParams["destination"],
+            DepartureDate = queryParams["departure"],
+            ReturnDate = queryParams.ContainsKey("return") ? queryParams["return"] : "",
+            IsRoundTrip = queryParams.ContainsKey("return"),
+            Adults = int.Parse(queryParams["adults"]),
+            Children = int.Parse(queryParams["children"]),
+            Infants = int.Parse(queryParams["infants"]),
+            PlaneTypeInput = queryParams["planeType"]
+        };
+    }
+
+    private async Task HandleSearch(FlightSearchRequest search)
+    {
+        flightResults = await AmadeusService.SearchFlightsAsync(
+            search.Origin,
+            search.Destination,
+            search.DepartureDate,
+            search.IsRoundTrip ? search.ReturnDate : null,
+            search.Adults,
+            search.Children,
+            search.Infants,
+            search.PlaneTypeInput
+        );
+    }
+}

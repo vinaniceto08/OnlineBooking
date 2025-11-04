@@ -304,17 +304,21 @@
 
 
 @code {
-    // Your existing model
     private FlightSearchRequest search = new FlightSearchRequest();
 
-    // This is the callback that sends the search details to the parent page
-    [Parameter] public EventCallback<FlightSearchRequest> OnSearch { get; set; }
-
-    // This method must exist in the same @code block!
-    private async Task TriggerSearch()
+    private void TriggerSearch()
     {
-        if (OnSearch.HasDelegate)
-            await OnSearch.InvokeAsync(search);
+        var url = $"flightresult?" +
+                  $"origin={search.Origin}" +
+                  $"&destination={search.Destination}" +
+                  $"&departure={search.DepartureDate:yyyy-MM-dd}" +
+                  $"{(search.IsRoundTrip && search.ReturnDate != null ? $"&return={search.ReturnDate:yyyy-MM-dd}" : "")}" +
+                  $"&adults={search.Adults}" +
+                  $"&children={search.Children}" +
+                  $"&infants={search.Infants}" +
+                  $"&planeType={search.PlaneTypeInput}";
+
+        Navigation.NavigateTo(url);
     }
 }
 

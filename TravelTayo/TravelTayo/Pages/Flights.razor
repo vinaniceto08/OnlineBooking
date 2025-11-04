@@ -2,44 +2,7 @@
 @using TravelTayo.Services
 @inject AmadeusService AmadeusService
 
-<TravelTayo.Components.FligthSearch OnSearch="HandleSearch" />
+<TravelTayo.Components.FligthSearch  />
 
-@if (flightResults == null)
-{
-    <p>No results yet. Please search.</p>
-}
-else
-{
-    @foreach (var offer in flightResults)
-    {
-        <div class="card mt-2 p-3">
-            <h4>€ @offer.Price.Total</h4>
-            @foreach (var segment in offer.Itineraries[0].Segments)
-            {
-                <p>@segment.Departure.IataCode → @segment.Arrival.IataCode</p>
-                <small>@segment.Departure.At → @segment.Arrival.At</small>
 
-                <br />
-            }
-        </div>
-    }
-}
 
-@code {
-    FlightOffer[] flightResults;
-    private string? result;
-
-    private async Task HandleSearch(FlightSearchRequest search)
-    {
-        flightResults = await AmadeusService.SearchFlightsAsync(
-            search.Origin,
-            search.Destination,
-            search.DepartureDate,
-            search.IsRoundTrip ? search.ReturnDate : null,
-            search.Adults,
-            search.Children,
-            search.Infants,
-            search.PlaneTypeInput
-        );
-    }
-}

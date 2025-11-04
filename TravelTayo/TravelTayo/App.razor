@@ -1,6 +1,23 @@
-﻿<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.WebUtilities
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly" OnNavigateAsync="HandleNavigation">
         <Found Context="routeData">
+
+            @if (isNavigating)
+            {
+                <div class="global-loading-overlay" role="status" aria-live="polite">
+                    <div class="loader-and-text">
+                        <div class="loader"></div>
+                        @if (!string.IsNullOrEmpty(navigationMessage))
+                        {
+                            <div class="loader-text">@navigationMessage</div>
+                        }
+                    </div>
+                </div>
+            }
+
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
                     <TravelTayo.Pages.LogIn />
@@ -10,6 +27,7 @@
                 </Authorizing>
             </AuthorizeRouteView>
         </Found>
+
         <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">
                 <p>Sorry, page not found.</p>
@@ -17,3 +35,50 @@
         </NotFound>
     </Router>
 </CascadingAuthenticationState>
+
+@code {
+    private bool isNavigating;
+    private string? navigationMessage;
+
+    // Called by Router just before it navigates to the new page.
+    private async Task HandleNavigation(NavigationContext args)
+    {
+        // Show the global loader immediately
+        isNavigating = true;
+
+        // Optional: set a custom message when going to flightresult
+        navigationMessage = GetMessageForPath(args.Path);
+
+        // Force UI update
+        StateHasChanged();
+
+        try
+        {
+            // Let the router perform the navigation and wait until it completes.
+            // If you need to do async work before navigation, do it here.
+            // We don't await anything else, so the Router will then render the destination.
+            // We add a very small delay so the overlay is visible even for very-fast navigations.
+            await Task.Delay(150);
+        }
+        finally
+        {
+            // Hide the loader after navigation completes.
+            isNavigating = false;
+            navigationMessage = null;
+            StateHasChanged();
+        }
+    }
+
+    private string? GetMessageForPath(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+            return null;
+
+        // Normalize and check paths you care about
+        var normalized = path.StartsWith("/") ? path : "/" + path;
+        if (normalized.StartsWith("/flightresult", StringComparison.OrdinalIgnoreCase))
+            return "Searching flights…";
+
+        return null;
+    }
+}
