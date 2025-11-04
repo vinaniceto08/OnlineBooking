@@ -1,42 +1,118 @@
 ﻿@page "/flightresult"
+@using System.Linq
+@using System.Globalization
+@using System.Text.RegularExpressions
 @using Microsoft.AspNetCore.WebUtilities
 @inject NavigationManager Navigation
 @inject AmadeusService AmadeusService
 
-<h3>Flight Results</h3>
+<h3 class="fw-bold mb-4">Flight Results</h3>
+
 @if (isLoading)
 {
-    <div class="page-loading-overlay">
-        <div class="spinner"></div>
+    <div class="text-center my-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2">Searching for flights...</p>
     </div>
 }
-
-
-@if (flightResults == null)
+else if (flightResults == null || flightResults.Length == 0)
 {
-    <p>No results yet. Please search.</p>
+    <div class="alert alert-warning">No flights found. Please try again.</div>
 }
 else
 {
-    @foreach (var offer in flightResults)
-    {
-        <div class="card mt-2 p-3">
-            <h4>€ @offer.Price.Total</h4>
-            @foreach (var segment in offer.Itineraries[0].Segments)
-            {
-                <p>@segment.Departure.IataCode → @segment.Arrival.IataCode</p>
-                <small>@segment.Departure.At → @segment.Arrival.At</small>
-
-                <br />
-            }
+    <!-- Filter Bar -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div class="btn-group mb-2">
+            <!-- Use single quotes for the attribute so inner string can be double-quoted -->
+            <button class="btn btn-outline-secondary" @onclick='() => SortFlights("price")'>Cheapest</button>
+            <button class="btn btn-outline-secondary" @onclick='() => SortFlights("duration")'>Fastest</button>
+            <button class="btn btn-outline-secondary" @onclick='() => SortFlights("departure")'>Earliest Departure</button>
         </div>
-    }
+
+        <div class="d-flex align-items-center mb-2">
+            <label class="me-2 fw-semibold">Currency:</label>
+            <select class="form-select w-auto" @onchange="OnCurrencyChange">
+                <option value="EUR">EUR (€)</option>
+                <option value="PHP">PHP (₱)</option>
+                <option value="USD">USD ($)</option>
+            </select>
+
+        </div>
+    </div>
+
+    <!-- Flight Cards -->
+    <div class="row">
+        @foreach (var offer in flightResults)
+        {
+            // defensive null checks
+            if (offer?.Itineraries == null || offer.Itineraries.Length == 0)
+            {
+                continue;
+            }
+
+            var itinerary = offer.Itineraries[0];
+            if (itinerary.Segments == null || itinerary.Segments.Length == 0)
+            {
+                continue;
+            }
+
+            var firstSeg = itinerary.Segments.First();
+            var lastSeg = itinerary.Segments.Last();
+            var duration = GetFlightDuration(itinerary.Duration ?? "");
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm border-0 h-100 flight-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="fw-bold text-primary mb-0">@firstSeg.Departure.IataCode → @lastSeg.Arrival.IataCode</h5>
+                            <span class="badge bg-light text-dark">@duration</span>
+                        </div>
+
+                        <div class="text-muted small mb-3">
+                            @foreach (var seg in offer.Itineraries[0].Segments)
+                            {
+                                <div class="d-flex justify-content-between small">
+                                    <span>
+                                        @seg.Departure.IataCode
+                                        @(FormatDate(seg.Departure.At))
+                                    </span>
+                                    <span>
+                                        →
+                                        @seg.Arrival.IataCode
+                                        @(FormatDate(seg.Arrival.At))
+                                    </span>
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="fw-bold text-success">@DisplayCurrencySafe(offer?.Price?.Total)</h4>
+                            <button class="btn btn-primary btn-sm">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 }
 
 @code {
     private FlightSearchRequest? searchRequest;
     private FlightOffer[]? flightResults;
     private bool isLoading = true;
+    private string selectedCurrency = "PHP";
+    private decimal eurToPhp = 61.5m;
+    private decimal eurToUsd = 1.09m;
+    private string currentSort = "price";
+
+    private string FormatDate(string? dateStr)
+    {
+        if (DateTime.TryParse(dateStr, out var dt))
+            return dt.ToString("MMM dd HH:mm");
+        return "N/A";
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,6 +121,7 @@ else
         if (searchRequest != null)
             await HandleSearch(searchRequest);
 
+        SortFlights("price");
         isLoading = false;
     }
 
@@ -53,22 +130,24 @@ else
         var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
         var queryParams = QueryHelpers.ParseQuery(uri.Query);
 
+        // use safe retrieval with default fallbacks
         searchRequest = new FlightSearchRequest
         {
-            Origin = queryParams["origin"],
-            Destination = queryParams["destination"],
-            DepartureDate = queryParams["departure"],
-            ReturnDate = queryParams.ContainsKey("return") ? queryParams["return"] : "",
+            Origin = queryParams.TryGetValue("origin", out var o) ? o.ToString() : "",
+            Destination = queryParams.TryGetValue("destination", out var d) ? d.ToString() : "",
+            DepartureDate = queryParams.TryGetValue("departure", out var dep) ? dep.ToString() : "",
+            ReturnDate = queryParams.TryGetValue("return", out var ret) ? ret.ToString() : "",
             IsRoundTrip = queryParams.ContainsKey("return"),
-            Adults = int.Parse(queryParams["adults"]),
-            Children = int.Parse(queryParams["children"]),
-            Infants = int.Parse(queryParams["infants"]),
-            PlaneTypeInput = queryParams["planeType"]
+            Adults = queryParams.TryGetValue("adults", out var a) && int.TryParse(a, out var ai) ? ai : 1,
+            Children = queryParams.TryGetValue("children", out var c) && int.TryParse(c, out var ci) ? ci : 0,
+            Infants = queryParams.TryGetValue("infants", out var i) && int.TryParse(i, out var ii) ? ii : 0,
+            PlaneTypeInput = queryParams.TryGetValue("planeType", out var p) ? p.ToString() : ""
         };
     }
 
     private async Task HandleSearch(FlightSearchRequest search)
     {
+        // keep original call - AmadeusService should return valid offers
         flightResults = await AmadeusService.SearchFlightsAsync(
             search.Origin,
             search.Destination,
@@ -79,5 +158,95 @@ else
             search.Infants,
             search.PlaneTypeInput
         );
+    }
+
+    private string DisplayCurrencySafe(string? euroPrice)
+    {
+        if (string.IsNullOrWhiteSpace(euroPrice))
+            return "-";
+
+        // Try to parse using InvariantCulture. Remove any non-digit characters except decimal separator and minus.
+        var cleaned = Regex.Replace(euroPrice, @"[^\d\.\-]", "");
+        if (!decimal.TryParse(cleaned, NumberStyles.Number | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var price))
+        {
+            return euroPrice; // fallback to raw value
+        }
+
+        return selectedCurrency switch
+        {
+            "PHP" => $"₱ {Math.Round(price * eurToPhp):N0}",
+            "USD" => $"$ {(price * eurToUsd):N2}",
+            _ => $"€ {price:N2}"
+        };
+    }
+
+    private void SortFlights(string sortType)
+    {
+        if (flightResults == null) return;
+        currentSort = sortType;
+
+        try
+        {
+            flightResults = sortType switch
+            {
+                "price" => flightResults.OrderBy(f => SafeParsePrice(f?.Price?.Total)).ToArray(),
+                "duration" => flightResults.OrderBy(f => ParseDurationMinutesSafe(f?.Itineraries?.FirstOrDefault()?.Duration)).ToArray(),
+                "departure" => flightResults
+                  .OrderBy(f =>
+                  {
+                      var dateStr = f?.Itineraries?.FirstOrDefault()?.Segments?.FirstOrDefault()?.Departure?.At;
+                      if (DateTime.TryParse(dateStr, out var dt))
+                          return dt;
+                      return DateTime.MinValue;
+                  })
+                  .ToArray(),
+            };
+        }
+        catch
+        {
+            // If sorting fails for any reason, keep original order (defensive)
+        }
+    }
+
+    private decimal SafeParsePrice(string? priceStr)
+    {
+        if (string.IsNullOrWhiteSpace(priceStr)) return decimal.MaxValue;
+        var cleaned = Regex.Replace(priceStr, @"[^\d\.\-]", "");
+        if (decimal.TryParse(cleaned, NumberStyles.Number | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var d))
+            return d;
+        return decimal.MaxValue;
+    }
+
+    // Robust ISO 8601 duration parser (PT#H#M or PT#M or PT#H)
+    private int ParseDurationMinutesSafe(string? isoDuration)
+    {
+        if (string.IsNullOrWhiteSpace(isoDuration)) return int.MaxValue;
+
+        // pattern extracts hours and minutes from strings like PT5H30M, PT2H, PT45M
+        var m = Regex.Match(isoDuration, @"PT(?:(\d+)H)?(?:(\d+)M)?", RegexOptions.IgnoreCase);
+        if (!m.Success) return int.MaxValue;
+
+        var hours = 0;
+        var mins = 0;
+        if (m.Groups[1].Success) int.TryParse(m.Groups[1].Value, out hours);
+        if (m.Groups[2].Success) int.TryParse(m.Groups[2].Value, out mins);
+        return hours * 60 + mins;
+    }
+
+    private string GetFlightDuration(string isoDuration)
+    {
+        var totalMins = ParseDurationMinutesSafe(isoDuration);
+        if (totalMins == int.MaxValue) return "-";
+        var h = totalMins / 60;
+        var m = totalMins % 60;
+        return $"{h}h {m}m";
+    }
+
+    private Task OnCurrencyChange(ChangeEventArgs e)
+    {
+        selectedCurrency = e.Value?.ToString() ?? "EUR";
+        // If you want live rates, call a rates API here and update eurToPhp/eurToUsd
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 }
